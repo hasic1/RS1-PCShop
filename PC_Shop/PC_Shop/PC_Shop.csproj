@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Modul2\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

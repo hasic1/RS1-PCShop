@@ -1,4 +1,5 @@
-﻿using PC_Shop.Klase;
+﻿using Microsoft.AspNetCore.Identity;
+using PC_Shop.Klase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PC_Shop.Klase
 {
-    public class Korisnik
+    public class Korisnik:IdentityUser<int>
     {
         public string Ime   {get;set;}
         public string Prezime {get;set;}

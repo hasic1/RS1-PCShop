@@ -29,7 +29,7 @@ namespace PC_Shop
             services.AddControllersWithViews();
 
             services.AddDbContext<Context>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("connectionpc")));
+                options.UseSqlServer(Configuration.GetConnectionString("connection")));
             services.AddRazorPages();
         }
 
