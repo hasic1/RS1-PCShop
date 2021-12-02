@@ -1,5 +1,0 @@
-C:\Users\X\source\repos\PC_Shop\Klase\obj\Debug\netcoreapp3.1\Class.csproj.AssemblyReference.cache
-C:\Users\X\source\repos\PC_Shop\Klase\obj\Debug\netcoreapp3.1\Class.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\X\source\repos\PC_Shop\Klase\obj\Debug\netcoreapp3.1\Class.AssemblyInfoInputs.cache
-C:\Users\X\source\repos\PC_Shop\Klase\obj\Debug\netcoreapp3.1\Class.AssemblyInfo.cs
-C:\Users\X\source\repos\PC_Shop\Klase\obj\Debug\netcoreapp3.1\Class.csproj.CoreCompileInputs.cache
