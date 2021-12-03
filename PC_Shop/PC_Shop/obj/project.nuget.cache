@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lRN38nTq/8hFdyp5EQolhU4Ks5vZL8OFC4FcuvBsJxuvKgcaKhcpLBrvAkQAIkZjjEDliStzIPQ0HLkYl8DBBg==",
+  "dgSpecHash": "VKSEiAB3biVVv0E+efSV6ZKxjvCRHlAfVw4W1AukCcImPRb+2lP+xD3dxa7L3MxRhpC8BYGkByIzDgp6H2qsOg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bakah\\OneDrive\\Desktop\\PC_SHOP-master\\PC_Shop\\PC_Shop\\PC_Shop.Dal.csproj",
+  "projectFilePath": "C:\\Users\\bakah\\OneDrive\\Desktop\\Git\\PCShop\\PC_Shop\\PC_Shop\\PC_Shop.Dal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bakah\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\bakah\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
