@@ -30,6 +30,8 @@ namespace PC_Shop
             services.AddDbContext<Context>(builder => builder.UseSqlServer(connectionString));
 
             services.AddScoped<IDrzavaService, DrzavaService>();
+            services.AddScoped<IBankaService, BankaService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

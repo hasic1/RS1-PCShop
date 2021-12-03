@@ -7,8 +7,10 @@ namespace PC_Shop.Dal.Mapper
         public Mapper()
         {
             CreateMap<Database.Drzava, PC_Shop_classLibrary.Models.DrzavaViewModel>();
-            CreateMap<Database.Proizvod, PC_Shop_classLibrary.Models.ProizvodVM>();
-            CreateMap<Database.Dostavljac, PC_Shop_classLibrary.Models.DostavljacVM>();
+            CreateMap<Database.Banka, PC_Shop_classLibrary.Models.BankaVM>();
+
+
+            CreateMap<PC_Shop_classLibrary.Models.Request.BankaModelRequest, Database.Banka>().ReverseMap();
         }
     }
 }

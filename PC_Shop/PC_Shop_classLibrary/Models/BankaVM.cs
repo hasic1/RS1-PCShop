@@ -4,9 +4,10 @@ using System.Text;
 
 namespace PC_Shop_classLibrary.Models
 {
-    public class DostavljacVM
+    public class BankaVM
     {
-        public int ID { get; set; }
-        public string NazivDostave { get; set; }
+        public string NazivBanke { get; set; }
+        public string KontaktTel { get; set; }
+
     }
 }

@@ -10,7 +10,7 @@ using PC_Shop.Database;
 namespace PC_Shop_classLibrary.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211203145143_Migrations")]
+    [Migration("20211202112016_Migrations")]
     partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
