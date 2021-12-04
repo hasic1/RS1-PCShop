@@ -14,7 +14,6 @@ namespace PC_Shop.Dal.Controllers
         {
             _service = service;
         }
-
         [HttpGet]
         public List<PC_Shop_classLibrary.Models.BankaVM> GetAll()
         {

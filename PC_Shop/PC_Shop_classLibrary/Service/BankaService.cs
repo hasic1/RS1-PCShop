@@ -23,10 +23,8 @@ namespace PC_Shop_classLibrary.Service
         public List<BankaVM> GetBanka()
         {
             var entity = _context.Banka.ToList();
-
             return _mapper.Map<List<BankaVM>>(entity);
         }
-
         public BankaModelRequest insertBanka(BankaModelRequest request)
         {
             var bankaEntity = _mapper.Map<Banka>(request);
