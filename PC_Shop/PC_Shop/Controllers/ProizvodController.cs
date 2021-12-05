@@ -12,20 +12,33 @@ namespace PC_Shop.Dal.Controllers
     public class ProizvodController :ControllerBase
     {
         private readonly IProizvodService _service;
-
         public ProizvodController(IProizvodService service)
         {
             _service = service;
         }
+
         [HttpGet]
         public List<PC_Shop_classLibrary.Models.ProizvodVM> GetALl()
         {
             return _service.GetProizvod();
         }
+
         [HttpPost]
         public PC_Shop_classLibrary.Models.Request.ProizvodModelRequest insertProizvod([FromBody] PC_Shop_classLibrary.Models.Request.ProizvodModelRequest request)
         {
             return _service.insertProizvod(request);
+        }
+
+        [HttpPut("{id}")]
+        public PC_Shop_classLibrary.Models.Request.ProizvodModelRequest Update(int id, PC_Shop_classLibrary.Models.Request.ProizvodModelRequest ponuda)
+        {
+            return _service.Update(id, ponuda);
+        }
+
+        [HttpDelete("{id}")]
+        public bool Delete(int id)
+        {
+            return _service.Delete(id);
         }
     }
 }

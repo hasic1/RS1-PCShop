@@ -30,5 +30,30 @@ namespace PC_Shop_classLibrary.Service
             _context.SaveChanges();
             return _mapper.Map<ProizvodModelRequest>(proizvodEntitiy);
         }
+
+        public ProizvodModelRequest Update(int id, ProizvodModelRequest ponuda)
+        {
+            var PonudaEntity = _context.Proizvod.Find(id);
+
+            _context.Proizvod.Attach(PonudaEntity);
+            _context.Proizvod.Update(PonudaEntity);
+
+            _mapper.Map(ponuda, PonudaEntity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<ProizvodModelRequest>(PonudaEntity);
+        }
+        public bool Delete(int id)
+        {
+            var entity = _context.Proizvod.Find(id);
+            if (entity != null)
+            {
+                _context.Remove(entity);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }
