@@ -9,7 +9,7 @@ namespace PC_Shop.Dal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProizvodController :ControllerBase
+    public class ProizvodController : ControllerBase
     {
         private readonly IProizvodService _service;
         public ProizvodController(IProizvodService service)
