@@ -33,6 +33,8 @@ namespace PC_Shop
             services.AddScoped<IProizvodService, ProizvodService>();
             services.AddScoped<INarudzbaService, NarudzbaService>();
 
+            services.AddSwaggerGen();
+
 
         }
 
@@ -42,6 +44,8 @@ namespace PC_Shop
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
@@ -54,9 +58,28 @@ namespace PC_Shop
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            app.UseCors(
+              options => options
+              .SetIsOriginAllowed(x => _ = true)
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials()
+          ); //This needs to set everything allowed
+
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
+
+
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
         }
     }
