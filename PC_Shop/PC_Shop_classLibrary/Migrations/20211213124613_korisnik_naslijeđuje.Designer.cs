@@ -10,8 +10,8 @@ using PC_Shop.Database;
 namespace PC_Shop_classLibrary.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211202112016_Migrations")]
-    partial class Migrations
+    [Migration("20211213124613_korisnik_naslijeđuje")]
+    partial class korisnik_naslijeđuje
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,7 +123,7 @@ namespace PC_Shop_classLibrary.Migrations
 
             modelBuilder.Entity("PC_Shop.Database.Korisnik", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -137,16 +137,25 @@ namespace PC_Shop_classLibrary.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Lozinka")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Pretplacen")
                         .HasColumnType("bit");
 
                     b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SlikaKorisnika")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Spol")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("korisnickoIme")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
 
                     b.HasIndex("DrzavaID");
 
@@ -250,7 +259,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.Property<bool>("Aktivan")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("AutorOglasaId")
+                    b.Property<int?>("AutorOglasaID")
                         .HasColumnType("int");
 
                     b.Property<int>("BrojPozicja")
@@ -276,7 +285,7 @@ namespace PC_Shop_classLibrary.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("AutorOglasaId");
+                    b.HasIndex("AutorOglasaID");
 
                     b.ToTable("Oglas");
                 });
@@ -464,7 +473,7 @@ namespace PC_Shop_classLibrary.Migrations
                 {
                     b.HasOne("PC_Shop.Database.Korisnik", "AutorOglasa")
                         .WithMany()
-                        .HasForeignKey("AutorOglasaId");
+                        .HasForeignKey("AutorOglasaID");
                 });
 
             modelBuilder.Entity("PC_Shop.Database.Post", b =>

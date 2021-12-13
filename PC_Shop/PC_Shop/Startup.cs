@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using PC_Shop.Database;
 using PC_Shop_classLibrary.Service;
 using PC_Shop_classLibrary.Service.Interface;
+using PC_Shop_classLibrary.Migrations;
 
 namespace PC_Shop
 {
@@ -22,8 +23,7 @@ namespace PC_Shop
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddSwaggerGen();
-            services.AddControllers();
+            
             services.AddAutoMapper(typeof(Startup));
 
             var connectionString = Configuration.GetConnectionString("connection");
@@ -34,6 +34,7 @@ namespace PC_Shop
             services.AddScoped<INarudzbaService, NarudzbaService>();
 
             services.AddSwaggerGen();
+            services.AddControllers();
 
 
         }
@@ -50,9 +51,10 @@ namespace PC_Shop
             app.UseHttpsRedirection();
 
             app.UseSwagger();
-            app.UseRouting();
+           
 
             app.UseAuthorization();
+            app.UseRouting();
 
             app.UseSwaggerUI(c =>
             {
@@ -72,7 +74,7 @@ namespace PC_Shop
             //{
             //    endpoints.MapControllers();
             //});
-
+            
 
 
             app.UseEndpoints(endpoints =>

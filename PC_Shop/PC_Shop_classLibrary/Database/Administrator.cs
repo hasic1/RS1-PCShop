@@ -1,9 +1,12 @@
-﻿using PC_Shop_classLibrary.Database;
+﻿using PC_Shop.Database;
+using PC_Shop_classLibrary.Database;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace PC_Shop.Database
+namespace PC_Shop_classLibrary.Database
 {
-    public class Korisnik:KorisnickiNalog
+   public class Administrator:KorisnickiNalog
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
@@ -11,6 +14,5 @@ namespace PC_Shop.Database
         public DateTime DatumRodjenja { get; set; }
         public Drzava Drzava { get; set; }
         public int DrzavaID { get; set; }
-        public bool Pretplacen { get; set; }
     }
 }
