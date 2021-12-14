@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PC_Shop_classLibrary.Database;
 
 namespace PC_Shop.Database
 {
@@ -20,6 +21,9 @@ namespace PC_Shop.Database
         public DbSet<Post> Post { get; set; }
         public DbSet<Narudzba> Narudzba { get; set; }
         public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
+        public DbSet<KorisnickiNalog> KorisnickiNalog  { get; set; }
+        public DbSet<Administrator> Administrator { get; set; }
+
 
 
 
