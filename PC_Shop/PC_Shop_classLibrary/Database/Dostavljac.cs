@@ -1,4 +1,4 @@
-﻿namespace PC_Shop.Database
+﻿namespace PC_Shop_classLibrary.Database
 
 {
     public class Dostavljac

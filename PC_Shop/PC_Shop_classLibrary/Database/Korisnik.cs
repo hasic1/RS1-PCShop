@@ -1,7 +1,7 @@
-﻿using PC_Shop_classLibrary.Database;
-using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PC_Shop.Database
+namespace PC_Shop_classLibrary.Database
 {
     public class Korisnik:KorisnickiNalog
     {

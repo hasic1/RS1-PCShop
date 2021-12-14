@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PC_Shop.Database
+namespace PC_Shop_classLibrary.Database
 {
     public class BankovniRacun
     {

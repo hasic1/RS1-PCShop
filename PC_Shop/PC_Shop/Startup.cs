@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PC_Shop.Database;
+using PC_Shop_classLibrary.Database;
 using PC_Shop_classLibrary.Service;
 using PC_Shop_classLibrary.Service.Interface;
-using PC_Shop_classLibrary.Migrations;
+
 
 namespace PC_Shop
 {

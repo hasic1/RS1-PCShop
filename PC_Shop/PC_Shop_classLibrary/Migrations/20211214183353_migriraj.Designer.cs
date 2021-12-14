@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PC_Shop.Database;
+using PC_Shop_classLibrary.Database;
 
 namespace PC_Shop_classLibrary.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211213124613_korisnik_naslijeđuje")]
-    partial class korisnik_naslijeđuje
+    [Migration("20211214183353_migriraj")]
+    partial class migriraj
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace PC_Shop_classLibrary.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PC_Shop.Database.Banka", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Banka", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Banka");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.BankovniRacun", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.BankovniRacun", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Racun");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Dostavljac", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Dostavljac", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -91,7 +91,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Dostavljac");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Drzava", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Drzava", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -106,7 +106,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Drzava");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Kategorija", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Kategorija", b =>
                 {
                     b.Property<int>("KategorijaID")
                         .ValueGeneratedOnAdd()
@@ -121,35 +121,21 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Kategorija");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Korisnik", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.KorisnickiNalog", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DatumRodjenja")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DrzavaID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ime")
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Lozinka")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Pretplacen")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Prezime")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SlikaKorisnika")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Spol")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("korisnickoIme")
@@ -157,12 +143,12 @@ namespace PC_Shop_classLibrary.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DrzavaID");
+                    b.ToTable("KorisnickiNalog");
 
-                    b.ToTable("Korisnik");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("KorisnickiNalog");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.KorisnikOglas", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.KorisnikOglas", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -187,7 +173,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("KorisnikOglas");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Narudzba", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Narudzba", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -218,7 +204,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Narudzba");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.NarudzbaStavka", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.NarudzbaStavka", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -249,7 +235,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("NarudzbaStavka");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Oglas", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Oglas", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -290,7 +276,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Oglas");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Post", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Post", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -319,7 +305,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Post");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Proizvod", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Proizvod", b =>
                 {
                     b.Property<int>("ProizvodID")
                         .ValueGeneratedOnAdd()
@@ -359,7 +345,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Proizvod");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Proizvodjac", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Proizvodjac", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -379,7 +365,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Proizvodjac");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Recenzija", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Recenzija", b =>
                 {
                     b.Property<int>("RecenzijaID")
                         .ValueGeneratedOnAdd()
@@ -402,118 +388,183 @@ namespace PC_Shop_classLibrary.Migrations
                     b.ToTable("Recenzija");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.BankovniRacun", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Administrator", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Banka", "Banka")
+                    b.HasBaseType("PC_Shop_classLibrary.Database.KorisnickiNalog");
+
+                    b.Property<DateTime>("DatumRodjenja")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DrzavaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prezime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Spol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("DrzavaID");
+
+                    b.HasDiscriminator().HasValue("Administrator");
+                });
+
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Korisnik", b =>
+                {
+                    b.HasBaseType("PC_Shop_classLibrary.Database.KorisnickiNalog");
+
+                    b.Property<DateTime>("DatumRodjenja")
+                        .HasColumnName("Korisnik_DatumRodjenja")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DrzavaID")
+                        .HasColumnName("Korisnik_DrzavaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ime")
+                        .HasColumnName("Korisnik_Ime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Pretplacen")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Prezime")
+                        .HasColumnName("Korisnik_Prezime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Spol")
+                        .HasColumnName("Korisnik_Spol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("DrzavaID");
+
+                    b.HasDiscriminator().HasValue("Korisnik");
+                });
+
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.BankovniRacun", b =>
+                {
+                    b.HasOne("PC_Shop_classLibrary.Database.Banka", "Banka")
                         .WithMany()
                         .HasForeignKey("BankaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PC_Shop.Database.Korisnik", "Korisnik")
+                    b.HasOne("PC_Shop_classLibrary.Database.Korisnik", "Korisnik")
                         .WithMany()
                         .HasForeignKey("KorisnikID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Korisnik", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.KorisnikOglas", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Drzava", "Drzava")
-                        .WithMany()
-                        .HasForeignKey("DrzavaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PC_Shop.Database.KorisnikOglas", b =>
-                {
-                    b.HasOne("PC_Shop.Database.Korisnik", "Korisnik")
+                    b.HasOne("PC_Shop_classLibrary.Database.Korisnik", "Korisnik")
                         .WithMany()
                         .HasForeignKey("KorisnikID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PC_Shop.Database.Oglas", "Oglas")
+                    b.HasOne("PC_Shop_classLibrary.Database.Oglas", "Oglas")
                         .WithMany()
                         .HasForeignKey("OglasID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Narudzba", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Narudzba", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Dostavljac", "Dostavljac")
+                    b.HasOne("PC_Shop_classLibrary.Database.Dostavljac", "Dostavljac")
                         .WithMany()
                         .HasForeignKey("DostavljacID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PC_Shop.Database.Korisnik", "Narucioc")
+                    b.HasOne("PC_Shop_classLibrary.Database.Korisnik", "Narucioc")
                         .WithMany()
                         .HasForeignKey("NaruciocID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.NarudzbaStavka", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.NarudzbaStavka", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Narudzba", "Narudzba")
+                    b.HasOne("PC_Shop_classLibrary.Database.Narudzba", "Narudzba")
                         .WithMany()
                         .HasForeignKey("NarudzbaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PC_Shop.Database.Proizvod", "Proizvod")
+                    b.HasOne("PC_Shop_classLibrary.Database.Proizvod", "Proizvod")
                         .WithMany()
                         .HasForeignKey("ProizvodID");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Oglas", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Oglas", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Korisnik", "AutorOglasa")
+                    b.HasOne("PC_Shop_classLibrary.Database.Korisnik", "AutorOglasa")
                         .WithMany()
                         .HasForeignKey("AutorOglasaID");
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Post", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Post", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Korisnik", "AutorPosta")
+                    b.HasOne("PC_Shop_classLibrary.Database.Korisnik", "AutorPosta")
                         .WithMany()
                         .HasForeignKey("KorisnikID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Proizvod", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Proizvod", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Kategorija", "kategorija")
+                    b.HasOne("PC_Shop_classLibrary.Database.Kategorija", "kategorija")
                         .WithMany()
                         .HasForeignKey("KategorijaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PC_Shop.Database.Proizvodjac", "Proizvodjac")
+                    b.HasOne("PC_Shop_classLibrary.Database.Proizvodjac", "Proizvodjac")
                         .WithMany()
                         .HasForeignKey("ProizvodjacID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Proizvodjac", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Proizvodjac", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Drzava", "Sjediste")
+                    b.HasOne("PC_Shop_classLibrary.Database.Drzava", "Sjediste")
                         .WithMany()
                         .HasForeignKey("SjedisteID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PC_Shop.Database.Recenzija", b =>
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Recenzija", b =>
                 {
-                    b.HasOne("PC_Shop.Database.Proizvod", "Proizvod")
+                    b.HasOne("PC_Shop_classLibrary.Database.Proizvod", "Proizvod")
                         .WithMany()
                         .HasForeignKey("ProizvodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Administrator", b =>
+                {
+                    b.HasOne("PC_Shop_classLibrary.Database.Drzava", "Drzava")
+                        .WithMany()
+                        .HasForeignKey("DrzavaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PC_Shop_classLibrary.Database.Korisnik", b =>
+                {
+                    b.HasOne("PC_Shop_classLibrary.Database.Drzava", "Drzava")
+                        .WithMany()
+                        .HasForeignKey("DrzavaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

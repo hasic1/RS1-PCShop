@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PC_Shop_classLibrary.Database;
 
-namespace PC_Shop.Database
+namespace PC_Shop_classLibrary.Database
 {
     public class Context : DbContext
     {

@@ -1,5 +1,4 @@
-﻿using PC_Shop.Database;
-using PC_Shop_classLibrary.Database;
+﻿using PC_Shop_classLibrary.Database;
 using System;
 using System.Collections.Generic;
 using System.Text;
