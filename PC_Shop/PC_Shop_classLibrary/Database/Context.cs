@@ -23,6 +23,7 @@ namespace PC_Shop_classLibrary.Database
         public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
         public DbSet<KorisnickiNalog> KorisnickiNalog  { get; set; }
         public DbSet<Administrator> Administrator { get; set; }
+        public DbSet<Korisnik> Korisnik { get; set; }
 
 
 

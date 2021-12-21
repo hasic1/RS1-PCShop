@@ -9,6 +9,6 @@ namespace PC_Shop_classLibrary.Database
         public int ID { get; set; }
         public string korisnickoIme { get; set; }
         public string Lozinka { get; set; }
-        public string SlikaKorisnika { get; set; }
+       
     }
 }

@@ -53,9 +53,9 @@ namespace PC_Shop
             app.UseSwagger();
            
 
-            app.UseAuthorization();
+           
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
