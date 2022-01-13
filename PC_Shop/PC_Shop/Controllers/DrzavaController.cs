@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace PC_Shop.Dal.Controllers
 {
+    [ApiController]
+    [Route("[controller]/[action]")]
     public class DrzavaController:ControllerBase
     {
         private readonly Context _context;

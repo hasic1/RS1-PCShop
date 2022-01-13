@@ -12,7 +12,7 @@ namespace PC_Shop_classLibrary.Database
         public DateTime DatumObjave { get; set; } = DateTime.Now;
         public int TrajanjeOglasa { get; set; } = 0;
         public DateTime DatumIsteka { get; set; }
-        public Korisnik AutorOglasa{ get; set; }
+        public Administrator AutorOglasa{ get; set; }
         public bool Aktivan { get; set; } = true;
 
     }
