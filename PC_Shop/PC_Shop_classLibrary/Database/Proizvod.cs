@@ -7,7 +7,7 @@
         public double Cijena { get; set; }
         public int Kolicina { get; set; }
         public string Opis { get; set; }
-        public Kategorija kategorija { get; set; }
+        public Kategorija Kategorija { get; set; }
         public int KategorijaID { get; set; }
         public string LokacijaSlike { get; set; }
         public bool Snizen { get; set; } = false;

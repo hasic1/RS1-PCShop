@@ -9,13 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { NarudzbeComponent } from './narudzbe/narudzbe.component';
 import { OglasiComponent } from './oglasi/oglasi.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ProizvodiComponent,
     LoginComponent,
     NarudzbeComponent,
-    OglasiComponent
+    OglasiComponent,
+
   ],
   imports: [
     BrowserModule,

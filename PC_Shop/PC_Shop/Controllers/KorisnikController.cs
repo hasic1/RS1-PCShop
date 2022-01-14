@@ -51,5 +51,39 @@ namespace PC_Shop.Dal.Controllers
             return Get(newKorisnik.ID);
             
         }
+        [HttpPost("{id}")]
+        public ActionResult Update(int id, [FromBody] KorisnikUpdateVM x)
+        {
+            Korisnik korisnik = _context.Korisnik.Where(k =>k.ID ==id ).FirstOrDefault(s => s.ID == id);
+
+            if (korisnik == null)
+                return BadRequest("pogresan ID");
+
+            korisnik.Ime = x.Ime;
+            korisnik.Prezime = x.Prezime;
+            korisnik.korisnickoIme = x.korisnickoIme;
+            korisnik.Lozinka = x.Lozinka;
+            korisnik.Pretplacen = x.Pretplacen;          
+            korisnik.DatumRodjenja = x.DatumRodjenja;
+            korisnik.DrzavaID = x.DrzavaID;
+            korisnik.Spol = x.Spol;
+
+
+            _context.SaveChanges();
+            return Get(id);
+        }
+        [HttpPost("{id}")]
+        public ActionResult Delete(int id)
+        {
+            Korisnik korisnik = _context.Korisnik.Find(id);
+
+            if (korisnik == null  )
+                return BadRequest("pogresan ID");
+
+            _context.Remove(korisnik);
+
+            _context.SaveChanges();
+            return Ok(korisnik);
+        }
     }
 }

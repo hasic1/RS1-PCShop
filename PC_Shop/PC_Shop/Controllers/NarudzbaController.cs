@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PC_Shop_classLibrary.Database;
+using PC_Shop_classLibrary.Models;
 using PC_Shop_classLibrary.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -11,21 +14,83 @@ namespace PC_Shop.Dal.Controllers
     [ApiController]
     public class NarudzbaController:ControllerBase
     {
-        private readonly INarudzbaService _service;
+        private readonly Context _context;
 
-        public NarudzbaController(INarudzbaService service)
+        public NarudzbaController(Context context)
         {
-            _service = service;
+            _context = context;
         }
         [HttpGet]
-        public List<PC_Shop_classLibrary.Models.NarudzbaVM> GetAll() 
+        public List<NarudzbaVM> GetAll()
         {
-            return _service.GetNarudzba();
+            var data = _context.Narudzba.OrderBy(s => s.ID)
+                .Select(s => new NarudzbaVM()
+                {
+                    Aktivna = s.Aktivna,
+                    DatumKreireanja = s.DatumKreireanja,
+                    DostavljacID = s.DostavljacID,
+                    NaruciocID = s.NaruciocID,
+                    Potvrdjena = s.Potvrdjena
+                }).AsQueryable();
+               
+            return data.Take(100).ToList();
         }
+
         [HttpPost]
-        public PC_Shop_classLibrary.Models.Request.NarudzbaModelRequest insertNarudzba([FromBody] PC_Shop_classLibrary.Models.Request.NarudzbaModelRequest request) 
+        public ActionResult Add([FromBody] NarudzbaAddVM x)
         {
-            return _service.insertNarudzba(request);
+            var newNarudzba = new Narudzba
+            {
+                Aktivna = x.Aktivna,
+                Potvrdjena = x.Potvrdjena,
+                DatumKreireanja = DateTime.Now,
+                DostavljacID = x.NaruciocID,
+                NaruciocID = x.NaruciocID
+               
+            };
+
+            _context.Add(newNarudzba);
+            _context.SaveChanges();
+            return Get(newNarudzba.ID);
         }
+
+
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
+        {
+            return Ok(_context.Narudzba.Where(s => s.ID== id).FirstOrDefault());
+        }
+
+        [HttpPost("{id}")]
+        public ActionResult Update(int id, [FromBody] NarudzbaUpdateVM x)
+        {
+            Narudzba narudzba = _context.Narudzba.Where(s => s.ID== id).FirstOrDefault();
+
+            if (narudzba == null)
+                return BadRequest("pogresan ID");
+
+            narudzba.NaruciocID = x.NaruciocID;
+            narudzba.Potvrdjena = x.Potvrdjena;
+            narudzba.Aktivna = x.Aktivna;
+            narudzba.DatumKreireanja = x.DatumKreireanja;
+            narudzba.DostavljacID = x.DostavljacID;
+
+            _context.SaveChanges();
+            return Get(id);
+        }
+
+        //[HttpPost("{id}")]
+        //public ActionResult Delete(int id)
+        //{
+        //    Narudzba narudzba = _context.Narudzba.Find(id);
+
+        //    if (narudzba == null)
+        //        return BadRequest("pogresan ID");
+
+        //    _context.Remove(narudzba);
+
+        //    _context.SaveChanges();
+        //    return Ok(narudzba);
+        //}
     }
 }

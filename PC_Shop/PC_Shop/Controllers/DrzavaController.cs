@@ -45,5 +45,32 @@ namespace PC_Shop.Dal.Controllers
                .AsQueryable();
             return data.Take(100).ToList();
         }
+        [HttpPost("{id}")]
+       public ActionResult Update(int id ,[FromBody] DrzavaUpdateVM x) 
+        {
+            Drzava drzava = _context.Drzava.Where(d => d.ID == id).FirstOrDefault();
+
+            if (drzava == null)
+                return BadRequest("pogresan ID");
+
+            drzava.Naziv = x.Naziv;
+
+            _context.SaveChanges();
+            return Ok(drzava);
+        
+        }
+        [HttpPost("{id}")]
+        public ActionResult Delete(int id)
+        {
+            Drzava drzava = _context.Drzava.Find(id);
+
+            if (drzava == null )
+                return BadRequest("pogresan ID");
+
+            _context.Remove(drzava);
+
+            _context.SaveChanges();
+            return Ok(drzava);
+        }
     }
 }

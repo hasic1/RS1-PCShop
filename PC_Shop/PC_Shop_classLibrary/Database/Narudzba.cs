@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PC_Shop_classLibrary.Database
 {
@@ -12,5 +13,6 @@ namespace PC_Shop_classLibrary.Database
         public int DostavljacID { get; set; }
         public bool Aktivna { get; set; }
         public bool Potvrdjena { get; set; }
+        public ICollection<NarudzbaStavka>NarudzbaStavke { get; set; } 
     }
 }
