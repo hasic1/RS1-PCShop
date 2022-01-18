@@ -127,7 +127,7 @@ namespace PC_Shop_classLibrary.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DatumKreireanja = table.Column<DateTime>(nullable: false),
+                    DatumKreiranja = table.Column<DateTime>(nullable: false),
                     NaruciocID = table.Column<int>(nullable: false),
                     DostavljacID = table.Column<int>(nullable: false),
                     Aktivna = table.Column<bool>(nullable: false),

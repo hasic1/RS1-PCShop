@@ -180,7 +180,7 @@ namespace PC_Shop_classLibrary.Migrations
                     b.Property<bool>("Aktivna")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("DatumKreireanja")
+                    b.Property<DateTime>("DatumKreiranja")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("DostavljacID")

@@ -1,37 +1,56 @@
-<button class="btn btn-danger" (click)="testirajWebApi()">Testiraj webapi</button>
+<button class="btn btn-danger" (click)="testirajWebApi()">Ucitaj narudzbe</button>
+<button class="btn btn-primary" (click)="btnNovi()">Nova narudzba</button>
 
-<p>
-  Filtriraj <input [(ngModel)]="ime">
-</p>
-<table class="table table-warning" >
+<table class="table table-dark" >
   <tr>
-    <th>ID</th>
-    <th>Lozinka</th>
-    <th>Ime</th>
-    <th>Prezime</th>
-    <th>Spol</th>
-    <th>Datum rodjenja</th>
-    <th>DrzavaID</th>
-    <th>Pretplacen</th>
+    <th>Datum kreiranja</th>
+    <th>NaruciocID</th>
+    <th>DostavljacID</th>
+    <th>Aktivna</th>
+    <th>Potvrdjena</th>
   </tr>
   <tbody>
-  <tr *ngFor="let s of getNarudzbaPodaci()">
-    <td>{{s.id}}</td>
-    <td>{{s.lozinka}}</td>
-    <td>{{s.ime}}</td>
-    <td>{{s.prezime}}</td>
-    <td>{{s.spol}}</td>
-    <td>{{s.datumRodjenja}}</td>
-    <td>{{s.drzavaID}}</td>
-    <td>{{s.pretplacen}}</td>
+  <tr *ngFor="let n of getNarudzbaPodaci()">
+    <td>{{n.datumKreiranja}}</td>
+    <td>{{n.naruciocID}}</td>
+    <td>{{n.dostavljacID}}</td>
+    <td>{{n.aktivna}}</td>
+    <td>{{n.potvrdjena}}</td>
+
+
     <td>
-      <button>Obrisi</button>
-      <button (click)="detalji(s)">Detalji</button>
+      <button (click)="obrisi(n)">Obrisi</button>
+      <button (click)="detalji(n)">Detalji</button>
     </td>
   </tr>
   </tbody>
 </table>
-<p *ngIf="odabranaNarudzba !=null">NarudzbaID  i ostai podatci
-  <input [(ngModel)]="odabranaNarudzba.Aktivna">
+<p *ngIf="odabranaNarudzba !=null">Aktivna | Potvrdjena
+  <input [(ngModel)]="odabranaNarudzba.aktivna">
+  <input [(ngModel)]="odabranaNarudzba.potvrdjena">
   <button (click)="snimi()">Snimi</button>
 </p>
+
+
+
+<div *ngIf="odabranaNarudzba != null" style="border: 1px solid blue">
+<div class="mb-3">
+  <label class="form-label">NaruciocID</label>
+  <input type="number" class="form-control" [(ngModel)]="odabranaNarudzba.naruciocID"  placeholder="NaruciocID">
+</div>
+<div class="mb-3">
+  <label class="form-label">DostavljacID</label>
+  <input type="number" class="form-control" [(ngModel)]="odabranaNarudzba.dostavljacID"  placeholder="DostavljacID">
+</div>
+<div class="mb-3">
+  <label class="form-label">Aktivna</label>
+  <input type="text" class="form-control" [(ngModel)]="odabranaNarudzba.aktivna"  placeholder="Aktivna">
+</div>
+  <div class="mb-3">
+    <label class="form-label">Potvrdjena</label>
+    <input type="text" class="form-control" [(ngModel)]="odabranaNarudzba.potvrdjena"  placeholder="Aktivna">
+  </div>
+<button class="form-label" (click)="snimi()">Snimi</button>
+</div>
+
+<app-narudzba-edit [urediNarudzbu]="odabranaNarudzba"></app-narudzba-edit>

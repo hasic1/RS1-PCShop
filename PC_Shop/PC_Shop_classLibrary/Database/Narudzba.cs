@@ -6,7 +6,7 @@ namespace PC_Shop_classLibrary.Database
     public class Narudzba
     {
         public int ID { get; set; }
-        public DateTime DatumKreireanja { get; set; }
+        public DateTime DatumKreiranja { get; set; }
         public Korisnik Narucioc { get; set; }
         public int NaruciocID { get; set; }
         public Dostavljac Dostavljac { get; set; }

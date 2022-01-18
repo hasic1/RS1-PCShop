@@ -31,7 +31,7 @@ namespace PC_Shop
             //Dodaj ovde kad pravis Get ili Post ovde moras ovo dodat isto se dodaje samo mjenjas ovo u zagradama
             services.AddScoped<IBankaService, BankaService>();
             services.AddScoped<IProizvodService, ProizvodService>();
-            services.AddScoped<INarudzbaService, NarudzbaService>();
+           
 
             services.AddSwaggerGen();
             services.AddControllers();
@@ -74,7 +74,7 @@ namespace PC_Shop
             //{
             //    endpoints.MapControllers();
             //});
-            
+
 
 
             app.UseEndpoints(endpoints =>
