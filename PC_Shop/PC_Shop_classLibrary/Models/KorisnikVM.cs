@@ -6,7 +6,8 @@ namespace PC_Shop_classLibrary.Models
 {
     public class KorisnikVM
     {
-        public string korisnickoIme { get; set; }
+        public int ID { get; set; }
+        public string KorisnickoIme { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Spol { get; set; }

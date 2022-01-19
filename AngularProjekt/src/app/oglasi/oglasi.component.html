@@ -1,1 +1,36 @@
-<p>oglasi works!</p>
+<h5>Trenutno aktivni oglasi</h5>
+
+<button class="btn btn-danger" (click)="testirajWebApi()">Ucitaj oglase</button>
+<button class="btn btn-primary" (click)="btnNovi()">Kreiraj oglas</button>
+
+<table class="table table-primary" >
+  <tr>
+    <th>Naslov</th>
+    <th>Sadrzaj</th>
+    <th>Broj pozicija</th>
+    <th>Lokacija</th>
+    <th>Datum objave</th>
+    <th>Datum isteka</th>
+    <th>Datum isteka</th>
+    <th>Aktivan</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let o of getOglasiPodaci()">
+    <td>{{o.naslov}}</td>
+    <td>{{o.sadrzaj}}</td>
+    <td>{{o.brojPozicja}}</td>
+    <td>{{o.lokacija}}</td>
+    <td>{{o.datumObjave}}</td>
+    <td>{{o.datumIsteka}}</td>
+    <td>{{o.aktivan}}</td>
+
+
+    <td>
+      <button (click)="obrisi(o)">Obrisi</button>
+      <button (click)="detalji(o)">Detalji</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<app-oglasi-edit [urediOglas]="odabraniOglas"></app-oglasi-edit>

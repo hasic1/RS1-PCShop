@@ -20,12 +20,21 @@ namespace PC_Shop.Dal.Controllers
         }
 
         [HttpGet]
-        public List<Korisnik> GetAll(string ime_prezime)
+        public List<KorisnikVM> GetAll(string ime_prezime)
         {
-            var data = _context.Korisnik
-                .Where(x => ime_prezime == null || (x.Ime + " " + x.Prezime).StartsWith(ime_prezime) || (x.Prezime + " " + x.Ime)
-                .StartsWith(ime_prezime)).OrderByDescending(k => k.Prezime).ThenByDescending(k => k.Ime)
-                .AsQueryable();
+            var data = _context.Korisnik.OrderBy(s => s.ID)
+               .Select(s => new KorisnikVM()
+               {
+                   ID = s.ID,
+                   Ime = s.Ime,
+                   DatumRodjenja = s.DatumRodjenja,
+                   KorisnickoIme = s.korisnickoIme,
+                   DrzavaID = s.DrzavaID,
+                   Pretplacen = s.Pretplacen,
+                   Prezime=s.Prezime,
+                   Spol=s.Spol
+               }).AsQueryable();
+
             return data.Take(100).ToList();
         }
 
@@ -44,7 +53,10 @@ namespace PC_Shop.Dal.Controllers
                 korisnickoIme = k.korisnickoIme,
                 DatumRodjenja = k.DatumRodjenja,
                 Spol = k.Spol,
-                DrzavaID = k.DrzavaID
+                DrzavaID = k.DrzavaID,
+                Lozinka=k.Lozinka,
+                Pretplacen=true
+                
             };
             _context.Add(newKorisnik);
             _context.SaveChanges();

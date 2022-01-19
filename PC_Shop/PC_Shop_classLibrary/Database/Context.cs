@@ -27,7 +27,13 @@ namespace PC_Shop_classLibrary.Database
         public DbSet<AutentifikacijaToken> AutentifikacijaToken { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            //modelBuilder.Entity<Korisnik>().ToTable("Korisnik");
+            //modelBuilder.Entity<Administrator>().ToTable("Administrator");
+        }
 
     }
 }

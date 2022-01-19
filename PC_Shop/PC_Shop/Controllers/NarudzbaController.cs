@@ -57,7 +57,7 @@ namespace PC_Shop.Dal.Controllers
                 Aktivna = x.Aktivna,
                 Potvrdjena = x.Potvrdjena,
                 DatumKreiranja = DateTime.Now,
-                DostavljacID = x.NaruciocID,
+                DostavljacID = x.DostavljacID,
                 NaruciocID = x.NaruciocID
                
             };

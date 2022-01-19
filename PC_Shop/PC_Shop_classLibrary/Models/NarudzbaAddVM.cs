@@ -11,5 +11,6 @@ namespace PC_Shop_classLibrary.Models
         public int DostavljacID { get; set; }
         public bool Aktivna { get; set; }
         public bool Potvrdjena { get; set; }
+       
     }
 }

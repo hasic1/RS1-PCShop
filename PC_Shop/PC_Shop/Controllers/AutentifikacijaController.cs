@@ -42,7 +42,7 @@ namespace PC_Shop.Dal.Controllers
             //dodati novi zapis u tabelu Autentifikacija token za korisnikID i randomString
             var newAutentifikacijaToken = new AutentifikacijaToken()
             {
-                IPAdresa = "1.2.3.4",
+                IPAdresa = Request.HttpContext.Connection.RemoteIpAddress?.ToString(),
                 vrijednost = randomString,
                 KorisnickiNalog = logiraniKorisnik,
                 VrijemeEvidentiranja = DateTime.Now

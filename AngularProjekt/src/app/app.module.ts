@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { NarudzbeComponent } from './narudzbe/narudzbe.component';
 import { OglasiComponent } from './oglasi/oglasi.component';
 import { NarudzbaEditComponent } from './narudzbe/narudzba-edit/narudzba-edit.component';
+import { OglasiEditComponent } from './oglasi/oglasi-edit/oglasi-edit.component';
 
 
 
@@ -20,6 +21,7 @@ import { NarudzbaEditComponent } from './narudzbe/narudzba-edit/narudzba-edit.co
     NarudzbeComponent,
     OglasiComponent,
     NarudzbaEditComponent,
+    OglasiEditComponent,
 
   ],
   imports: [
