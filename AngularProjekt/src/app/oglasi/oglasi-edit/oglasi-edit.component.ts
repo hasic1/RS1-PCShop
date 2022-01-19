@@ -22,14 +22,14 @@ export class OglasiEditComponent implements OnInit {
     if(this.urediOglas.id==null){
       this.urediOglas.aktivan=false;//definirano kao false jer ukoliko ne promjenimo vrijednost checkboxa salje se 0 umjseto true ili false
       this.httpKlijent.post(mojConfig.adresa_servera+"/Oglasi/Add",this.urediOglas).subscribe((x:any)=>{
-          porukaSuccess("Oglas za " +x.naslov +"uspjesno kreiran");
+          porukaSuccess("Oglas za " +x.naslov +" uspjesno kreiran");
           this.urediOglas.prikazi=false;
         }
       )
     }
     else{
       this.httpKlijent.post(mojConfig.adresa_servera+ "/Oglasi/Update/" + this.urediOglas.id, this.urediOglas).subscribe((x:any) => {
-        porukaSuccess("Oglas sa naslovom'" + x.naslov+"'uspjesno editovan");
+        porukaSuccess("Oglas sa naslovom '" + x.naslov+"' uspjesno editovan");
         this.urediOglas.prikazi = false;
 
       });

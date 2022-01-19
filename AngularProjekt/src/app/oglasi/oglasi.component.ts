@@ -11,13 +11,14 @@ declare function porukaError(a:string):any;
   styleUrls: ['./oglasi.component.css']
 })
 export class OglasiComponent implements OnInit {
+
+  oglasiPodatci:any;
   odabraniOglas: any=null;
-oglasiPodatci:any;
+
   constructor(private httpKlijent: HttpClient) {
   }
 
-  ngOnInit(): void {
-  }
+
 
   testirajWebApi() {
     this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAll").subscribe(x=>{
@@ -25,6 +26,27 @@ oglasiPodatci:any;
     });
   }
 
+
+
+  getOglasiPodaci() {
+    if (this.oglasiPodatci == null)
+      return [];
+    return this.oglasiPodatci;
+  }
+  ngOnInit(): void {
+  }
+
+  detalji(o:any) {
+    this.odabraniOglas=o;
+    this.odabraniOglas.prikazi=true;
+  }
+  snimi() {
+    //this.odabranaNarudzba
+    this.httpKlijent.post(mojConfig.adresa_servera+ "/Oglasi/Update/" + this.odabraniOglas.id,this.odabraniOglas)
+      .subscribe((x:any)=>{
+        alert("Uredu"+x.potvrdjena)
+      })
+  }
   btnNovi() {
     this.odabraniOglas={
       prikazi:true,
@@ -32,17 +54,12 @@ oglasiPodatci:any;
       sadrzaj:"",
       brojPozicija:0,
       lokacija:"",
-      datumObjave:"",
-      datumIsteka:"",
+      datumObjave:0,
+      datumIsteka:0,
       trajanjeOglasa:0,
       aktivan:0
-  }
-  }
+    }
 
-  getOglasiPodaci() {
-    if (this.oglasiPodatci == null)
-      return [];
-    return this.oglasiPodatci;
   }
 
   obrisi(o:any) {
@@ -56,8 +73,5 @@ oglasiPodatci:any;
       })
   }
 
-  detalji(o: any) {
-    this.oglasiPodatci=o;
-    this.odabraniOglas.prikazi=true;
-  }
+
 }

@@ -8,35 +8,34 @@
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label">Naslov</label>
-          <input  class="form-control" [(ngModel)]="urediOglas.naslov"  placeholder="Naslov">
+          <input type="text" class="form-control" [(ngModel)]="urediOglas.naslov"  placeholder="Naslov">
         </div>
         <div class="mb-3">
           <label class="form-label"></label>
-          <input  class="form-control" [(ngModel)]="urediOglas.sadrzaj"  placeholder="Sadrzaj">
+          <input type="text" class="form-control" [(ngModel)]="urediOglas.sadrzaj"  placeholder="Sadrzaj">
         </div>
         <div class="mb-3">
           <label class="form-label">Broj pozicija</label>
-          <input  type="number" class="form-control" [(ngModel)]="urediOglas.sadrzaj"  placeholder="Sadrzaj">
+          <input  type="number" class="form-control" [(ngModel)]="urediOglas.brojPozicija"  placeholder="Broj pozicija">
         </div>
         <div class="mb-3">
           <label class="form-label">Lokacija</label>
-          <input  class="form-control" [(ngModel)]="urediOglas.lokacija"  placeholder="Lokacija">
+          <input type="text" class="form-control" [(ngModel)]="urediOglas.lokacija"  placeholder="Lokacija">
         </div>
         <div class="mb-3">
           <label class="form-label">Datum objave</label>
-          <input  class="form-control" [(ngModel)]="urediOglas.datumObjave"  placeholder="Datum objave">
+          <input type="date" class="form-control" [(ngModel)]="urediOglas.datumObjave"  placeholder="Datum objave">
         </div>
         <div class="mb-3">
           <label class="form-label">Datum isteka</label>
-          <input  class="form-control" [(ngModel)]="urediOglas.datumIsteka"  placeholder="Datum isteka">
+          <input type="date" class="form-control" [(ngModel)]="urediOglas.datumIsteka"  placeholder="Datum isteka">
         </div>
         <div class="mb-3">
           <label class="form-label">Trajanje oglasa(dani)</label>
           <input  type="number" class="form-control" [(ngModel)]="urediOglas.trajanjeOglasa"  placeholder="Trajanje oglasa">
         </div>
         <div class="mb-3">
-
-          <label class="form-label">Potvrdjena</label>
+          <label class="form-label">Aktivan</label>
           <input   [(ngModel)]="urediOglas.aktivan" type="checkbox" >
         </div>
       </div>
