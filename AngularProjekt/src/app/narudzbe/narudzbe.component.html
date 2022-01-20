@@ -1,6 +1,6 @@
 <button class="btn btn-danger" (click)="testirajWebApi()">Ucitaj narudzbe</button>
 <button class="btn btn-primary" (click)="btnNovi()">Nova narudzba</button>
-
+<p ></p>
 <table class="table table-primary" >
   <tr>
     <th>Datum kreiranja</th>
@@ -10,6 +10,7 @@
     <th>Potvrdjena</th>
   </tr>
   <tbody>
+
   <tr *ngFor="let n of getNarudzbaPodaci()">
     <td>{{n.datumKreiranja}}</td>
     <td>{{n.naruciocID}}</td>

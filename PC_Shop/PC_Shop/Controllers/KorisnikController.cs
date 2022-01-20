@@ -22,6 +22,7 @@ namespace PC_Shop.Dal.Controllers
         [HttpGet]
         public List<KorisnikVM> GetAll(string ime_prezime)
         {
+            //dodati filtriranje po imenu i prezimenu
             var data = _context.Korisnik.OrderBy(s => s.ID)
                .Select(s => new KorisnikVM()
                {
@@ -41,7 +42,7 @@ namespace PC_Shop.Dal.Controllers
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            return Ok(_context.Korisnik.FirstOrDefault(k => k.ID == id)); ;
+            return Ok(_context.Korisnik.FirstOrDefault(k => k.ID == id)); 
         }
 
         [HttpPost]

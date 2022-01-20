@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using PC_Shop.Dal.Helper;
 using PC_Shop_classLibrary.Database;
 using PC_Shop_classLibrary.Models;
-using PC_Shop_classLibrary.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

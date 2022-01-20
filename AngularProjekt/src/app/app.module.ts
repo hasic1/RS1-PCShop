@@ -10,6 +10,9 @@ import { NarudzbeComponent } from './narudzbe/narudzbe.component';
 import { OglasiComponent } from './oglasi/oglasi.component';
 import { NarudzbaEditComponent } from './narudzbe/narudzba-edit/narudzba-edit.component';
 import { OglasiEditComponent } from './oglasi/oglasi-edit/oglasi-edit.component';
+import { RegistracijaComponent } from './registracija/registracija.component';
+import { PocetnaComponent } from './pocetna/pocetna.component';
+import { ProizvodEditComponent } from './proizvodi/proizvod-edit/proizvod-edit.component';
 
 
 
@@ -22,6 +25,9 @@ import { OglasiEditComponent } from './oglasi/oglasi-edit/oglasi-edit.component'
     OglasiComponent,
     NarudzbaEditComponent,
     OglasiEditComponent,
+    RegistracijaComponent,
+    PocetnaComponent,
+    ProizvodEditComponent,
 
   ],
   imports: [
@@ -30,7 +36,9 @@ import { OglasiEditComponent } from './oglasi/oglasi-edit/oglasi-edit.component'
       {path:'narudzbe',component:NarudzbeComponent},
       {path:'login',component:LoginComponent},
       {path:'oglasi',component:OglasiComponent},
-      {path:'proizvodi',component:ProizvodiComponent}
+      {path:'proizvodi',component:ProizvodiComponent},
+      {path:'registracija',component:RegistracijaComponent},
+      {path:'pocetna',component:PocetnaComponent}
 ]),
     FormsModule,
     HttpClientModule

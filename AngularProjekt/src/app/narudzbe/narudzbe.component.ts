@@ -14,6 +14,7 @@ export class NarudzbeComponent implements OnInit {
   narudzbePodatci :any;
   ime:any='';
   odabranaNarudzba: any=null;
+  private configSettings: any=null;
 
   constructor(private httpKlijent: HttpClient) {
   }
@@ -67,6 +68,9 @@ export class NarudzbeComponent implements OnInit {
         porukaSuccess("Narudba uspjesno obrisana");
       })
   }
+
+
+
 }
 
 

@@ -1,1 +1,36 @@
-<p>proizvodi works!</p>
+
+<br><h3 align="center">Tabela svih dostupnih proizvoda</h3><br>
+
+<button class="btn btn-danger" (click)="testirajWebApi()">Ucitaj proizvode</button>
+<button class="btn btn-primary" (click)="btnNovi()">Dodaj novi proizvod</button>
+
+<table class="table table-primary" >
+  <tr>
+    <th>Naziv proizvoda</th>
+    <th>Cijena</th>
+    <th>Na stanju</th>
+    <th>Opis</th>
+    <th>KategorijaID</th>
+    <th>Lokacija sllike</th>
+    <th>Snizen</th>
+    <th>Proizvođac </th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let p of getProizvodiPodaci()">
+    <td>{{p.nazivProizvoda}}</td>
+    <td>{{p.cijena}}</td>
+    <td>{{p.kolicina}}</td>
+    <td>{{p.opis}}</td>
+    <td>{{p.kategorijaID}}</td>
+    <td>{{p.lokacijaSlike}}</td>
+    <td>{{p.snizen}}</td>
+    <td>{{p.proizvodjacID}}</td>
+    <td>
+      <button (click)="obrisi(p)">Obrisi</button>
+      <button (click)="detalji(p)">Detalji</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<app-proizvod-edit [urediProizvod]="odabraniProizvod"></app-proizvod-edit>

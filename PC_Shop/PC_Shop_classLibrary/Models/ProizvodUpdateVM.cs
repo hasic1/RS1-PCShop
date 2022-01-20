@@ -1,13 +1,11 @@
-﻿using PC_Shop_classLibrary.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PC_Shop_classLibrary.Models
 {
-    public class ProizvodVM
+  public  class ProizvodUpdateVM
     {
-        public int ProizvodID { get; set; }
         public string NazivProizvoda { get; set; }
         public double Cijena { get; set; }
         public int Kolicina { get; set; }

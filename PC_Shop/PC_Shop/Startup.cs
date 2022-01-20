@@ -5,8 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PC_Shop_classLibrary.Database;
-using PC_Shop_classLibrary.Service;
-using PC_Shop_classLibrary.Service.Interface;
+
 
 
 namespace PC_Shop
@@ -29,8 +28,7 @@ namespace PC_Shop
             var connectionString = Configuration.GetConnectionString("connection");
             services.AddDbContext<Context>(builder => builder.UseSqlServer(connectionString));
             //Dodaj ovde kad pravis Get ili Post ovde moras ovo dodat isto se dodaje samo mjenjas ovo u zagradama
-            services.AddScoped<IBankaService, BankaService>();
-            services.AddScoped<IProizvodService, ProizvodService>();
+    
            
 
             services.AddSwaggerGen();

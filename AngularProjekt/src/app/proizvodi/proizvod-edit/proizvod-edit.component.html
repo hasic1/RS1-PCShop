@@ -1,0 +1,47 @@
+<div *ngIf="urediProizvod!=null && urediProizvod.prikazi" class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-modal="true" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">Uredite podatke za oglas </h5>
+        <button type="button" class="btn-close" (click)="urediProizvod.prikazi = false" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Naziv proizvoda</label>
+          <input type="text" class="form-control" [(ngModel)]="urediProizvod.nazivProizvoda"  placeholder="Naziv">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Opis proizvoda</label>
+          <input type="text" class="form-control" [(ngModel)]="urediProizvod.opis" placeholder="Opis proizvoda">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cijena </label>
+          <input  type="number" class="form-control" [(ngModel)]="urediProizvod.cijena"  placeholder="Cijena KM">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Lokacija slike</label>
+          <input type="text" class="form-control" [(ngModel)]="urediProizvod.lokacijaSlike"  placeholder="putanja do slike">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Proizvodjac</label>
+          <input  type="number" class="form-control" [(ngModel)]="urediProizvod.proizvodjacID"  placeholder="Proizvodjac">
+        </div>
+        <div class="mb-3">
+        <label class="form-label">KategorijaID</label>
+        <input  type="number" class="form-control" [(ngModel)]="urediProizvod.kategorijaID"  placeholder="id kategorije">
+      </div>
+        <div class="mb-3">
+          <label class="form-label">Snizen</label>
+          <input   [(ngModel)]="urediProizvod.snizen" type="checkbox" >
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="urediProizvod.prikazi = false" >Close</button>
+        <button type="button" class="btn btn-primary" (click)="snimi()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
