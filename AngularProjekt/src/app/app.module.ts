@@ -33,6 +33,7 @@ import { ProizvodEditComponent } from './proizvodi/proizvod-edit/proizvod-edit.c
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      { path:"", redirectTo:"/pocetna",pathMatch:"full"},
       {path:'narudzbe',component:NarudzbeComponent},
       {path:'login',component:LoginComponent},
       {path:'oglasi',component:OglasiComponent},
