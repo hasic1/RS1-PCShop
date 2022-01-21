@@ -1,5 +1,5 @@
-<button class="btn btn-danger" (click)="testirajWebApi()">Ucitaj narudzbe</button>
-<button class="btn btn-primary" (click)="btnNovi()">Nova narudzba</button>
+
+
 <p ></p>
 <table class="table table-primary" >
   <tr>
@@ -31,27 +31,9 @@
   <input [(ngModel)]="odabranaNarudzba.potvrdjena">
   <button (click)="snimi()">Snimi</button>
 </p>
-
-
-
-<div *ngIf="odabranaNarudzba != null" style="border: 1px solid blue">
-<div class="mb-3">
-  <label class="form-label">NaruciocID</label>
-  <input type="number" class="form-control" [(ngModel)]="odabranaNarudzba.naruciocID"  placeholder="NaruciocID">
-</div>
-<div class="mb-3">
-  <label class="form-label">DostavljacID</label>
-  <input type="number" class="form-control" [(ngModel)]="odabranaNarudzba.dostavljacID"  placeholder="DostavljacID">
-</div>
-<div class="mb-3">
-  <label class="form-label">Aktivna</label>
-  <input type="text" class="form-control" [(ngModel)]="odabranaNarudzba.aktivna"  placeholder="Aktivna">
-</div>
-  <div class="mb-3">
-    <label class="form-label">Potvrdjena</label>
-    <input type="text" class="form-control" [(ngModel)]="odabranaNarudzba.potvrdjena"  placeholder="Aktivna">
-  </div>
-<button class="form-label" (click)="snimi()">Snimi</button>
+<div>
+  <button class="btn btn-primary" (click)="btnNovi()">Nova narudzba</button>
 </div>
 
-<app-narudzba-edit [urediNarudzbu]="odabranaNarudzba"></app-narudzba-edit>
+
+

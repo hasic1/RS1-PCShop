@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {mojConfig} from "../moj-config";
 
@@ -10,6 +10,7 @@ declare function porukaError(a:string):any;
   templateUrl: './oglasi.component.html',
   styleUrls: ['./oglasi.component.css']
 })
+
 export class OglasiComponent implements OnInit {
 
   oglasiPodatci:any;
@@ -34,6 +35,7 @@ export class OglasiComponent implements OnInit {
     return this.oglasiPodatci;
   }
   ngOnInit(): void {
+    this.testirajWebApi();
   }
 
   detalji(o:any) {

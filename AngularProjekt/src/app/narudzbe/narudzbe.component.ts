@@ -32,6 +32,7 @@ export class NarudzbeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.testirajWebApi();
   }
 
   detalji(n:any) {

@@ -17,6 +17,7 @@ export class ProizvodEditComponent implements OnInit {
   constructor(private httpKlijent:HttpClient) { }
 
   ngOnInit(): void {
+
   }
 
   snimi() {

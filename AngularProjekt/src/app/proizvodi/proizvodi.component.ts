@@ -31,6 +31,7 @@ export class ProizvodiComponent implements OnInit {
     return this.proizvodiPodatci;
   }
   ngOnInit(): void {
+    this.testirajWebApi();
   }
   detalji(p:any) {
     this.odabraniProizvod=p;

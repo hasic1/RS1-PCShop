@@ -1,8 +1,8 @@
 
 <br><h3 align="center">Trenutno aktivni oglasi</h3><br>
 
-<button class="btn btn-danger" (click)="testirajWebApi()">Ucitaj oglase</button>
-<button class="btn btn-primary" (click)="btnNovi()">Kreiraj oglas</button>
+
+
 
 <table class="table table-primary" >
   <tr>
@@ -31,5 +31,9 @@
   </tr>
   </tbody>
 </table>
+<div>
+
+  <button id="novi" class="btn btn-primary" (click)="btnNovi()">Kreiraj oglas</button>
+</div>
 
 <app-oglasi-edit [urediOglas]="odabraniOglas"></app-oglasi-edit>
