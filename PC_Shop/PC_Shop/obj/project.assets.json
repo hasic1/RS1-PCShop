@@ -6359,25 +6359,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\X\\.nuget\\packages\\": {},
+    "C:\\Users\\bakah\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\X\\Desktop\\projekt\\PCShopAzure\\PC_Shop\\PC_Shop\\PC_Shop.Dal.csproj",
+      "projectUniqueName": "C:\\Users\\bakah\\OneDrive\\Desktop\\Git\\PCShop\\PC_Shop\\PC_Shop\\PC_Shop.Dal.csproj",
       "projectName": "PC_Shop.Dal",
-      "projectPath": "C:\\Users\\X\\Desktop\\projekt\\PCShopAzure\\PC_Shop\\PC_Shop\\PC_Shop.Dal.csproj",
-      "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\X\\Desktop\\projekt\\PCShopAzure\\PC_Shop\\PC_Shop\\obj\\",
+      "projectPath": "C:\\Users\\bakah\\OneDrive\\Desktop\\Git\\PCShop\\PC_Shop\\PC_Shop\\PC_Shop.Dal.csproj",
+      "packagesPath": "C:\\Users\\bakah\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bakah\\OneDrive\\Desktop\\Git\\PCShop\\PC_Shop\\PC_Shop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bakah\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -6387,14 +6387,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.nuget.org/": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\X\\Desktop\\projekt\\PCShopAzure\\PC_Shop\\PC_Shop_classLibrary\\PC_Shop_classLibrary.csproj": {
-              "projectPath": "C:\\Users\\X\\Desktop\\projekt\\PCShopAzure\\PC_Shop\\PC_Shop_classLibrary\\PC_Shop_classLibrary.csproj"
+            "C:\\Users\\bakah\\OneDrive\\Desktop\\Git\\PCShop\\PC_Shop\\PC_Shop_classLibrary\\PC_Shop_classLibrary.csproj": {
+              "projectPath": "C:\\Users\\bakah\\OneDrive\\Desktop\\Git\\PCShop\\PC_Shop\\PC_Shop_classLibrary\\PC_Shop_classLibrary.csproj"
             }
           }
         }
@@ -6480,7 +6481,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }
