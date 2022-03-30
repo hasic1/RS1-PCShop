@@ -21,11 +21,18 @@ namespace PC_Shop_classLibrary.Database
         public DbSet<Post> Post { get; set; }
         public DbSet<Narudzba> Narudzba { get; set; }
         public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
-        public DbSet<KorisnickiNalog> KorisnickiNalog  { get; set; }
+      
         public DbSet<Administrator> Administrator { get; set; }
         public DbSet<Korisnik> Korisnik { get; set; }
+        public DbSet<KorisnickiNalog> KorisnickiNalog { get; set; }
         public DbSet<AutentifikacijaToken> AutentifikacijaToken { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

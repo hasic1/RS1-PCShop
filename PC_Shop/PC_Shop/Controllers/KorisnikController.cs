@@ -22,8 +22,12 @@ namespace PC_Shop.Dal.Controllers
         [HttpGet]
         public List<KorisnikVM> GetAll(string ime_prezime)
         {
+            //if (!HttpContext.GetLoginInfo().isLogiran)
+            //    return Forbid();
+
             //dodati filtriranje po imenu i prezimenu
             var data = _context.Korisnik.OrderBy(s => s.ID)
+                .Where(x=> ime_prezime == null ||(x.Ime+ " "+ x.Prezime).StartsWith(ime_prezime)|| (x.Ime + " " + x.Prezime).StartsWith(ime_prezime))
                .Select(s => new KorisnikVM()
                {
                    ID = s.ID,

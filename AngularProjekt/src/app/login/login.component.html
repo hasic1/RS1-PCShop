@@ -1,8 +1,21 @@
 
-<p>
-  Korisnicko ime <input [(ngModel)]="txtkorisnickoIme">
-</p>
-<p>
-  Lozinka <input [(ngModel)]="txtLozinka" type="password">
-</p>
-<button (click)="btnLogin()">Prijava</button>
+
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-6 login-form-1">
+      <h3>Logo firme </h3>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Korisnicko ime  *" value="" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Lozinka *" value="" />
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btnSubmit" value="Prijava" />
+      </div>
+      <div class="form-group">
+        <a href="#" class="btnForgetPwd">Zaboravili ste lozinku?</a>
+      </div>
+
+    </div>
