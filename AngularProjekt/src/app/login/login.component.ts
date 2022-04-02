@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
       .subscribe((x:any) =>{
         if (x!=null) {
           porukaSuccess("uspjesan login");
-          alert("Sakrijte ovu vrijednost "+ x.vrijednost);
           localStorage.setItem("autentifikacija-token", x.vrijednost);
 
          this.router.navigateByUrl("/narudzbe");

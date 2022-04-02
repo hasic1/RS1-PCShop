@@ -1,25 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand"  routerLink="/pocetna">Logo firme</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><a class="nav-link active" aria-current="page"routerLink="/pocetna">Početna</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page"routerLink="/administrator">Admin</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="/narudzbe">Narudzbe</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="/oglasi">Oglasi</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">Proizvodi</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/proizvodi">Svi proizvodi</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" >Kategorija1</a></li>
-            <li><a class="dropdown-item" >Novo</a></li>
-          </ul>
+        <li class="dropdown"><a class="nav-link">
+          <a class="dropbtn">Proizvodi</a>
+           <div class="dropdown-content">
+             <a href="#">Link 1</a>
+             <a href="#">Link 2</a>
+             <a href="#">Link 3</a>
+           </div>
+          </a>
         </li>
       </ul>
       <form class="d-flex">
-        <button class="btn btn-outline-light" type="submit">
-          <i class="bi-cart-fill me-1"></i>
+        <button routerLink="/korpa" class="btn btn-outline-light" type="submit">
+          <i  class="bi-cart-fill me-1"></i>
           Korpa
           <span class="badge bg-danger text-black ms-1 rounded-pill">0</span>
         </button>
@@ -27,7 +28,7 @@
         <button id="registracija" class="btn btn-success" type="submit" routerLink="/registracija">
           Registracija
         </button>
-        <button class="btn btn-danger" type="submit" routerLink="/login">
+        <button class="btn btn-danger" type="submit" routerLink="/login" >
           Login
         </button>
       </form>

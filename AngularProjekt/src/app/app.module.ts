@@ -13,6 +13,8 @@ import { OglasiEditComponent } from './oglasi/oglasi-edit/oglasi-edit.component'
 import { RegistracijaComponent } from './registracija/registracija.component';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { ProizvodEditComponent } from './proizvodi/proizvod-edit/proizvod-edit.component';
+import { AdministratorComponent } from './administrator/administrator.component';
+import { KorpaComponent } from './korpa/korpa.component';
 
 
 
@@ -28,6 +30,8 @@ import { ProizvodEditComponent } from './proizvodi/proizvod-edit/proizvod-edit.c
     RegistracijaComponent,
     PocetnaComponent,
     ProizvodEditComponent,
+    AdministratorComponent,
+    KorpaComponent,
 
   ],
   imports: [
@@ -39,8 +43,10 @@ import { ProizvodEditComponent } from './proizvodi/proizvod-edit/proizvod-edit.c
       {path:'oglasi',component:OglasiComponent},
       {path:'proizvodi',component:ProizvodiComponent},
       {path:'registracija',component:RegistracijaComponent},
-      {path:'pocetna',component:PocetnaComponent}
-]),
+      {path:'pocetna',component:PocetnaComponent},
+      {path:'administrator',component:AdministratorComponent},
+      {path:'korpa',component:KorpaComponent}
+    ]),
     FormsModule,
     HttpClientModule
 
