@@ -9,22 +9,22 @@ export class AutentifikacijaHelper {
     localStorage.setItem("autentifikacija-token", JSON.stringify(x));
   }
 
-  //static getLoginInfo():LoginInformacije
-  //{
-    //let x = localStorage.getItem("autentifikacija-token");
-    //if (x==="")
-      //return new LoginInformacije();
+  static getLoginInfo():LoginInformacije
+  {
+    let x = localStorage.getItem("autentifikacija-token");
+    if (x==="")
+      return new LoginInformacije();
 
-    //try {
-      //let loginInformacije:LoginInformacije = JSON.parse(x); //NEĆE
-      //if (loginInformacije==null)
-        //return new LoginInformacije();
-      //return loginInformacije;
+    try {
+      let loginInformacije:LoginInformacije = JSON.parse(x); //NEĆE
+      if (loginInformacije==null)
+        return new LoginInformacije();
+      return loginInformacije;
 
-    //}
-    //catch (e)
-    //{
-     // return new LoginInformacije();
-    //}
-  //}
+    }
+    catch (e)
+    {
+      return new LoginInformacije();
+    }
+  }
 }

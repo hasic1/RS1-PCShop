@@ -1,5 +1,5 @@
 export class LoginInformacije {
-  // autentifikacijaToken:        AutentifikacijaToken=null; // NEĆE
+   autentifikacijaToken:        AutentifikacijaToken=null; // NEĆE
   isLogiran:                   boolean=false;
   isPermisijaStudentskaSluzba: boolean=false;
   isPermisijaDekan:            boolean=false;

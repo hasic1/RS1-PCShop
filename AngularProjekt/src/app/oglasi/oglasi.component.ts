@@ -47,7 +47,7 @@ export class OglasiComponent implements OnInit {
     this.httpKlijent.post(mojConfig.adresa_servera+ "/Oglasi/Update/" + this.odabraniOglas.id,this.odabraniOglas)
       .subscribe((x:any)=>{
         alert("Uredu"+x.potvrdjena)
-      })
+      });
   }
   btnNovi() {
     this.odabraniOglas={
@@ -60,6 +60,7 @@ export class OglasiComponent implements OnInit {
       datumIsteka:0,
       trajanjeOglasa:0,
       aktivan:0
+
     }
 
   }

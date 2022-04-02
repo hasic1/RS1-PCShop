@@ -10,7 +10,6 @@ export class AutorizacijaAdminProvjera implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     try {
-      //nedovrseno privremeno rjesenje
       if (AutentifikacijaHelper.getLoginInfo().isPermsijaAdmin)
         return true;
     }catch (e) {
