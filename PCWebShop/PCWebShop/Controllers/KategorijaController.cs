@@ -36,5 +36,30 @@ namespace PCWebShop.Controllers
             return Ok(newKategorija.KategorijaID);
 
         }
+        [HttpPost("{id}")]
+        public ActionResult Delete(int id)
+        {
+            Kategorija kategorija = _context.Kategorija.Find(id);
+
+            if (kategorija == null)
+                return BadRequest("pogresan ID");
+
+            _context.Remove(kategorija);
+
+            _context.SaveChanges();
+            return Ok(kategorija);
+        }
+        [HttpGet]
+        public List<KategorijaVM> GetAll()
+        {
+
+            var data = _context.Kategorija.OrderBy(p => p.KategorijaID)
+                .Select(p => new KategorijaVM()
+                {
+                    KategorijaID=p.KategorijaID,
+                    NazivKategorije=p.NazivKategorije
+                }).AsQueryable();
+            return data.Take(100).ToList();
+        }
     }
 }

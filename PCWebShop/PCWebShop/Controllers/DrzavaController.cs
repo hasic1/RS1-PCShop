@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PCWebShop.Data;
 using PCWebShop.Database;
+using PCWebShop.Helper;
 using PCWebShop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -72,6 +73,18 @@ namespace PCWebShop.Controllers
 
             _context.SaveChanges();
             return Ok(drzava);
+        }
+        [HttpGet]
+        public List<CmbStavke> GetAll_ForCmb()
+        {
+            return _context.Drzava
+                .OrderByDescending(x => x.ID)
+                .Select(s => new CmbStavke
+                {
+                    opis = s.Naziv,
+                    id = s.ID
+                })
+                .ToList();
         }
     }
 }

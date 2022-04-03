@@ -33,7 +33,33 @@ namespace PCWebShop.Controllers
             _context.SaveChanges();
 
             return Ok(newProizvodjac.ID);
+        }
+        [HttpPost("{id}")]
+        public ActionResult Delete(int id)
+        {
+            Proizvodjac proizvodjac = _context.Proizvodjac.Find(id);
 
+            if (proizvodjac == null)
+                return BadRequest("pogresan ID");
+
+            _context.Remove(proizvodjac);
+
+            _context.SaveChanges();
+            return Ok(proizvodjac);
+        }
+        [HttpGet]
+        public List<ProizvodjacVM> GetAll()
+        {
+
+            var data = _context.Proizvodjac.OrderBy(p => p.ID)
+                .Select(p => new ProizvodjacVM()
+                {
+                    ID=p.ID,
+                    NazivProizvodjaca=p.NazivProizvodjaca,
+                    Sjediste=p.Sjediste,
+                    SjedisteID=p.SjedisteID
+                }).AsQueryable();
+            return data.Take(100).ToList();
         }
     }
 }

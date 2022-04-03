@@ -1,6 +1,6 @@
 import {HttpHeaders} from "@angular/common/http";
 export  class mojConfig{
-  static adresa_servera="https://localhost:44326";
+  static adresa_servera="https://localhost:5001";
 
   static http_opcije=function (){
 

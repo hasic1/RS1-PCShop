@@ -23,7 +23,6 @@ namespace PCWebShop.Database
 
         [JsonIgnore]
         public Administrator administrator => this as Administrator;
-
         public bool isKorisnik => korisnik != null;
         public bool isAdministrator => administrator != null;
 

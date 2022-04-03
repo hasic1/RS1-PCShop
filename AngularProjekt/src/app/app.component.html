@@ -1,19 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand"  routerLink="/pocetna">Logo firme</a>
+    <a class="navbar-brand"  routerLink="#"><img src="assets/img/pclogo.jpg" style="width:20%; height: 15%"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><a class="nav-link active" aria-current="page"routerLink="/pocetna">Početna</a></li>
         <li class="nav-item"><a class="nav-link active" aria-current="page"routerLink="/administrator">Admin</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="/narudzbe">Narudzbe</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/oglasi">Oglasi</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/oglasi">Oglasi</a>
+        <li class="nav-item"><a class="nav-link" routerLink="/oglasi">Postovi</a></li>
         <li class="dropdown"><a class="nav-link">
-          <a class="dropbtn">Proizvodi</a>
-           <div class="dropdown-content">
-             <a href="#">Link 1</a>
-             <a href="#">Link 2</a>
-             <a href="#">Link 3</a>
+          <a class="nav-item">Proizvodi</a>
+           <div class="dropdown-content" id="tekst">
+             <a href="#">Maticne ploce</a>
+             <a href="#">Procesori</a>
+             <a href="#">Graficke kartice</a>
+             <a href="#">RAM</a>
+             <a href="#">Monitori</a>
+             <a href="#">Ostalo</a>
+
            </div>
           </a>
         </li>
@@ -28,8 +33,11 @@
         <button id="registracija" class="btn btn-success" type="submit" routerLink="/registracija">
           Registracija
         </button>
-        <button class="btn btn-danger" type="submit" routerLink="/login" >
+        <button class="btn btn-danger" type="submit" routerLink="/login" *ngIf="loginInfo().autentifikacijaToken.korisnickiNalog.isAdmin">
           Login
+        </button>
+        <button class="btn btn-danger" (click)="logoutButton()" type="submit" routerLink="/login" >
+          Log  out
         </button>
       </form>
     </div>

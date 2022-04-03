@@ -20,6 +20,22 @@ namespace PCWebShop.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public List<PostVM> GetAll()
+        {
+            var data = _context.Post.OrderBy(p => p.ID)
+                .Select(p => new PostVM()
+                {
+                    AutorPosta=p.AutorPosta,
+                    AutorPostaID=p.AutorPostaID,
+                    DatumObjave=p.DatumObjave,
+                    ID=p.ID,
+                    LokacijaSlike=p.LokacijaSlike,
+                    Naslov=p.Naslov,
+                    Sadrzaj=p.Sadrzaj
+                }).AsQueryable();
+            return data.Take(100).ToList();
+        }
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
@@ -59,6 +75,19 @@ namespace PCWebShop.Controllers
 
             _context.SaveChanges();
             return Get(id);
+        }
+        [HttpPost("{id}")]
+        public ActionResult Delete(int id)
+        {
+            Post post= _context.Post.Find(id);
+
+            if (post == null)
+                return BadRequest("pogresan ID");
+
+            _context.Remove(post);
+
+            _context.SaveChanges();
+            return Ok(post);
         }
     }
 }
