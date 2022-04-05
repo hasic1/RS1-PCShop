@@ -12,6 +12,7 @@ export class AdministratorComponent implements OnInit {
 
   noviProizvodjac:any=null;
   novaKategorija:any=null;
+  noviPost:any=null;
 
   constructor(private httpKlijent:HttpClient) { }
 

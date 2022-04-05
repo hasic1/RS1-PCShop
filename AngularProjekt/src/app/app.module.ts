@@ -17,6 +17,8 @@ import { AdministratorComponent } from './administrator/administrator.component'
 import { KorpaComponent } from './korpa/korpa.component';
 import { AdministratorProizvodjacComponent } from './administrator/administrator-proizvodjac/administrator-proizvodjac.component';
 import { AdministratorKategorijaComponent } from './administrator/administrator-kategorija/administrator-kategorija.component';
+import {AdministratorPostoviComponent} from "./administrator/administrator-postovi/administrator-postovi.component";
+import { AdministratorPostoviEditComponent } from './administrator/administrator-postovi/administrator-postovi-edit/administrator-postovi-edit.component';
 
 
 
@@ -36,7 +38,8 @@ import { AdministratorKategorijaComponent } from './administrator/administrator-
     KorpaComponent,
     AdministratorProizvodjacComponent,
     AdministratorKategorijaComponent,
-
+    AdministratorPostoviComponent,
+    AdministratorPostoviEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +54,9 @@ import { AdministratorKategorijaComponent } from './administrator/administrator-
       {path:'administrator',component:AdministratorComponent},
       {path:'korpa',component:KorpaComponent},
       {path:'administrator-proizvodjac',component:AdministratorProizvodjacComponent},
-      {path:'administrator-kategorija',component:AdministratorKategorijaComponent}
-
+      {path:'administrator-kategorija',component:AdministratorKategorijaComponent},
+      {path:'administrator-postovi',component:AdministratorPostoviComponent},
+      {path:'administrator-postovi-edit',component:AdministratorPostoviEditComponent}
     ]),
     FormsModule,
     HttpClientModule
