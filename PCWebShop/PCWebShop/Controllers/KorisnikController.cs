@@ -54,6 +54,7 @@ namespace PCWebShop.Controllers
         public ActionResult Add([FromBody] KorisnikAddVM k) {
             var newKorisnik = new Korisnik
             {
+                
                 Ime = k.Ime,
                 Prezime = k.Prezime,
                 korisnickoIme = k.korisnickoIme,
@@ -61,12 +62,11 @@ namespace PCWebShop.Controllers
                 Spol = k.Spol,
                 DrzavaID = k.DrzavaID,
                 lozinka=k.Lozinka,
-                Pretplacen=true
-                
+                Pretplacen=true                
             };
             _context.Add(newKorisnik);
             _context.SaveChanges();
-            return Get(newKorisnik.id);
+            return Ok(newKorisnik.id);
             
         }
         [HttpPost("{id}")]

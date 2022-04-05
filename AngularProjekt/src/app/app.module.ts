@@ -15,6 +15,8 @@ import { PocetnaComponent } from './pocetna/pocetna.component';
 import { ProizvodEditComponent } from './proizvodi/proizvod-edit/proizvod-edit.component';
 import { AdministratorComponent } from './administrator/administrator.component';
 import { KorpaComponent } from './korpa/korpa.component';
+import { AdministratorProizvodjacComponent } from './administrator/administrator-proizvodjac/administrator-proizvodjac.component';
+import { AdministratorKategorijaComponent } from './administrator/administrator-kategorija/administrator-kategorija.component';
 
 
 
@@ -32,6 +34,8 @@ import { KorpaComponent } from './korpa/korpa.component';
     ProizvodEditComponent,
     AdministratorComponent,
     KorpaComponent,
+    AdministratorProizvodjacComponent,
+    AdministratorKategorijaComponent,
 
   ],
   imports: [
@@ -45,7 +49,10 @@ import { KorpaComponent } from './korpa/korpa.component';
       {path:'registracija',component:RegistracijaComponent},
       {path:'pocetna',component:PocetnaComponent},
       {path:'administrator',component:AdministratorComponent},
-      {path:'korpa',component:KorpaComponent}
+      {path:'korpa',component:KorpaComponent},
+      {path:'administrator-proizvodjac',component:AdministratorProizvodjacComponent},
+      {path:'administrator-kategorija',component:AdministratorKategorijaComponent}
+
     ]),
     FormsModule,
     HttpClientModule

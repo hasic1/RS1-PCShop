@@ -21,14 +21,18 @@ export class RegistracijaComponent implements OnInit {
   btnDodajKorisnika() {
     this.noviKorisnik={
       id:0,
-      korisnickoIme: "",
+      korisnickoIme:"",
       ime: "",
       prezime: "",
-      spol: "",
-      datumRodjenja: "2003-10-01",
+      spol: "muski",
+      datumRodjenja: "2022-04-05T10:06:13.467Z",
       drzavaID: 1,
-      lozinka: "a"
+      lozinka: ""
     }
+  }
+
+  snimi() {
+
     this.httpKlijent.post(mojConfig.adresa_servera+"/Korisnik/Add/",this.noviKorisnik).subscribe((x:any)=>{
       porukaSuccess("Uspjesno registrovan");
     });

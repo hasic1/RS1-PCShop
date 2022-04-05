@@ -1,12 +1,14 @@
 <!-- The sidebar -->
 <div class="sidebar">
   <a class="active" href="#home">Pocetna</a>
-  <a href="#news">Statistika</a>
-  <a href="#news">Proizvod</a>
-  <a href="#news">Proizvodjac</a>
-  <a href="#news">Oglasi</a>
-  <a href="#news">Kategorija</a>
-  <a href="#contact">Narudzbe</a>
-  <a href="#about">Korisnicki racuni</a>
+  <button  class="btn default">Statistika</button>
+  <button  class="btn default">Proizvod</button>
+  <button  class="btn default" (click)="btnDodajProizvodjaca()" >Proizvodjac</button>
+  <button  class="btn default" >Oglasi</button>
+  <button  class="btn default" (click)="btnDodajKategoriju()" >Kategorija</button>
+  <button  class="btn default">Narudzbe</button>
+  <button  class="btn default">Korisnicki racuni</button>
 </div>
 
+<app-administrator-proizvodjac [urediProizvodjaca] = "noviProizvodjac" ></app-administrator-proizvodjac>
+<app-administrator-kategorija  [urediKategoriju] ="novaKategorija" ></app-administrator-kategorija>

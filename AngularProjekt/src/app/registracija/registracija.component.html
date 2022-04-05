@@ -6,22 +6,21 @@
       <h3>Logo firme </h3>
 
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Ime  " value="" />
+        <input type="text" class="form-control" [(ngModel)]="noviKorisnik.ime" placeholder="Ime  " value="" />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Prezime " value="" />
+        <input type="text" class="form-control" [(ngModel)]="noviKorisnik.prezime" placeholder="Prezime " value="" />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Korisnicko ime " value="" />
+        <input type="text" class="form-control" [(ngModel)]="noviKorisnik.korisnickoIme" placeholder="Korisnicko ime " value="" />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Email " value="" />
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Lozinka " value="" />
+        <input type="password" class="form-control" [(ngModel)]="noviKorisnik.lozinka" placeholder="Lozinka " value="" />
       </div>
       <div class="form-group">
-        <button  class="btnSubmit" (click)="btnDodajKorisnika()">Registruj se</button>
+        <button  class="button"  (click)="snimi()">Registruj se</button>
       </div>
       <div class="form-group">
         <a routerLink="/login"class="btnForgetPwd">Registrovani ste? -Prijava </a>

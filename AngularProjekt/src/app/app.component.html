@@ -33,7 +33,7 @@
         <button id="registracija" class="btn btn-success" type="submit" routerLink="/registracija">
           Registracija
         </button>
-        <button class="btn btn-danger" type="submit" routerLink="/login" *ngIf="loginInfo().autentifikacijaToken.korisnickiNalog.isAdmin">
+        <button class="btn btn-danger" type="submit" routerLink="/login" >
           Login
         </button>
         <button class="btn btn-danger" (click)="logoutButton()" type="submit" routerLink="/login" >
