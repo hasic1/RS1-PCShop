@@ -1,14 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand"  routerLink="#"><img src="assets/img/pclogo.jpg" style="width:20%; height: 15%"></a>
+    <a class="navbar-brand"  routerLink="#"> <img id="logo" src="assets/img/pclogo.jpg" ></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link active" aria-current="page"routerLink="/pocetna">Početna</a></li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page"routerLink="/administrator">Admin</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/narudzbe">Narudzbe</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/oglasi">Oglasi</a>
-        <li class="nav-item"><a class="nav-link" routerLink="/oglasi">Postovi</a></li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/pocetna">Početna</a>
+        </li>
+        <li *ngIf="loginInfo().isPermsijaAdmin" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/administrator">Admin</a>
+        </li>
+        <li *ngIf="loginInfo().isPermsijaKorisnik"  class="nav-item">
+          <a class="nav-link" routerLink="/narudzbe">Narudzbe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/oglasi">Oglasi</a></li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/postovi">Postovi</a>
+        </li>
         <li class="dropdown"><a class="nav-link">
           <a class="nav-item">Proizvodi</a>
            <div class="dropdown-content" id="tekst">
@@ -24,22 +34,29 @@
           </a>
         </li>
       </ul>
-      <form class="d-flex">
-        <button routerLink="/korpa" class="btn btn-outline-light" type="submit">
+
+        <button  *ngIf="loginInfo().isPermsijaKorisnik"  routerLink="/korpa" class="btn btn-outline-light" type="submit">
           <i  class="bi-cart-fill me-1"></i>
           Korpa
           <span class="badge bg-danger text-black ms-1 rounded-pill">0</span>
         </button>
 
-        <button id="registracija" class="btn btn-success" type="submit" routerLink="/registracija">
+        <button *ngIf="loginInfo().isLogiran == false"  id="registracija" class="btn btn-success"  type="submit" routerLink="/registracija">
           Registracija
         </button>
-        <button class="btn btn-danger" type="submit" routerLink="/login" >
-          Login
+        <button  *ngIf="loginInfo().isLogiran == false" class="btn btn-danger"  type="submit" routerLink="/login" >
+          Prijava
         </button>
-        <button class="btn btn-danger" (click)="logoutButton()" type="submit" routerLink="/login" >
-          Log  out
-        </button>
+
+        <li *ngIf="loginInfo().isLogiran" class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" href="#" id="navbarLogiraniKorisnikLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             {{loginInfo().autentifikacijaToken.korisnickiNalog.korisnickoIme}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarLogiraniKorisnikLink">
+            <li><a class="dropdown-item" routerLink="/pocetna">Postavke profila</a></li>
+            <li><a class="dropdown-item" (click)="logoutButton()">Odjava</a></li>
+          </ul>
+        </li>
       </form>
     </div>
   </div>

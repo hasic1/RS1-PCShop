@@ -6,6 +6,7 @@ import {mojConfig} from "./moj-config";
 import {LoginInformacije} from "./_helpers/login-informacije";
 
 declare function porukaSuccess(x:string):any;
+declare function porukaError(a: string):any;
 
 @Component({
   selector: 'app-root',
@@ -20,9 +21,9 @@ export class AppComponent {
   logoutButton() {
     AutentifikacijaHelper.setLoginInfo(null);
 
-    this.httpKlijent.post("https://localhost:5001/Autentifikacija/Logout", null, mojConfig.http_opcije())
+    this.httpKlijent.post(mojConfig.adresa_servera+"/Autentifikacija/Logout", null, mojConfig.http_opcije())
       .subscribe((x: any) => {
-        this.router.navigateByUrl("/login");
+        this.router.navigateByUrl("/pocetna");
         porukaSuccess("Logout uspješan");
       });
   }

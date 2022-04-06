@@ -4,12 +4,22 @@
 #registracija{
 margin-left: 5px;
 margin-right: 5px;
+  align: right;
+}
+.btn-danger {
+text-align: right;
+}
+.btn-success {
+  text-align: right;
 }
 
 a{
   text-decoration: none;
+}
 
-
+#logo{
+  width: 50px;
+  height: 50px;
 }
 /* Dropdown Button */
 .dropbtn {

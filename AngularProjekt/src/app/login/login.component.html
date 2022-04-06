@@ -6,13 +6,13 @@
       <h3>Logo firme </h3>
 
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Korisnicko ime  *" value="" />
+        <input type="text"  id="txtKorisnickoIme" [(ngModel)]="txtKorisnickoIme" class="form-control" placeholder="Korisnicko ime " value="" />
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Lozinka *" value="" />
+        <input type="password" id="txtLozinka" [(ngModel)]="txtLozinka" class="form-control" placeholder="Lozinka" value="" />
       </div>
       <div class="form-group">
-        <input (click)="btnLogin()" type="submit" class="btnSubmit" value="Prijava" />
+        <input (click)="btnLogin()" type="submit" class="btnSubmit" value="Prijavi se " />
 
       </div>
       <div class="form-group">

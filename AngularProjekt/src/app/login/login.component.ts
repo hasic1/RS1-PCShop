@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {mojConfig} from "../moj-config";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LoginInformacije} from "../_helpers/login-informacije";
+import {AutentifikacijaHelper} from "../_helpers/autentifikacija-helper";
 
 declare function porukaSuccess(a: string):any;
 declare function porukaError(a: string):any;
@@ -13,8 +15,9 @@ declare function porukaError(a: string):any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  txtkorisnickoIme: any;
+
   txtLozinka: any;
+  txtKorisnickoIme: any;
 
 
   constructor(private httpKlijent: HttpClient ,private router:Router) {
@@ -25,22 +28,20 @@ export class LoginComponent implements OnInit {
 
   btnLogin() {
     let saljemo = {
-      korisnickoIme:this.txtkorisnickoIme,
+      korisnickoIme:this.txtKorisnickoIme,
       lozinka: this.txtLozinka
     };
-    this.httpKlijent.post(mojConfig.adresa_servera+ "/Autentifikacija/Login/", saljemo)
-      .subscribe((x:any) =>{
-        if (x!=null) {
+    this.httpKlijent.post<LoginInformacije>(mojConfig.adresa_servera+ "/Autentifikacija/Login/", saljemo)
+      .subscribe((x:LoginInformacije) =>{
+        if (x.isLogiran) {
           porukaSuccess("uspjesan login");
-          localStorage.setItem("autentifikacija-token", x.vrijednost);
-
-         this.router.navigateByUrl("/narudzbe");
+          AutentifikacijaHelper.setLoginInfo(x);
+         this.router.navigateByUrl("/pocetna");
 
         }
         else
         {
-          localStorage.setItem("autentifikacija-token", "");
-          alert("Neispravan login ");
+          AutentifikacijaHelper.setLoginInfo(null)
           porukaError("neispravan login");
         }
       });

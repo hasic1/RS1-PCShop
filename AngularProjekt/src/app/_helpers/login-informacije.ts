@@ -1,11 +1,7 @@
 export class LoginInformacije {
-   autentifikacijaToken:        AutentifikacijaToken=null; // NEĆE
+   autentifikacijaToken:       AutentifikacijaToken=null;
   isLogiran:                   boolean=false;
-  isPermisijaStudentskaSluzba: boolean=false;
-  isPermisijaDekan:            boolean=false;
-  isPermisijaProdekan:         boolean=false;
-  isPermisijaNastavnik:        boolean=false;
-  isPermisijaStudent:          boolean=false;
+  isPermsijaKorisnik:          boolean=false;
   isPermsijaAdmin:             boolean=false;
 }
 
@@ -21,11 +17,7 @@ export interface AutentifikacijaToken {
 export interface KorisnickiNalog {
   id:                 number;
   korisnickoIme:      string;
-  slika_korisnika:    string;
-  isNastavnik:        boolean;
-  isStudent:          boolean;
+  isKorisnik:         boolean;
   isAdmin:            boolean;
-  isProdekan:         boolean;
-  isDekan:            boolean;
-  isStudentskaSluzba: boolean;
+
 }
