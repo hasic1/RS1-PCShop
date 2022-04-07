@@ -11,8 +11,8 @@
         <li *ngIf="loginInfo().isPermsijaAdmin" class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/administrator">Admin</a>
         </li>
-        <li *ngIf="loginInfo().isPermsijaKorisnik"  class="nav-item">
-          <a class="nav-link" routerLink="/narudzbe">Narudzbe</a>
+        <li *ngIf="loginInfo().isLogiran"  class="nav-item">
+          <a class="nav-link" *ngIf="loginInfo().isPermsijaKorisnik" routerLink="/narudzbe">Narudzbe</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/oglasi">Oglasi</a></li>
@@ -41,7 +41,7 @@
           <span class="badge bg-danger text-black ms-1 rounded-pill">0</span>
         </button>
 
-        <button *ngIf="loginInfo().isLogiran == false"  id="registracija" class="btn btn-success"  type="submit" routerLink="/registracija">
+        <button *ngIf="loginInfo().isLogiran == false"  id="registracija" class="btn btn-success" (click)="btnDodaj()" type="submit" >
           Registracija
         </button>
         <button  *ngIf="loginInfo().isLogiran == false" class="btn btn-danger"  type="submit" routerLink="/login" >
@@ -62,5 +62,5 @@
   </div>
 </nav>
 
-
+<app-registracija [urediKorisnik]="noviKorisnik"></app-registracija>
 <router-outlet></router-outlet>

@@ -65,8 +65,6 @@ import { ReactiveFormsModule } from '@angular/forms';
       {path:'administrator-postovi',component:AdministratorPostoviComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'administrator-postovi-edit',component:AdministratorPostoviEditComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'postovi',component:PostoviComponent},
-
-
     ]),
     FormsModule,
     HttpClientModule,

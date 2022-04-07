@@ -40,15 +40,14 @@ namespace PCWebShop.Helper.AutentifikacijaAutorizacija
         public static AutentifikacijaToken GetAuthToken(this HttpContext httpContext)
         {
             string token = httpContext.GetMyAuthToken();
-            Context db = httpContext.RequestServices.GetService<Context>();
 
+            Context db = httpContext.RequestServices.GetService<Context>();
             AutentifikacijaToken korisnickiNalog = db.AutentifikacijaToken
                 .Include(s=>s.korisnickiNalog)
                 .SingleOrDefault(x => token != null && x.vrijednost == token);
             
             return korisnickiNalog;
         }
-
 
         public static string GetMyAuthToken(this HttpContext httpContext)
         {

@@ -14,7 +14,7 @@ declare function porukaError(a: string):any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  noviKorisnik:any;
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
 
@@ -30,5 +30,19 @@ export class AppComponent {
 
   loginInfo():LoginInformacije {
     return AutentifikacijaHelper.getLoginInfo();
+  }
+
+  btnDodaj() {
+    this.noviKorisnik={
+      prikazi:true,
+      id:0,
+      korisnickoIme:"",
+      ime:"",
+      prezime:"",
+      spol:"muski",
+      datumRodjenja:"2022-04-07T08:42:08.609Z",
+      drzavaID:1,
+      lozinka:"",
+    };
   }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {mojConfig} from "../moj-config";
 
 
 
@@ -12,20 +14,19 @@ declare function porukaSuccess(x:string):any;
   styleUrls: ['./registracija.component.css']
 })
 export class RegistracijaComponent implements OnInit {
-  noviKorisnik:any;
+  @Input() urediKorisnik:any;
 
-  constructor(
+  constructor(private httpKlijent:HttpClient) { }
 
-  ) { }
-
-  ngOnInit() {
-
-
-  }
+  ngOnInit() {  }
 
 
   snimi() {
 
+    this.httpKlijent.post(mojConfig.adresa_servera+"/Korisnik/Add/",this.urediKorisnik).subscribe((x:any)=>{
+      porukaSuccess("Uspjesna reg");
+      this.urediKorisnik.prikazi=false;
+    });
   }
 }
 

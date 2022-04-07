@@ -1,6 +1,8 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {mojConfig} from "../moj-config";
+import {LoginInformacije} from "src/app/_helpers/login-informacije";
+import {AutentifikacijaHelper} from "src/app/_helpers/autentifikacija-helper";
 
 declare function porukaSuccess(a: string):any;
 declare function porukaError(a:string):any;
