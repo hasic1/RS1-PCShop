@@ -24,8 +24,8 @@ namespace PCWebShop.Helper.AutentifikacijaAutorizacija
             public AutentifikacijaToken autentifikacijaToken { get; set; }
             
             public bool isLogiran => korisnickiNalog != null;
-            public bool isPermisijaAdmin => isLogiran && korisnickiNalog.isAdministrator;
-            public bool isPermisijaKorisnik => isLogiran && korisnickiNalog.isKorisnik;
+            public bool isPermisijaAdmin => isLogiran && ( korisnickiNalog.isAdmin ||korisnickiNalog.administrator!=null);
+            public bool isPermisijaKorisnik => isLogiran && (korisnickiNalog.isKupac ||korisnickiNalog.korisnik!=null);
 
         }
 

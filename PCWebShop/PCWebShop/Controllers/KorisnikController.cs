@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PCWebShop.Data;
 using PCWebShop.Database;
+using PCWebShop.Helper.AutentifikacijaAutorizacija;
 using PCWebShop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,9 @@ namespace PCWebShop.Controllers
         public List<KorisnikVM> GetAll(string ime_prezime)
         {
             //if (!HttpContext.GetLoginInfo().isLogiran)
-            //    return Forbid();
+            //    return BadRequest("Nije logiran");
 
-            //dodati filtriranje po imenu i prezimenu
+            
             var data = _context.Korisnik.OrderBy(s => s.id)
                 .Where(x=> ime_prezime == null ||(x.Ime+ " "+ x.Prezime).StartsWith(ime_prezime)|| (x.Ime + " " + x.Prezime).StartsWith(ime_prezime))
                .Select(s => new KorisnikVM()
@@ -55,7 +56,7 @@ namespace PCWebShop.Controllers
             
             var newKorisnik = new Korisnik
             {
-                DrzavaID=k.DrzavaID,
+                DrzavaID=1,
                 Ime = k.Ime,
                 Prezime = k.Prezime,
                 korisnickoIme = k.korisnickoIme,
