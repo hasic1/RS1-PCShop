@@ -16,7 +16,6 @@ namespace PCWebShop.Database
         public string korisnickoIme { get; set; }
         [JsonIgnore]
         public string lozinka { get; set; }
-        public string slika_korisnika { get; set; }
 
         [JsonIgnore]
         public Korisnik korisnik => this as Korisnik;

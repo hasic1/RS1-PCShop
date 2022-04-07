@@ -52,22 +52,21 @@ namespace PCWebShop.Controllers
 
         [HttpPost]
         public ActionResult Add([FromBody] KorisnikAddVM k) {
-            if (k == null || !ModelState.IsValid)
-                return BadRequest("Polja nisu unešena");
+            
             var newKorisnik = new Korisnik
             {
-               
+                DrzavaID=k.DrzavaID,
                 Ime = k.Ime,
                 Prezime = k.Prezime,
                 korisnickoIme = k.korisnickoIme,
-                DatumRodjenja = k.DatumRodjenja,
+                DatumRodjenja = DateTime.Now,
                 Spol = k.Spol,
                 lozinka=k.Lozinka,
-                Pretplacen=true                
+                Pretplacen=true              
             };
             _context.Add(newKorisnik);
             _context.SaveChanges();
-            return Ok(newKorisnik.id);
+            return Get(newKorisnik.id);
             
         }
         [HttpPost("{id}")]
