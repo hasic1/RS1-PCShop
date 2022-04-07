@@ -6,13 +6,13 @@
       <form class="d-flex">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/pocetna">Početna</a>
+          <a class="nav-link active" aria-current="page" (click)="noviKorisnik.prikazi=false" routerLink="/pocetna">Početna</a>
         </li>
-        <li *ngIf="loginInfo().isPermsijaAdmin" class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/administrator">Admin</a>
+        <li  class="nav-item">
+          <a class="nav-link active" aria-current="page" (click)="noviKorisnik.prikazi=false" routerLink="/administrator">Admin</a>
         </li>
         <li *ngIf="loginInfo().isLogiran"  class="nav-item">
-          <a class="nav-link" *ngIf="loginInfo().isPermsijaKorisnik" routerLink="/narudzbe">Narudzbe</a>
+          <a class="nav-link" *ngIf="loginInfo().isPermsijaKorisnik" (click)="noviKorisnik.prikazi=false" routerLink="/narudzbe">Narudzbe</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/oglasi">Oglasi</a></li>
@@ -35,16 +35,16 @@
         </li>
       </ul>
 
-        <button  *ngIf="loginInfo().isPermsijaKorisnik"  routerLink="/korpa" class="btn btn-outline-light" type="submit">
+        <button  *ngIf="loginInfo().isLogiran" (click)="noviKorisnik.prikazi=false" routerLink="/korpa" class="btn btn-outline-light" type="submit">
           <i  class="bi-cart-fill me-1"></i>
           Korpa
           <span class="badge bg-danger text-black ms-1 rounded-pill">0</span>
         </button>
 
-        <button *ngIf="loginInfo().isLogiran == false"  id="registracija" class="btn btn-success" (click)="btnDodaj()" type="submit" >
+        <button *ngIf="loginInfo().isLogiran == false" (click)="noviKorisnik.prikazi=false" id="registracija" class="btn btn-success" (click)="btnDodaj()" type="submit" >
           Registracija
         </button>
-        <button  *ngIf="loginInfo().isLogiran == false" class="btn btn-danger"  type="submit" routerLink="/login" >
+        <button  *ngIf="loginInfo().isLogiran == false" (click)="noviKorisnik.prikazi=false" class="btn btn-danger"  type="submit" routerLink="/login" >
           Prijava
         </button>
 
