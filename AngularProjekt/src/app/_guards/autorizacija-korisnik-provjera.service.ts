@@ -11,7 +11,8 @@ export class AutorizacijaKorisnikProvjera implements CanActivate {
 
     try {
       //nedovrseno privremeno rjesenje
-      if (AutentifikacijaHelper.getLoginInfo().isPermsijaKorisnik)
+      if (AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik)
+
         return true;
     }catch (e) {
     }

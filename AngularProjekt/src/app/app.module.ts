@@ -59,7 +59,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       {path:'registracija',component:RegistracijaComponent},
       {path:'pocetna',component:PocetnaComponent},
       {path:'administrator',component:AdministratorComponent,canActivate:[AutorizacijaAdminProvjera]},
-      {path:'korpa',component:KorpaComponent},
+      {path:'korpa',component:KorpaComponent,canActivate:[AutorizacijaKorisnikProvjera]},
       {path:'administrator-proizvodjac',component:AdministratorProizvodjacComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'administrator-kategorija',component:AdministratorKategorijaComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'administrator-postovi',component:AdministratorPostoviComponent,canActivate:[AutorizacijaAdminProvjera]},

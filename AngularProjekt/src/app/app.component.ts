@@ -14,35 +14,22 @@ declare function porukaError(a: string):any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  noviKorisnik:any;
+
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
 
   logoutButton() {
     AutentifikacijaHelper.setLoginInfo(null);
 
-    this.httpKlijent.post(mojConfig.adresa_servera+"/Autentifikacija/Logout", null, mojConfig.http_opcije())
+    this.httpKlijent.post(mojConfig.adresa_servera + "/Autentifikacija/Logout", null, mojConfig.http_opcije())
       .subscribe((x: any) => {
         this.router.navigateByUrl("/pocetna");
         porukaSuccess("Logout uspješan");
       });
   }
 
-  loginInfo():LoginInformacije {
+  loginInfo(): LoginInformacije {
     return AutentifikacijaHelper.getLoginInfo();
   }
 
-  btnDodaj() {
-    this.noviKorisnik={
-      prikazi:true,
-      id:0,
-      korisnickoIme:"",
-      ime:"",
-      prezime:"",
-      spol:"muski",
-      datumRodjenja:"2022-04-07T08:42:08.609Z",
-      drzavaID:1,
-      lozinka:"",
-    };
-  }
 }

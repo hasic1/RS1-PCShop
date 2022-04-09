@@ -22,7 +22,7 @@ namespace PCWebShop.Controllers
         }
 
         [HttpGet]
-        public List<KorisnikVM> GetAll(string ime_prezime)
+        public ActionResult<List<Korisnik>> GetAll(string ime_prezime)
         {
             //if (!HttpContext.GetLoginInfo().isLogiran)
             //    return BadRequest("Nije logiran");
@@ -30,12 +30,12 @@ namespace PCWebShop.Controllers
             
             var data = _context.Korisnik.OrderBy(s => s.id)
                 .Where(x=> ime_prezime == null ||(x.Ime+ " "+ x.Prezime).StartsWith(ime_prezime)|| (x.Ime + " " + x.Prezime).StartsWith(ime_prezime))
-               .Select(s => new KorisnikVM()
+               .Select(s => new Korisnik()
                {
-                   ID = s.id,
+                   id= s.id,
                    Ime = s.Ime,
                    DatumRodjenja = s.DatumRodjenja,
-                   KorisnickoIme = s.korisnickoIme,
+                   korisnickoIme = s.korisnickoIme,
                    DrzavaID = s.DrzavaID,
                    Pretplacen = s.Pretplacen,
                    Prezime=s.Prezime,

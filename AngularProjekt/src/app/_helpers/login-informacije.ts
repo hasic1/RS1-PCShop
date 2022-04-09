@@ -1,8 +1,8 @@
 export class LoginInformacije {
    autentifikacijaToken:       AutentifikacijaToken=null;
-  isLogiran:                   boolean=false;
-  isPermsijaKorisnik:          boolean=false;
-  isPermsijaAdmin:             boolean=false;
+  isLogiran:                       boolean=false;
+  isPermisijaAdmin:                boolean=false;
+  isPermisijaKorisnik:             boolean=false;
 }
 
 export interface AutentifikacijaToken {
@@ -17,7 +17,7 @@ export interface AutentifikacijaToken {
 export interface KorisnickiNalog {
   id:                 number;
   korisnickoIme:      string;
-  isKorisnik:         boolean;
+  isKupac:            boolean;
   isAdmin:            boolean;
 
 }

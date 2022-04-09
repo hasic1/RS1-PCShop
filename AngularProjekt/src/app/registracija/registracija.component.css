@@ -41,8 +41,13 @@
   border: none;
   border-radius: 1.5rem;
   padding:2%;
+
+}
+a{
+  text-decoration: none;
 }
 .btnForgetPwd{
+
   color: #fff;
   font-weight: 600;
   text-decoration: none;

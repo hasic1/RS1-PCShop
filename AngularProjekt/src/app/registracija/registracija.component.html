@@ -1,24 +1,24 @@
-<div class="container login-container" xmlns="http://www.w3.org/1999/html" *ngIf="urediKorisnik.prikazi">
+<div class="container login-container" xmlns="http://www.w3.org/1999/html" >
   <div class="row">
     <div class="col-md-6 login-form-1">
       <div class="mb-header">
-        <button type="button" class="btn btn-secondary" (click)="urediKorisnik.prikazi = false" >Close</button>
+
       </div>
       <h3>Logo firme </h3>
       <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="urediKorisnik.ime" placeholder="Ime  " value="" />
+        <input type="text" class="form-control"  placeholder="Ime  " value=""  />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="urediKorisnik.prezime" placeholder="Prezime " value="" />
+        <input type="text" class="form-control"  placeholder="Prezime " value="" />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="urediKorisnik.korisnickoIme" placeholder="Korisnicko ime " value="" />
+        <input type="text" class="form-control"  placeholder="Korisnicko ime " value="" />
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" [(ngModel)]="urediKorisnik.lozinka" placeholder="Lozinka " value="" />
+        <input type="password" class="form-control"  placeholder="Lozinka " value="" />
       </div>
       <div class="form-group">
-        <a  class="button"  (click)="snimi()" routerLink="/login">Registruj se</a>
+        <a  class="btnSubmit"  (click)="snimi()"  routerLink="/login">Registruj se</a>
       </div>
       <div class="form-group">
         <a routerLink="/login"class="btnForgetPwd">Registrovani ste? -Prijava </a>

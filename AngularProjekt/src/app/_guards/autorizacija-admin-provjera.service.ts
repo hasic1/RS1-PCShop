@@ -11,7 +11,7 @@ export class AutorizacijaAdminProvjera implements CanActivate {
 
     try {
       //nedovrseno privremeno rjesenje
-      if (AutentifikacijaHelper.getLoginInfo().isPermsijaAdmin)
+      if (AutentifikacijaHelper.getLoginInfo().isPermisijaAdmin)
         return true;
     }catch (e) {
     }
