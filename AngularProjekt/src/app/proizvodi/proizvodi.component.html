@@ -2,10 +2,11 @@
 <br><h3 align="center">Tabela svih dostupnih proizvoda</h3><br>
 
 
+<input type="text" id="myInput" [(ngModel)]="naziv" placeholder="Pretrazi proizvod...">
 
 
-<table class="table table-primary" >
-  <tr class="bg-danger">
+<table id="myTable" >
+  <tr class="header">
     <th>Naziv proizvoda</th>
     <th>Cijena</th>
     <th>Na stanju</th>

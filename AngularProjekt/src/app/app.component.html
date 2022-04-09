@@ -61,5 +61,20 @@
   </div>
 </nav>
 
+<div class="sidebar" *ngIf="loginInfo().isPermisijaAdmin">
+  <a class="active" href="#home">Pocetna</a>
+  <button  class="btn1 default">Statistika</button>
+  <button  class="btn1 default" routerLink="/proizvodi">Proizvod</button>
+  <button  class="btn1 default" (click)="btnDodajProizvodjaca()" >Proizvodjac</button>
+  <button  class="btn1 default">Oglasi</button>
+  <button  class="btn1 default">Postovi</button>
+  <button  class="btn1 default" (click)="btnDodajKategoriju()" >Kategorija</button>
+  <button  class="btn1 default" >Narudzbe</button>
+  <button  class="btn1 default">Korisnicki racuni</button>
+</div>
+<app-administrator-proizvodjac [urediProizvodjaca] = "noviProizvodjac" ></app-administrator-proizvodjac>
+<app-administrator-kategorija  [urediKategoriju] ="novaKategorija" ></app-administrator-kategorija>
+<app-administrator-postovi [urediPost]="noviPost"></app-administrator-postovi>
+
 
 <router-outlet></router-outlet>

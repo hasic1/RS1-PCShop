@@ -14,6 +14,10 @@ declare function porukaError(a: string):any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  noviProizvodjac:any;
+  novaKategorija:any;
+  noviPost:any=null;
+
 
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
@@ -32,4 +36,20 @@ export class AppComponent {
     return AutentifikacijaHelper.getLoginInfo();
   }
 
+  btnDodajProizvodjaca() {
+    this.noviProizvodjac = {
+      prikazi: true,
+      id: 0,
+      nazivProizvodjaca:"",
+      sjedisteID:1,
+    }
+  }
+
+  btnDodajKategoriju() {
+    this.novaKategorija={
+      id:0,
+      prikazi:true,
+      nazivKategorije:"",
+    };
+  }
 }

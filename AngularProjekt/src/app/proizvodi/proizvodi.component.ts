@@ -14,6 +14,7 @@ export class ProizvodiComponent implements OnInit {
 
   proizvodiPodatci:any;
   odabraniProizvod:any=null;
+  naziv:string='';
 
   constructor(private httpKlijent: HttpClient) {
   }
