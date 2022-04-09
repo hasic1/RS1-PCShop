@@ -24,8 +24,27 @@
   /* Add a bottom border to all table rows */
   border-bottom: 1px solid #ddd;
 }
+tr:nth-child(even){background-color: #f2f2f2}
 
 #myTable tr.header, #myTable tr:hover {
   /* Add a grey background color to the table header and on hover */
   background-color: #f1f1f1;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+.poravnaj{
+  width: 88%;
+  margin-left: 12%;
+}
+th,td{
+text-align-all: center;
 }

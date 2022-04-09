@@ -1,3 +1,4 @@
+<div class="poravnaj">
 
 <br><h3 align="center">Tabela svih dostupnih proizvoda</h3><br>
 
@@ -10,11 +11,7 @@
     <th>Naziv proizvoda</th>
     <th>Cijena</th>
     <th>Na stanju</th>
-    <th>Opis</th>
-    <th>KategorijaID</th>
-    <th>Lokacija sllike</th>
-    <th>Snizen</th>
-    <th>Proizvođac </th>
+    <th>Slika</th>
     <th>Akcija </th>
   </tr>
   <tbody>
@@ -22,11 +19,7 @@
     <td>{{p.nazivProizvoda}}</td>
     <td>{{p.cijena}}</td>
     <td>{{p.kolicina}}</td>
-    <td>{{p.opis}}</td>
-    <td>{{p.kategorijaID}}</td>
     <td>{{p.lokacijaSlike}}</td>
-    <td>{{p.snizen}}</td>
-    <td>{{p.proizvodjacID}}</td>
     <td>
       <button class="btn btn-primary"(click)="obrisi(p)">Obrisi</button>
       <button class="btn btn-primary"(click)="detalji(p)">Detalji</button>
@@ -35,5 +28,6 @@
   </tbody>
 </table>
 <button class="btn btn-primary" (click)="btnNovi()">Dodaj novi proizvod</button>
+</div>
 
 <app-proizvod-edit [urediProizvod]="odabraniProizvod"></app-proizvod-edit>

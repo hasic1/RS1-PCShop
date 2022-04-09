@@ -29,7 +29,7 @@ export class ProizvodiComponent implements OnInit {
   getProizvodiPodaci() {
     if (this.proizvodiPodatci==null)
       return[];
-    return this.proizvodiPodatci;
+    return this.proizvodiPodatci.filter((x: any)=> x.nazivProizvoda.length==0 || (x.nazivProizvoda).toLowerCase().startsWith(this.naziv.toLowerCase()));
   }
   ngOnInit(): void {
     this.testirajWebApi();
