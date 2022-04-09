@@ -4620,6 +4620,9 @@ textarea.form-control-lg {
   width: border-box;
   height:border-box;
 }
+.card-img-top:hover{
+  cursor: pointer;
+}
 
 .card-img,
 .card-img-bottom {
