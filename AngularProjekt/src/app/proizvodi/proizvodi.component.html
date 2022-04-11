@@ -1,6 +1,6 @@
 <div class="poravnaj">
 
-<br><h3 align="center">Tabela svih dostupnih proizvoda</h3><br>
+  <p></p>
 
 
 <input type="text" id="myInput" [(ngModel)]="naziv" placeholder="Pretrazi proizvod...">
@@ -21,7 +21,7 @@
     <td>{{p.kolicina}}</td>
     <td>{{p.lokacijaSlike}}</td>
     <td>
-      <button class="btn btn-primary"(click)="obrisi(p)">Obrisi</button>
+      <button class="btn btn-danger"(click)="obrisi(p)">Obrisi</button>
       <button class="btn btn-primary"(click)="detalji(p)">Detalji</button>
     </td>
   </tr>

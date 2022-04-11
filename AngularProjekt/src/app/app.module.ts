@@ -25,6 +25,7 @@ import {AutorizacijaKorisnikProvjera} from "./_guards/autorizacija-korisnik-prov
 import { PostoviComponent } from './postovi/postovi.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ProizvodDetaljnoComponent} from "./proizvodi/proizvod-detaljno/proizvod-detaljno.component";
+import { KorisnikComponent } from './korisnik/korisnik.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {ProizvodDetaljnoComponent} from "./proizvodi/proizvod-detaljno/proizvod-
     AdministratorPostoviEditComponent,
     PostoviComponent,
     ProizvodDetaljnoComponent,
+    KorisnikComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import {ProizvodDetaljnoComponent} from "./proizvodi/proizvod-detaljno/proizvod-
       {path:'administrator-postovi-edit',component:AdministratorPostoviEditComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'postovi',component:PostoviComponent},
       {path:'proizvod-detaljno',component:ProizvodDetaljnoComponent},
+      {path:'korisnik',component:KorisnikComponent},
     ]),
     FormsModule,
     HttpClientModule,

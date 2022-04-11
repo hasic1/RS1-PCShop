@@ -1,13 +1,14 @@
+<div class="poravnaj">
+<p></p>
 
-
-<p ></p>
-<table class="table table-primary" >
-  <tr>
+<table class=" myTable" >
+  <tr class="header">
     <th>Datum kreiranja</th>
     <th>NaruciocID</th>
     <th>DostavljacID</th>
     <th>Aktivna</th>
     <th>Potvrdjena</th>
+    <th>Akcija</th>
   </tr>
   <tbody>
 
@@ -17,11 +18,9 @@
     <td>{{n.dostavljacID}}</td>
     <td>{{n.aktivna}}</td>
     <td>{{n.potvrdjena}}</td>
-
-
     <td>
-      <button (click)="obrisi(n)">Obrisi</button>
-      <button (click)="detalji(n)">Detalji</button>
+      <button class="btn btn-danger" (click)="obrisi(n)">Obrisi</button>
+      <button class="btn btn-primary" (click)="detalji(n)">Detalji</button>
     </td>
   </tr>
   </tbody>
@@ -37,3 +36,4 @@
 
 
 
+</div>

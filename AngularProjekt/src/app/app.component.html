@@ -8,9 +8,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page"  routerLink="/pocetna" >Početna</a>
         </li>
-        <li  class="nav-item">
-          <a class="nav-link active" *ngIf="loginInfo().isPermisijaAdmin" aria-current="page"  routerLink="/administrator">Admin</a>
-        </li>
         <li class="dropdown"><a class="nav-link">
           <a class="nav-item">Proizvodi </a>
           <div class="dropdown-content" id="tekst">
@@ -47,12 +44,12 @@
         </button>
 
         <li *ngIf="loginInfo().isLogiran" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarLogiraniKorisnikLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarLogiraniKorisnikLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              {{loginInfo().autentifikacijaToken.korisnickiNalog.korisnickoIme}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarLogiraniKorisnikLink">
-            <li><a class="dropdown-item" routerLink="/pocetna">Postavke profila</a></li>
-            <li><a class="dropdown-item" routerLink="/narudzbe">Moje narudzbe</a></li>
+            <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/pocetna">Postavke profila</a></li>
+            <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/narudzbe">Moje narudzbe</a></li>
             <li><a class="dropdown-item" (click)="logoutButton()">Odjava</a></li>
           </ul>
         </li>
@@ -67,10 +64,10 @@
   <button  class="btn1 default" routerLink="/proizvodi">Proizvod</button>
   <button  class="btn1 default" (click)="btnDodajProizvodjaca()" >Proizvodjac</button>
   <button  class="btn1 default">Oglasi</button>
-  <button  class="btn1 default">Postovi</button>
+  <button  class="btn1 default" routerLink="/postovi">Postovi</button>
   <button  class="btn1 default" (click)="btnDodajKategoriju()" >Kategorija</button>
-  <button  class="btn1 default" >Narudzbe</button>
-  <button  class="btn1 default">Korisnicki racuni</button>
+  <button  class="btn1 default" routerLink="/narudzbe">Narudzbe</button>
+  <button  class="btn1 default" routerLink="/korisnik">Korisnicki racuni</button>
 </div>
 <app-administrator-proizvodjac [urediProizvodjaca] = "noviProizvodjac" ></app-administrator-proizvodjac>
 <app-administrator-kategorija  [urediKategoriju] ="novaKategorija" ></app-administrator-kategorija>
