@@ -45,7 +45,9 @@ export class NarudzbeComponent implements OnInit {
     this.httpKlijent.post(mojConfig.adresa_servera+ "/Narudzba/Update/" + this.odabranaNarudzba.id,this.odabranaNarudzba)
       .subscribe((x:any)=>{
         alert("Uredu"+x.potvrdjena)
-      })
+
+      });
+    this.testirajWebApi();
   }
 
   btnNovi() {

@@ -63,7 +63,18 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
-
+.column,
+.columns {
+  padding-top: 1%;
+  margin-left: 3%;
+  width: 100%;
+  display: flex;
+  float: left;
+  color: white;
+  box-sizing: border-box; }
+.columns{
+  width: 90%;
+}
 *,
 *::before,
 *::after {
@@ -4604,6 +4615,7 @@ textarea.form-control-lg {
   border-radius: calc(0.25rem - 1px);
 }
 
+
 .card-img,
 .card-img-top,
 .card-img-bottom {
@@ -4623,7 +4635,9 @@ textarea.form-control-lg {
 .card-img-top:hover{
   cursor: pointer;
 }
-
+.card-img-top{
+  height: 62%;
+}
 .card-img,
 .card-img-bottom {
   border-bottom-right-radius: calc(0.25rem - 1px);

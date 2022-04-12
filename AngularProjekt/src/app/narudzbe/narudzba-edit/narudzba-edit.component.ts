@@ -13,9 +13,11 @@ declare function porukaSuccess(s:string):any;
 export class NarudzbaEditComponent implements OnInit {
  @Input()
  urediNarudzbu:any;
+ narudzbePodatci:any=null;
   constructor(private httpKlijent:HttpClient) { }
 
   ngOnInit(): void {
+    this.testirajWebApi();
   }
   snimi() {
     if(this.urediNarudzbu.id==null){
@@ -24,8 +26,9 @@ export class NarudzbaEditComponent implements OnInit {
       this.httpKlijent.post(mojConfig.adresa_servera+"/Narudzba/Add",this.urediNarudzbu).subscribe((x:any)=>{
         porukaSuccess("Narudzba uspjesno kreirana" +x.Aktivna);
         this.urediNarudzbu.prikazi=false;
+        this.testirajWebApi();
         }
-      )
+      );
     }
     else{
     this.httpKlijent.post(mojConfig.adresa_servera+ "/Narudzba/Update/" + this.urediNarudzbu.id, this.urediNarudzbu).subscribe((x:any) => {
@@ -33,6 +36,13 @@ export class NarudzbaEditComponent implements OnInit {
       this.urediNarudzbu.prikazi = false;
 
     });
+
     }
+  }
+  testirajWebApi() :void
+  {
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Narudzba/GetAll",mojConfig.http_opcije()).subscribe(x=>{
+      this.narudzbePodatci = x;
+    });
   }
 }
