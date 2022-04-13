@@ -1,6 +1,11 @@
 import {LoginInformacije} from "./login-informacije";
+import {HttpClient} from "@angular/common/http";
+import {Korisnik} from "./registracija-informacije";
+import {mojConfig} from "../moj-config";
 
 export class AutentifikacijaHelper {
+
+  constructor(private _http: HttpClient) { }
 
   static setLoginInfo(x: LoginInformacije): void {
     if (x == null)
@@ -21,5 +26,8 @@ export class AutentifikacijaHelper {
     } catch (e) {
       return new LoginInformacije();
     }
+  }
+  public registerUser = (route: string, body: Korisnik) => {
+    return this._http.post<Korisnik> (mojConfig.adresa_servera+"/Korisnik/Add", body);
   }
 }

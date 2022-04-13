@@ -4,7 +4,6 @@ import {mojConfig} from "../moj-config";
 
 
 
-
 declare function porukaSuccess(x:string):any;
 
 
@@ -14,20 +13,37 @@ declare function porukaSuccess(x:string):any;
   styleUrls: ['./registracija.component.css']
 })
 export class RegistracijaComponent implements OnInit {
-  @Input() urediKorisnik:any;
+  @Input() kreirajKorisnik:any;
+  drzavePodatci:any=null;
+
 
   constructor(private httpKlijent:HttpClient) { }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.testirajWebApi();
+  }
 
+  getDrzave(){
+    if (this.drzavePodatci == null)
+      return [];
+    return this.drzavePodatci;
+  }
 
   snimi() {
 
-    this.httpKlijent.post(mojConfig.adresa_servera+"/Korisnik/Add/",this.urediKorisnik).subscribe((x:any)=>{
+    this.httpKlijent.post(mojConfig.adresa_servera+"/Korisnik/Add/",this.kreirajKorisnik).subscribe((x:any)=>{
       porukaSuccess("Uspjesna reg");
-      this.urediKorisnik.prikazi=false;
+      this.kreirajKorisnik.prikazi=false;
+    });
+  }
+
+  testirajWebApi() :void
+  {
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Drzava/GetAll_ForCmb",mojConfig.http_opcije()).subscribe(x=>{
+      this.drzavePodatci = x;
     });
   }
 }
+
 
 

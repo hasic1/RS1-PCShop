@@ -57,9 +57,8 @@
   margin-bottom: 5%;
 }
 #loginbtn{
-  margin-top: 12%;
-  margin-right: auto;
-  margin-left:29%;
+  text-align: center;
+
 }
 
 .btnForgetPwd{
@@ -68,8 +67,7 @@
   text-decoration: none;
   padding:2%;
   margin-top:12%;
-  margin-right: auto;
-  margin-left:17%;
+  text-align: center;
 }
 .btnForgetPwd:hover{
   text-decoration:none;
@@ -77,3 +75,19 @@
   margin-top:12%;
 
 }
+.column,
+.columns {
+
+  margin-left: 3%;
+  width: 100%;
+  display: flex;
+  float: left;
+  color: white;
+  box-sizing: border-box;
+  padding-top: 0.5%;
+}
+.columns{
+
+  width: 90%;
+}
+

@@ -65,14 +65,17 @@
 }
 .column,
 .columns {
-  padding-top: 1%;
+
   margin-left: 3%;
   width: 100%;
   display: flex;
   float: left;
   color: white;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding-top: 0.5%;
+}
 .columns{
+
   width: 90%;
 }
 *,
@@ -86,7 +89,9 @@
     scroll-behavior: smooth;
   }
 }
+footer{
 
+}
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
