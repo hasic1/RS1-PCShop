@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PCWebShop.Database;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,7 @@ namespace PCWebShop.ViewModels
         public string Spol { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public int DrzavaID { get; set; }
+        public Drzava drzava{ get; set; }
         public bool Pretplacen { get; set; }
     }
 }

@@ -37,7 +37,8 @@ namespace PCWebShop.Controllers
                     Aktivna = s.Aktivna,
                     DatumKreiranja = s.DatumKreiranja,
                     DostavljacID = s.DostavljacID,
-                    NaruciocID = s.NaruciocID,
+                    dostavljac=s.Dostavljac,
+                    narucioc=s.Narucioc,
                     Potvrdjena = s.Potvrdjena
                 }).AsQueryable();
                

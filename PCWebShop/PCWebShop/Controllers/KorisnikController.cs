@@ -22,26 +22,25 @@ namespace PCWebShop.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Korisnik>> GetAll(string ime_prezime)
+        public List<KorisnikVM> GetAll(string ime_prezime)
         {
             //if (!HttpContext.GetLoginInfo().isLogiran)
             //    return BadRequest("Nije logiran");
 
-            
             var data = _context.Korisnik.OrderBy(s => s.id)
                 .Where(x=> ime_prezime == null ||(x.Ime+ " "+ x.Prezime).StartsWith(ime_prezime)|| (x.Ime + " " + x.Prezime).StartsWith(ime_prezime))
-               .Select(s => new Korisnik()
+               .Select(s => new KorisnikVM()
                {
-                   id= s.id,
+                   ID= s.id,
                    Ime = s.Ime,
                    DatumRodjenja = s.DatumRodjenja,
-                   korisnickoIme = s.korisnickoIme,
+                   KorisnickoIme = s.korisnickoIme,
+                   drzava=s.Drzava,
                    DrzavaID = s.DrzavaID,
                    Pretplacen = s.Pretplacen,
                    Prezime=s.Prezime,
                    Spol=s.Spol
                }).AsQueryable();
-
             return data.Take(100).ToList();
         }
 

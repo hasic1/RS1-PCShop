@@ -28,7 +28,6 @@ export class AppComponent {
     this.httpKlijent.post(mojConfig.adresa_servera + "/Autentifikacija/Logout", null, mojConfig.http_opcije())
       .subscribe((x: any) => {
         this.router.navigateByUrl("/pocetna");
-        porukaSuccess("Logout uspješan");
       });
   }
 

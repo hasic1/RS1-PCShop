@@ -31,7 +31,7 @@
 
       </ul>
         <!--<div style="margin-right: 110px; margin-left: 120px"> </div>-->
-        <button  *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/korpa" class="btn btn-outline-light" type="submit">
+        <button  *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/korpa" class="btn btn-outline-warning" type="submit">
           <i  class="bi-cart-fill me-1"></i>
           Korpa
         </button>
@@ -45,9 +45,9 @@
         </button>
 
         <li *ngIf="loginInfo().isLogiran" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle " href="#" id="navbarLogiraniKorisnikLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-outline-primary" href="#" id="navbarLogiraniKorisnikLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              {{loginInfo().autentifikacijaToken.korisnickiNalog.korisnickoIme}}
-          </a>
+          </button>
           <ul class="dropdown-menu" aria-labelledby="navbarLogiraniKorisnikLink">
             <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/pocetna">Postavke profila</a></li>
             <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/narudzbe">Moje narudzbe</a></li>

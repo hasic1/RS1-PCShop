@@ -4,8 +4,8 @@
 <table class=" myTable" >
   <tr class="header">
     <th>Datum kreiranja</th>
-    <th>NaruciocID</th>
-    <th>DostavljacID</th>
+    <th>Narucioc</th>
+    <th>Naziv dostave</th>
     <th>Aktivna</th>
     <th>Potvrdjena</th>
     <th>Akcija</th>
@@ -14,8 +14,8 @@
 
   <tr *ngFor="let n of getNarudzbaPodaci()">
     <td>{{n.datumKreiranja}}</td>
-    <td>{{n.naruciocID}}</td>
-    <td>{{n.dostavljacID}}</td>
+    <td>{{n.narucioc.ime}}</td>
+    <td>{{n.dostavljac.nazivDostave}}</td>
     <td>{{n.aktivna}}</td>
     <td>{{n.potvrdjena}}</td>
     <td>
