@@ -9,5 +9,5 @@ namespace PCWebShop.Modul0_Autentifikacija.ViewModels
     {
         public string korisnickoIme { get; set; }
         public string lozinka { get; set; }
-    }
+    } 
 }

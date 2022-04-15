@@ -1,38 +1,49 @@
 
-<form style="overflow: hidden; display: ;">
+<form style="overflow: hidden; ">
 <div class="container login-container" xmlns="http://www.w3.org/1999/html" >
-  <div class="row">
-    <div class="col-md-3 " style="background: white"></div>
-    <div class="col-md-6 login-form-1">
+  <div class="row" >
+
+    <div class="col-md-12 login-form-1" style="width: 70% ;margin-left: 15%">
       <div class="mb-header">
 
       </div>
       <a   routerLink="/pocetna"> <img id="logo" src="assets/img/Logo.png" ></a>
-      <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Ime  " value="" required  />
+      <div class="form-group" style="display: flex">
+        <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Ime i prezime:</label>
+        <input type="text" class="form-control"  placeholder="Ime  " value="" style="width: 40%; margin-right: 1%" />
+        <input type="text" class="form-control"  placeholder="Prezime " value=""  style="width: 40%"  />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Prezime " value="" [required]="" />
+
       </div>
-      <div class="form-group">
-       <select class="form-control" placeholder="Drzava"  >
-        <option *ngFor="let d of getDrzave()" value="{{d.id}}">{{d.opis}}</option>
+      <div class="form-group" style="display: flex" >
+        <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Drzava:</label>
+       <select  style="width: 45%; margin-left: 3%" class="form-control" placeholder="Drzava"  >
+        <option *ngFor="let d of getDrzave()" value="{{d.id}}"  >{{d.opis}}</option>
        </select>
+        <label class="label" style="color: white ;margin-left: 2%; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Spol:</label>
+        <select  style="width: 30%; margin-left: 2%" class="form-control" placeholder="Drzava"  >
+          <option value="M"> Muško </option>
+          <option value="Z"> Žensko </option>
+        </select>
+      </div>
+
+      <div class="form-group" style="display: flex" >
+        <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Email:</label>
+        <input type="text" style="margin-left: 5% ;margin-right: 3% " class="form-control"  placeholder="Korisnicko ime " value="" />
+      </div>
+      <div class="form-group" style="display: flex" >
+        <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Lozinka:</label>
+        <input type="text" style="margin-left: 2%; margin-bottom: 6%;margin-right: 3%" class="form-control"  placeholder="Korisnicko ime " value="" />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Korisnicko ime " value="" />
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control"  placeholder="Lozinka " value="" />
-      </div>
-      <div class="form-group">
-        <a  class="btnSubmit"  (click)="snimi()"  routerLink="/login">Registruj se</a>
+        <a  class="btnSubmit" (click)="snimi()"  routerLink="/login">Registruj se</a>
       </div>
       <div class="form-group" style="text-align: center">
         <a routerLink="/login"class="btnForgetPwd">Registrovani ste? -Prijava </a>
       </div>
     </div>
-    <div class="col-md-3 " style="background: white"></div>
+
   </div>
 </div>
 </form>
@@ -50,7 +61,7 @@
     <div class="column">
       <div class="info-card">
         <img src="assets/img/Ikone/katalog_icon.png" width="62" />
-        <div>
+        <div >
           <a href="">KATALOG</a>
           <p> Omogućili smo pregled narudžbi i raznih artikala bez potrebe dolaska u poslovnicu u samo par klikova! </p>
         </div>
