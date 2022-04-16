@@ -29,6 +29,7 @@ export class NarudzbaEditComponent implements OnInit {
         this.testirajWebApi();
         }
       );
+      this.testirajWebApi();
     }
     else{
     this.httpKlijent.post(mojConfig.adresa_servera+ "/Narudzba/Update/" + this.urediNarudzbu.id, this.urediNarudzbu).subscribe((x:any) => {
@@ -38,6 +39,7 @@ export class NarudzbaEditComponent implements OnInit {
     });
 
     }
+    this.testirajWebApi();
   }
   testirajWebApi() :void
   {

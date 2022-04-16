@@ -1,5 +1,5 @@
 
-<form style="overflow: hidden; ">
+<form style="overflow: hidden; "[formGroup]="KorisnickaForma">
 <div class="container login-container" xmlns="http://www.w3.org/1999/html" >
   <div class="row" >
 
@@ -10,34 +10,34 @@
       <a   routerLink="/pocetna"> <img id="logo" src="assets/img/Logo.png" ></a>
       <div class="form-group" style="display: flex">
         <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Ime i prezime:</label>
-        <input type="text" class="form-control"  placeholder="Ime  " value="" style="width: 40%; margin-right: 1%" />
-        <input type="text" class="form-control"  placeholder="Prezime " value=""  style="width: 40%"  />
+        <input type="text" class="form-control"  placeholder="Ime  " value="" style="width: 40%; margin-right: 1%"  formControlName="ime" />
+        <input type="text" class="form-control"  placeholder="Prezime " value=""  style="width: 40%" formControlName="prezime" />
       </div>
       <div class="form-group">
 
       </div>
       <div class="form-group" style="display: flex" >
         <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Drzava:</label>
-       <select  style="width: 45%; margin-left: 3%" class="form-control" placeholder="Drzava"  >
-        <option *ngFor="let d of getDrzave()" value="{{d.id}}"  >{{d.opis}}</option>
+       <select  style="width: 44%; margin-left: 3%" class="form-control" placeholder="Drzava" formControlName="drzavaID"  >
+        <option *ngFor="let d of getDrzave()" value="{{d.id}}">{{d.opis}}</option>
        </select>
         <label class="label" style="color: white ;margin-left: 2%; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Spol:</label>
-        <select  style="width: 30%; margin-left: 2%" class="form-control" placeholder="Drzava"  >
-          <option value="M"> Muško </option>
+        <select  style="width: 31%; margin-left: 2%" class="form-control" placeholder="Spol"  formControlName="spol" >
+          <option value="M" > Muško  </option>
           <option value="Z"> Žensko </option>
         </select>
       </div>
 
       <div class="form-group" style="display: flex" >
         <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Email:</label>
-        <input type="text" style="margin-left: 5% ;margin-right: 3% " class="form-control"  placeholder="Korisnicko ime " value="" />
+        <input type="text" style="margin-left: 4% ;margin-right: 3% " class="form-control"  placeholder="Korisnicko ime " formControlName="korisnickoIme" value="" />
       </div>
       <div class="form-group" style="display: flex" >
         <label class="label" style="color: white ; margin-right: 1%;margin-top: 1.5% ; font-size: 16px" asp-for="Ime" >Lozinka:</label>
-        <input type="text" style="margin-left: 2%; margin-bottom: 6%;margin-right: 3%" class="form-control"  placeholder="Korisnicko ime " value="" />
+        <input type="text" style="margin-left: 2%; margin-bottom: 6%;margin-right: 3%" class="form-control"  placeholder="lozinka " formControlName="lozinka" value="" />
       </div>
       <div class="form-group">
-        <a  class="btnSubmit" (click)="snimi()"  routerLink="/login">Registruj se</a>
+        <button  class="btnSubmit" type="submit" (click)="onFormSubmit()" >Registruj se</button>
       </div>
       <div class="form-group" style="text-align: center">
         <a routerLink="/login"class="btnForgetPwd">Registrovani ste? -Prijava </a>

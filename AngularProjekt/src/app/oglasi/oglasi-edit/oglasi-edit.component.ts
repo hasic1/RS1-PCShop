@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {mojConfig} from "../../moj-config";
+import {AutentifikacijaHelper} from "../../_helpers/autentifikacija-helper";
+import {LoginInformacije} from "../../_helpers/login-informacije";
 
 declare function porukaSuccess(s:string):any;
 
@@ -21,6 +23,7 @@ export class OglasiEditComponent implements OnInit {
   snimi() {
     if(this.urediOglas.id==null){
       this.urediOglas.aktivan=false;//definirano kao false jer ukoliko ne promjenimo vrijednost checkboxa salje se 0 umjseto true ili false
+      this.urediOglas.autorOglasaID= this.loginInfo().autentifikacijaToken.korisnickiNalog.id;
       this.httpKlijent.post(mojConfig.adresa_servera+"/Oglasi/Add",this.urediOglas).subscribe((x:any)=>{
           porukaSuccess("Oglas za " +x.naslov +" uspjesno kreiran");
           this.urediOglas.prikazi=false;
@@ -35,4 +38,8 @@ export class OglasiEditComponent implements OnInit {
       });
   }
   }
+  loginInfo(): LoginInformacije {
+    return AutentifikacijaHelper.getLoginInfo();
+  }
+
 }

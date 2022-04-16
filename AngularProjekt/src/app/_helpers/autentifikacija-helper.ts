@@ -2,7 +2,11 @@ import {LoginInformacije} from "./login-informacije";
 import {HttpClient} from "@angular/common/http";
 import {Korisnik} from "./registracija-informacije";
 import {mojConfig} from "../moj-config";
+import {Injectable} from "@angular/core";
 
+@Injectable({
+  providedIn:'root'
+})
 export class AutentifikacijaHelper {
 
   constructor(private _http: HttpClient) { }
@@ -27,7 +31,7 @@ export class AutentifikacijaHelper {
       return new LoginInformacije();
     }
   }
-  public registerUser = (route: string, body: Korisnik) => {
+  public registerUser = (body: Korisnik) => {
     return this._http.post<Korisnik> (mojConfig.adresa_servera+"/Korisnik/Add", body);
   }
 }

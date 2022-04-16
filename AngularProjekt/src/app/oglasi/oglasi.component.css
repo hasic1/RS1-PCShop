@@ -2,3 +2,11 @@
   margin-right:auto;
   margin-left: auto;
 }
+.table{
+ width: 80%;
+  margin-left: 12%;
+}
+#noviOglas{
+  text-align: right;
+  margin-right: 8%;
+}
