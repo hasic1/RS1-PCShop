@@ -12,7 +12,7 @@
         <li class="dropdown"><a class="nav-link">
           <a class="nav-item">Proizvodi </a>
           <div class="dropdown-content" id="tekst">
-            <a href="/proizvodi">Svi proizvodi</a>
+            <a href="/proizvodi-korisnik">Svi proizvodi</a>
             <a href="#">Maticne ploce</a>
             <a href="#">Procesori</a>
             <a href="#">Graficke kartice</a>
@@ -51,7 +51,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/pocetna">Postavke profila</a></li>
-            <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/narudzbe">Moje narudzbe</a></li>
+            <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/narudzbe-korisnik">Moje narudzbe</a></li>
             <li><a class="dropdown-item" (click)="logoutButton()">Odjava</a></li>
           </ul>
         </li>
@@ -65,8 +65,8 @@
   <button  class="btn1 default">Statistika</button>
   <button  class="btn1 default" routerLink="/proizvodi">Proizvod</button>
   <button  class="btn1 default" (click)="btnDodajProizvodjaca()" >Proizvodjac</button>
-  <button  class="btn1 default">Oglasi</button>
-  <button  class="btn1 default" routerLink="/postovi">Postovi</button>
+  <button  class="btn1 default" routerLink="/oglasi-admin">Oglasi</button>
+  <button  class="btn1 default" routerLink="/postovi-admin">Postovi</button>
   <button  class="btn1 default" (click)="btnDodajKategoriju()" >Kategorija</button>
   <button  class="btn1 default" routerLink="/narudzbe">Narudzbe</button>
   <button  class="btn1 default" routerLink="/korisnik">Korisnicki racuni</button>

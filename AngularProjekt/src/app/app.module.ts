@@ -26,6 +26,10 @@ import { PostoviComponent } from './postovi/postovi.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ProizvodDetaljnoComponent} from "./proizvodi/proizvod-detaljno/proizvod-detaljno.component";
 import { KorisnikComponent } from './korisnik/korisnik.component';
+import { ProizvodiKorisnikComponent } from './proizvodi-korisnik/proizvodi-korisnik.component';
+import { NarudzbeKorisnikComponent } from './narudzbe-korisnik/narudzbe-korisnik.component';
+import { OglasiAdminComponent } from './oglasi-admin/oglasi-admin.component';
+import { PostoviAdminComponent } from './postovi-admin/postovi-admin.component';
 
 
 @NgModule({
@@ -49,6 +53,10 @@ import { KorisnikComponent } from './korisnik/korisnik.component';
     PostoviComponent,
     ProizvodDetaljnoComponent,
     KorisnikComponent,
+    ProizvodiKorisnikComponent,
+    NarudzbeKorisnikComponent,
+    OglasiAdminComponent,
+    PostoviAdminComponent,
   ],
   imports: [
     BrowserModule,
