@@ -25,11 +25,15 @@
 
         <div class="mb-3">
           <label class="form-label">Proizvodjac</label>
-          <input  type="number" class="form-control" [(ngModel)]="urediProizvod.proizvodjacID"  placeholder="Proizvodjac">
+          <select class="form-control" [(ngModel)]="urediProizvod.proizvodjacID" >
+            <option *ngFor="let x of proizvodjac" value="{{x.id}}">{{x.nazivProizvodjaca}}</option>
+          </select>
         </div>
         <div class="mb-3">
         <label class="form-label">KategorijaID</label>
-        <input  type="number" class="form-control" [(ngModel)]="urediProizvod.kategorijaID"  placeholder="id kategorije">
+          <select class="form-control" [(ngModel)]="urediProizvod.kategorijaID" >
+            <option *ngFor="let x of kategorije" value="{{x.kategorijaID}}">{{x.nazivKategorije}}</option>
+          </select>
       </div>
         <div class="mb-3">
           <label class="form-label">Snizen</label>

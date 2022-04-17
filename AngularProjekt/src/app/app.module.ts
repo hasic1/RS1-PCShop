@@ -30,6 +30,8 @@ import { ProizvodiKorisnikComponent } from './proizvodi-korisnik/proizvodi-koris
 import { NarudzbeKorisnikComponent } from './narudzbe-korisnik/narudzbe-korisnik.component';
 import { OglasiAdminComponent } from './oglasi-admin/oglasi-admin.component';
 import { PostoviAdminComponent } from './postovi-admin/postovi-admin.component';
+import { PostEditComponent } from './postovi-admin/post-edit/post-edit.component';
+import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { PostoviAdminComponent } from './postovi-admin/postovi-admin.component';
     NarudzbeKorisnikComponent,
     OglasiAdminComponent,
     PostoviAdminComponent,
+    PostEditComponent,
+    OglasEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,10 @@ import { PostoviAdminComponent } from './postovi-admin/postovi-admin.component';
       {path:'postovi',component:PostoviComponent},
       {path:'proizvod-detaljno',component:ProizvodDetaljnoComponent},
       {path:'korisnik',component:KorisnikComponent},
+      {path:'proizvod-korisnik',component:ProizvodiKorisnikComponent},
+      {path:'postovi-admin',component:PostoviAdminComponent},
+      {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent},
+      {path:'oglasi-admin',component:OglasiAdminComponent},
     ]),
     FormsModule,
     HttpClientModule,

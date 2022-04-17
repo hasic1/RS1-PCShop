@@ -33,7 +33,9 @@ namespace PCWebShop.Controllers
                     Kolicina = p.Kolicina,
                     LokacijaSlike = p.LokacijaSlike,
                     Opis = p.Opis,
-                    Snizen = p.Snizen
+                    Snizen = p.Snizen,
+                    Kategorija=p.Kategorija,
+                    Proizvodjac=p.Proizvodjac
                 }).AsQueryable();
             return data.Take(100).ToList();
         }

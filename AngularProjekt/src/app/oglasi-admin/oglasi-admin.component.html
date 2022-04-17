@@ -1,1 +1,38 @@
-<p>oglasi-admin works!</p>
+<div class="poravnaj">
+
+  <p></p>
+
+  <table id="myTable" >
+    <tr class="header">
+      <th>Naziv oglasa</th>
+      <th>Sadrzaj</th>
+      <th>Broj pozicija</th>
+      <th>Lokacija</th>
+      <th>Datum objave
+      <th>Trajanje oglasa</th>
+      <th>Datum isteka</th>
+      <th>Autor oglasa</th>
+      <th>Aktivan</th>
+    </tr>
+    <tbody>
+    <tr *ngFor="let p of getProizvodiPodaci()">
+      <td>{{p.naslov}}</td>
+      <td>{{p.sadrzaj}}</td>
+      <td>{{p.brojPozicja}}</td>
+      <td>{{p.lokacija}}</td>
+      <td>{{p.datumObjave}}</td>
+      <td>{{p.trajanjeOglasa}}</td>
+      <td>{{p.datumIsteka}}</td>
+      <td>{{p.autorOglasaID}}</td>
+      <td>{{p.aktivan}}</td>
+      <td>
+        <button class="btn btn-danger"(click)="obrisi(p)">Obrisi</button>
+        <button class="btn btn-primary"(click)="detalji(p)">Detalji</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="btnNovi()">Dodaj novi oglas</button>
+</div>
+
+<app-oglas-edit [urediOglas]="odabraniOglas"></app-oglas-edit>

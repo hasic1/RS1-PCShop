@@ -66,7 +66,7 @@ export class ProizvodiComponent implements OnInit {
         if(index>-1){
           this.proizvodiPodatci.splice(index,1);
         }
-        porukaSuccess("Oglas uspjesno obrisan");
+        porukaSuccess("Proizvod uspjesno obrisan");
       })
   }
 

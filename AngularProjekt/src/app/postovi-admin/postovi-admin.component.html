@@ -1,1 +1,23 @@
-<p>postovi-admin works!</p>
+<div class="poravnaj">
+<p></p>
+  <table id="myTable" >
+    <tr class="header">
+      <th>Naslov posta</th>
+      <th>Sadrzaj</th>
+      <th>Akcija </th>
+    </tr>
+    <tbody>
+    <tr *ngFor="let p of getPostPodaci()">
+      <td>{{p.naslov}}</td>
+      <td>{{p.sadrzaj}}</td>
+      <td>
+        <button class="btn btn-danger"(click)="obrisi(p)">Obrisi</button>
+        <button class="btn btn-primary"(click)="detalji(p)">Detalji</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="btnNovi()">Dodaj novi post</button>
+</div>
+
+<app-post-edit [urediPost]="odabraniPost"></app-post-edit>

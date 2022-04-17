@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PCWebShop.Database;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,8 @@ namespace PCWebShop.ViewModels
         public DateTime DatumObjave { get; set; } = DateTime.Now;
         public int TrajanjeOglasa { get; set; } = 0;
         public DateTime DatumIsteka { get; set; }
-      
+        public Administrator administrator{ get; set; }
         public bool Aktivan { get; set; } = true;
+        public int AutorOglasaID { get; set; }
     }
 }

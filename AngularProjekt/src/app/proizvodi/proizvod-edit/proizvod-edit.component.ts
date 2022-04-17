@@ -12,10 +12,18 @@ declare function porukaSuccess(s:string):any;
 export class ProizvodEditComponent implements OnInit {
   @Input()
   urediProizvod: any;
+  kategorije: any;
+  proizvodjac: any;
 
 
-  constructor(private httpKlijent:HttpClient) { }
-
+  constructor(private httpKlijent:HttpClient) {
+    this.httpKlijent.get(mojConfig.adresa_servera+"/Kategorija/GetAll").subscribe((x:any)=>{
+      this.kategorije=x;
+    });
+    this.httpKlijent.get(mojConfig.adresa_servera+"/Proizvodjac/GetAll").subscribe((p:any)=>{
+      this.proizvodjac=p;
+    });
+  }
   ngOnInit(): void {
 
   }

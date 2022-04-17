@@ -23,9 +23,7 @@ namespace   PCWebShop.Controllers
 
         [HttpGet]
         public List<OglasVM> GetAll()
-        {
-
-           
+        {          
 
             var data = _context.Oglas.OrderBy(s => s.ID)
                 .Select(s => new OglasVM()
@@ -39,6 +37,8 @@ namespace   PCWebShop.Controllers
                     DatumIsteka = s.DatumIsteka,
                     Lokacija = s.Lokacija,
                     TrajanjeOglasa = s.TrajanjeOglasa,
+                    administrator=s.AutorOglasa,
+                    AutorOglasaID=s.AutorOglasaID,
                 }).AsQueryable();
 
             return data.Take(100).ToList();
@@ -53,10 +53,10 @@ namespace   PCWebShop.Controllers
         [HttpPost]
         public ActionResult Add([FromBody] OglasAddVM o)
         {
-           
+
             var newOglas = new Oglas
             {
-               
+
                 Naslov = o.Naslov,
                 Sadrzaj = o.Sadrzaj,
                 Aktivan = o.Aktivan,
@@ -66,7 +66,6 @@ namespace   PCWebShop.Controllers
                 Lokacija = o.Lokacija,
                 TrajanjeOglasa = o.TrajanjeOglasa,
                 AutorOglasaID=o.AutorOglasaID
-
             };
 
             _context.Add(newOglas);
