@@ -9,12 +9,16 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label class="form-label">Narucioc ID</label>
-          <input type="number" class="form-control" [(ngModel)]="urediNarudzbu.naruciocID"  placeholder="Narucioc id">
+          <label class="form-label">Narucioc</label>
+          <select class="form-control" [(ngModel)]="urediNarudzbu.naruciocID" >
+            <option *ngFor="let x of narucioc" value="{{x.id}}">{{x.korisnickoIme}}</option>
+          </select>
         </div>
         <div class="mb-3">
-          <label class="form-label">Dostavljac ID</label>
-          <input  type="number" class="form-control" [(ngModel)]="urediNarudzbu.dostavljacID"  placeholder="Dostavljac ID">
+          <label class="form-label">Dostavljac</label>
+          <select class="form-control" [(ngModel)]="urediNarudzbu.dostavljacID" >
+            <option *ngFor="let x of dostavljac" value="{{x.id}}">{{x.ime}}</option>
+          </select>
         </div>
         <div class="mb-3">
           <label class="form-label">Aktivna</label>

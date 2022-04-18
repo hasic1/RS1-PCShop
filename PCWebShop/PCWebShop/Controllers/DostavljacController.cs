@@ -33,7 +33,8 @@ namespace PCWebShop.Controllers
                     ID = s.ID,
                     Adresa=s.Adresa,
                     KontaktTelefon=s.KontaktTelefon,
-                    NazivDostave=s.NazivDostave
+                    NazivDostave=s.NazivDostave,
+                    
                 }).AsQueryable();
 
             return data.Take(100).ToList();
@@ -50,7 +51,8 @@ namespace PCWebShop.Controllers
             {
                 Adresa = x.Adresa,
                 KontaktTelefon = x.KontaktTelefon,
-                NazivDostave = x.NazivDostave
+                NazivDostave = x.NazivDostave,
+                Ime=x.Ime,
             };
 
             _context.Add(newDostavljac);

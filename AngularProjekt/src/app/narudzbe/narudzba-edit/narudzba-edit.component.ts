@@ -14,10 +14,20 @@ export class NarudzbaEditComponent implements OnInit {
  @Input()
  urediNarudzbu:any;
  narudzbePodatci:any=null;
-  constructor(private httpKlijent:HttpClient) { }
+  dostavljac: any;
+  narucioc: any;
+  constructor(private httpKlijent:HttpClient) {
+    this.httpKlijent.get(mojConfig.adresa_servera+"/Dostavljac/GetAll").subscribe((x:any)=>{
+      this.dostavljac=x;
+    });
+    this.httpKlijent.get(mojConfig.adresa_servera+"/Korisnik/GetAll").subscribe((x:any)=>{
+      this.narucioc=x;
+    });
+  }
 
   ngOnInit(): void {
     this.testirajWebApi();
+
   }
   snimi() {
     if(this.urediNarudzbu.id==null){

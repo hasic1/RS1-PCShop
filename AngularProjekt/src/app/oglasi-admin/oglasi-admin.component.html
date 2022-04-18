@@ -13,6 +13,7 @@
       <th>Datum isteka</th>
       <th>Autor oglasa</th>
       <th>Aktivan</th>
+      <th>Akcija</th>
     </tr>
     <tbody>
     <tr *ngFor="let p of getProizvodiPodaci()">
@@ -23,7 +24,7 @@
       <td>{{p.datumObjave}}</td>
       <td>{{p.trajanjeOglasa}}</td>
       <td>{{p.datumIsteka}}</td>
-      <td>{{p.autorOglasaID}}</td>
+      <td>{{p.administrator.ime}}</td>
       <td>{{p.aktivan}}</td>
       <td>
         <button class="btn btn-danger"(click)="obrisi(p)">Obrisi</button>

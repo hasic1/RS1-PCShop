@@ -46,7 +46,8 @@ th, td {
   width: 70%;
   margin-left: 21%;
 }
-th,td{
+th{
   text-align-all: center;
+  width: auto;
 }
 

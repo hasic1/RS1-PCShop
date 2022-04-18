@@ -7505,6 +7505,9 @@ textarea.form-control-lg {
 .py-2 {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
+  position: absolute;
+  margin-top: 5%;
+  height: 24%;
 }
 
 .py-3 {

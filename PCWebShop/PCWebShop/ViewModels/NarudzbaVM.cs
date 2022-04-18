@@ -15,6 +15,6 @@ namespace PCWebShop.ViewModels
         public Dostavljac dostavljac{ get; set; }
         public bool Aktivna { get; set; }
         public bool Potvrdjena { get; set; }
-
+        public int NaruciocID { get; set; }
     }
 }

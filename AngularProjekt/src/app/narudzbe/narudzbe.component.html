@@ -19,20 +19,13 @@
     <td>{{n.aktivna}}</td>
     <td>{{n.potvrdjena}}</td>
     <td>
-      <button class="btn btn-danger" (click)="obrisi(n)">Obrisi</button>
-      <button class="btn btn-primary" (click)="detalji(n)">Detalji</button>
+      <img src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(n)">
+      <img src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(n)">
     </td>
   </tr>
   </tbody>
 </table>
-<p *ngIf="odabranaNarudzba !=null">Aktivna | Potvrdjena
-  <input [(ngModel)]="odabranaNarudzba.aktivna">
-  <input [(ngModel)]="odabranaNarudzba.potvrdjena">
-  <button (click)="snimi()">Snimi</button>
-</p>
-<div>
-  <button class="btn btn-primary" (click)="btnNovi()">Nova narudzba</button>
-</div>
+
 
 
 
