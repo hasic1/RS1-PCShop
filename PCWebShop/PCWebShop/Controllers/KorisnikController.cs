@@ -12,7 +12,7 @@ namespace PCWebShop.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class KorisnikController:ControllerBase
+    public class KorisnikController : ControllerBase
     {
         private readonly Context _context;
 
@@ -28,18 +28,18 @@ namespace PCWebShop.Controllers
             //    return BadRequest("Nije logiran");
 
             var data = _context.Korisnik.OrderBy(s => s.id)
-                .Where(x=> ime_prezime == null ||(x.Ime+ " "+ x.Prezime).StartsWith(ime_prezime)|| (x.Ime + " " + x.Prezime).StartsWith(ime_prezime))
+                .Where(x => ime_prezime == null || (x.Ime + " " + x.Prezime).StartsWith(ime_prezime) || (x.Ime + " " + x.Prezime).StartsWith(ime_prezime))
                .Select(s => new KorisnikVM()
                {
-                   ID= s.id,
+                   ID = s.id,
                    Ime = s.Ime,
                    DatumRodjenja = s.DatumRodjenja,
                    KorisnickoIme = s.korisnickoIme,
-                   drzava=s.Drzava,
+                   drzava = s.Drzava,
                    DrzavaID = s.DrzavaID,
                    Pretplacen = s.Pretplacen,
-                   Prezime=s.Prezime,
-                   Spol=s.Spol
+                   Prezime = s.Prezime,
+                   Spol = s.Spol
                }).AsQueryable();
             return data.Take(100).ToList();
         }
@@ -47,28 +47,41 @@ namespace PCWebShop.Controllers
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            return Ok(_context.Korisnik.FirstOrDefault(k => k.id == id)); 
+            return Ok(_context.Korisnik.FirstOrDefault(k => k.id == id));
         }
 
         [HttpPost]
-        public ActionResult Add([FromBody] KorisnikAddVM k) {
-            
+        public ActionResult Add([FromBody] KorisnikAddVM k)
+        {
+
+
+
+
+            Korisnik korisnik = _context.Korisnik.Where(x => x.korisnickoIme == k.korisnickoIme).First();
+            if (korisnik == null)
+            {
+                return BadRequest("Korisnicko ime već postoji");
+            }
+
             var newKorisnik = new Korisnik
             {
-                DrzavaID=1,
+                DrzavaID = 1,
                 Ime = k.Ime,
                 Prezime = k.Prezime,
                 korisnickoIme = k.korisnickoIme,
                 DatumRodjenja = DateTime.Now,
                 Spol = k.Spol,
-                lozinka=k.Lozinka,
-                Pretplacen=true              
+                lozinka = k.Lozinka,
+                Pretplacen = true
             };
             _context.Add(newKorisnik);
             _context.SaveChanges();
             return Get(newKorisnik.id);
             
+            
         }
+
+
         [HttpPost("{id}")]
         public ActionResult Update(int id, [FromBody] KorisnikUpdateVM x)
         {

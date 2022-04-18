@@ -24,7 +24,7 @@ import {AutorizacijaLoginProvjera} from "./_guards/autorizacija-login-provjera.s
 import {AutorizacijaKorisnikProvjera} from "./_guards/autorizacija-korisnik-provjera.service";
 import { PostoviComponent } from './postovi/postovi.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {ProizvodDetaljnoComponent} from "./proizvodi/proizvod-detaljno/proizvod-detaljno.component";
+import {ProizvodDetaljnoComponent} from "./proizvodi-korisnik/proizvod-detaljno/proizvod-detaljno.component";
 import { KorisnikComponent } from './korisnik/korisnik.component';
 import { ProizvodiKorisnikComponent } from './proizvodi-korisnik/proizvodi-korisnik.component';
 import { NarudzbeKorisnikComponent } from './narudzbe-korisnik/narudzbe-korisnik.component';
@@ -80,9 +80,10 @@ import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.compone
       {path:'administrator-postovi',component:AdministratorPostoviComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'administrator-postovi-edit',component:AdministratorPostoviEditComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'postovi',component:PostoviComponent},
-      {path:'proizvod-detaljno',component:ProizvodDetaljnoComponent},
+      {path:'proizvod-detaljno/:id',component:ProizvodDetaljnoComponent},
+      {path: 'proizvodi-korisnik',component:ProizvodiKorisnikComponent},
       {path:'korisnik',component:KorisnikComponent},
-      {path:'proizvod-korisnik',component:ProizvodiKorisnikComponent},
+      {path:'proizvodi-korisnik',component:ProizvodiKorisnikComponent},
       {path:'postovi-admin',component:PostoviAdminComponent},
       {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent},
       {path:'oglasi-admin',component:OglasiAdminComponent},

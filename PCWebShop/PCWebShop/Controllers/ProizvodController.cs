@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PCWebShop.Data;
 using PCWebShop.Database;
 using PCWebShop.ViewModels;
@@ -42,7 +43,7 @@ namespace PCWebShop.Controllers
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            return Ok(_context.Proizvod.FirstOrDefault(p => p.ProizvodID == id));
+            return Ok(_context.Proizvod.Include(p => p.Kategorija).Include(p=>p.Proizvodjac).FirstOrDefault(p => p.ProizvodID == id)) ;
         }
 
         [HttpPost]
@@ -64,7 +65,7 @@ namespace PCWebShop.Controllers
             _context.Add(newProizvod);
             _context.SaveChanges();
 
-            return Ok(newProizvod.ProizvodID);
+            return Get(newProizvod.ProizvodID);
 
         }
         [HttpPost("{id}")]

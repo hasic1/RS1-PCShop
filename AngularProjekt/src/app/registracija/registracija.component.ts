@@ -26,7 +26,7 @@ export class RegistracijaComponent implements OnInit {
 
   ngOnInit() {
     this.KorisnickaForma=this.formbulider.group({
-      ime: ['', [Validators.required]],
+      ime:new FormControl( 'test',[Validators.required]),
       prezime: ['', [Validators.required]],
       drzavaID: ['', [Validators.required]],
       spol: ['', [Validators.required]],
