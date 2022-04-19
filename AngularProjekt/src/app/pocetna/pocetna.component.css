@@ -73,10 +73,12 @@
   color: white;
   box-sizing: border-box;
   padding-top: 0.5%;
+
 }
 .columns{
 
   width: 90%;
+
 }
 *,
 *::before,

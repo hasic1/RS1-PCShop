@@ -1,1 +1,31 @@
-<p>postovi works!</p>
+<br><h3 align="center">Aktuelni postovi </h3><br>
+
+<H1>Preurediti prikaz</H1>
+
+
+<table class="table " >
+  <tr style="background: rgba(166,164,164,0.89)">
+    <th>Naslov</th>
+    <th>Sadrzaj</th>
+    <th>Broj pozicija</th>
+    <th>Lokacija</th>
+    <th>Datum objave</th>
+    <th>Datum isteka</th>
+    <th>Prijava na email</th>
+  </tr>
+  <tbody>
+  <tr *ngFor="let o of getPostoviPodaci()">
+    <td>{{o.naslov}}</td>
+    <td>{{o.sadrzaj}}</td>
+    <td>{{o.brojPozicja}}</td>
+    <td>{{o.lokacija}}</td>
+    <td>{{o.datumObjave}}</td>
+    <td>{{o.datumIsteka}}</td>
+    <td>{{o.cvEmail}}</td>
+
+  </tr>
+  </tbody>
+</table>
+
+
+

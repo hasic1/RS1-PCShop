@@ -15,5 +15,6 @@ namespace PCWebShop.ViewModels
         public DateTime DatumIsteka { get; set; }
         public int AutorOglasaID { get; set; }
         public bool Aktivan { get; set; } = true;
+        public string CVEmail { get; set; }
     }
 }

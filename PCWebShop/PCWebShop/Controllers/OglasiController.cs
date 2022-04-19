@@ -11,7 +11,7 @@ using PCWebShop.ViewModels;
 namespace   PCWebShop.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]/[action]")] 
     public class OglasiController:ControllerBase
     {
         public readonly Context _context;
@@ -39,10 +39,37 @@ namespace   PCWebShop.Controllers
                     TrajanjeOglasa = s.TrajanjeOglasa,
                     administrator=s.AutorOglasa,
                     AutorOglasaID=s.AutorOglasaID,
+                    CVEmail=s.CVEmail
                 }).AsQueryable();
 
             return data.Take(100).ToList();
             
+
+        }
+        [HttpGet]
+        public List<OglasVM> GetAllKorisnik()
+        {
+
+            var data = _context.Oglas.OrderBy(s => s.ID)
+                .Where(o=>o.DatumIsteka >=DateTime.Now)
+                .Select(s => new OglasVM()
+                {
+                    ID = s.ID,
+                    Naslov = s.Naslov,
+                    Sadrzaj = s.Sadrzaj,
+                    Aktivan = s.Aktivan,
+                    BrojPozicja = s.BrojPozicja,
+                    DatumObjave = s.DatumObjave,
+                    DatumIsteka = s.DatumIsteka,
+                    Lokacija = s.Lokacija,
+                    TrajanjeOglasa = s.TrajanjeOglasa,
+                    administrator = s.AutorOglasa,
+                    AutorOglasaID = s.AutorOglasaID,
+                    CVEmail = s.CVEmail
+                }).AsQueryable();
+
+            return data.Take(100).ToList();
+
 
         }
         [HttpGet("{id}")]
@@ -65,7 +92,10 @@ namespace   PCWebShop.Controllers
                 DatumIsteka = o.DatumIsteka,
                 Lokacija = o.Lokacija,
                 TrajanjeOglasa = o.TrajanjeOglasa,
-                AutorOglasaID=o.AutorOglasaID
+                AutorOglasaID=o.AutorOglasaID,
+                CVEmail=o.CVEmail
+                
+                
             };
 
             _context.Add(newOglas);
@@ -88,6 +118,7 @@ namespace   PCWebShop.Controllers
             oglas.DatumIsteka = x.DatumIsteka;
             oglas.Lokacija = x.Lokacija;
             oglas.TrajanjeOglasa = x.TrajanjeOglasa;
+            oglas.CVEmail = x.CVEmail;
 
 
             _context.SaveChanges();

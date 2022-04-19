@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {mojConfig} from "../moj-config";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LoginInformacije} from "../_helpers/login-informacije";
+import {AutentifikacijaHelper} from "../_helpers/autentifikacija-helper";
 
 @Component({
   selector: 'app-pocetna',
@@ -38,5 +40,8 @@ odabraniProizvod:any=null;
   Prikazi(p: any) {
     this.odabraniProizvod=p;
     this.odabraniProizvod.prikazi=true;
+  }
+  loginInfo(): LoginInformacije {
+    return AutentifikacijaHelper.getLoginInfo();
   }
 }

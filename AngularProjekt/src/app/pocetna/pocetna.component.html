@@ -22,7 +22,8 @@
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="dodajUKorpu()"  href="#">Dodaj u korpu</button></div>
+            <div *ngIf="loginInfo().isPermisijaKorisnik" class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="dodajUKorpu()" >Dodaj u korpu</button></div>
+            <div *ngIf="!loginInfo().isLogiran" class="text-center"><button class="btn btn-outline-dark mt-auto" routerLink="/registracija" >Dodaj u korpu</button></div>
           </div>
         </div>
       </div>
@@ -37,7 +38,7 @@
 </section>
 <!-- Footer-->
 
-<footer class="py-2 bg-dark">
+<footer  class="py-2 bg-dark">
   <div class="columns">
     <div class="column">
       <div class="info-card">
@@ -67,8 +68,10 @@
       </div>
     </div>
   </div>
-  <div class="container"><p class="m-0 text-center "> &copy; </p></div>
+
 </footer>
+
+
 
 </body>
 

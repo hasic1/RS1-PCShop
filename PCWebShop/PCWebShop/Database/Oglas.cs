@@ -22,5 +22,6 @@ namespace PCWebShop.Database
         public Administrator AutorOglasa { get; set; }
         public int AutorOglasaID { get; set; }
         public bool Aktivan { get; set; } = true;
+        public string CVEmail { get; set; }
     }
 }

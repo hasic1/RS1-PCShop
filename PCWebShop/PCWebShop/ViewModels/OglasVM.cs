@@ -18,5 +18,6 @@ namespace PCWebShop.ViewModels
         public Administrator administrator{ get; set; }
         public bool Aktivan { get; set; } = true;
         public int AutorOglasaID { get; set; }
+        public string CVEmail { get; set; }
     }
 }

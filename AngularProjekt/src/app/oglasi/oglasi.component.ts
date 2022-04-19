@@ -15,6 +15,7 @@ declare function porukaError(a:string):any;
 
 export class OglasiComponent implements OnInit {
 
+
   oglasiPodatci:any;
   odabraniOglas: any=null;
 
@@ -24,7 +25,7 @@ export class OglasiComponent implements OnInit {
 
 
   testirajWebApi() {
-    this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAll").subscribe(x=>{
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAllKorisnik").subscribe(x=>{
       this.oglasiPodatci = x;
     });
   }

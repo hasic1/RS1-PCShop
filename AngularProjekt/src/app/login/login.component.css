@@ -78,18 +78,22 @@
 .column,
 .columns {
 
-  margin-left: 3%;
+  margin-left: 0;
   width: 100%;
   display: flex;
   float: left;
   color: white;
   box-sizing: border-box;
   padding-top: 0.5%;
+
+}
+.column{
+  margin-left: 3%;
 }
 .columns{
 
-  width: 90%;
+  width: 100%;
+
+
 }
-footer{
-  padding-bottom: -200%;
-}
+

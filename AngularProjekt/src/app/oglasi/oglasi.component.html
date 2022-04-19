@@ -4,36 +4,29 @@
 
 
 
-<table class="table table-primary" >
-  <tr>
+<table class="table " >
+  <tr style="background: rgba(166,164,164,0.89)">
     <th>Naslov</th>
     <th>Sadrzaj</th>
     <th>Broj pozicija</th>
     <th>Lokacija</th>
     <th>Datum objave</th>
     <th>Datum isteka</th>
-    <th>Datum isteka</th>
-    <th>Aktivan</th>
+    <th>Prijava na email</th>
   </tr>
   <tbody>
-  <tr *ngFor="let o of getOglasiPodaci()">
+  <tr *ngFor="let o of getOglasiPodaci()" >
     <td>{{o.naslov}}</td>
     <td>{{o.sadrzaj}}</td>
     <td>{{o.brojPozicja}}</td>
     <td>{{o.lokacija}}</td>
     <td>{{o.datumObjave}}</td>
     <td>{{o.datumIsteka}}</td>
-    <td>{{o.aktivan}}</td>
-    <td>
-      <button (click)="obrisi(o)">Obrisi</button>
-      <button (click)="detalji(o)">Detalji</button>
-    </td>
+    <td>{{o.cvEmail}}</td>
+
   </tr>
   </tbody>
 </table>
-<div id="noviOglas" >
 
-  <button id="novi" class="btn btn-primary" (click)="btnNovi()">Kreiraj oglas</button>
-</div>
 
 <app-oglasi-edit [urediOglas]="odabraniOglas"></app-oglasi-edit>
