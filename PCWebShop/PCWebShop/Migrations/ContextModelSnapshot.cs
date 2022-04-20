@@ -138,6 +138,9 @@ namespace PCWebShop.Migrations
                     b.Property<string>("lozinka")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("slika_korisnika")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("id");
 
                     b.ToTable("KorisnickiNalog");
@@ -330,6 +333,9 @@ namespace PCWebShop.Migrations
 
                     b.Property<bool>("Snizen")
                         .HasColumnType("bit");
+
+                    b.Property<string>("slikaProizvoda")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProizvodID");
 

@@ -2,9 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using PCWebShop.Data;
 using PCWebShop.Database;
+using PCWebShop.Helper;
+using PCWebShop.Helper.AutentifikacijaAutorizacija;
 using PCWebShop.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -102,6 +105,31 @@ namespace PCWebShop.Controllers
 
             _context.SaveChanges();
             return Ok(proizvod);
+        }
+        [HttpPost("{id}")]
+        public ActionResult AddProfileImage(int id, [FromForm] ProizvodImageAddVM x)
+        {
+            try
+            {
+                Proizvod proizvod = _context.Proizvod.FirstOrDefault(s => s.ProizvodID == id);
+
+                if (x.slika_proizvoda != null && proizvod != null)
+                {                    
+                    string ekstenzija = Path.GetExtension(x.slika_proizvoda.FileName);
+
+                    var filename = $"{Guid.NewGuid()}{ekstenzija}";
+
+                    x.slika_proizvoda.CopyTo(new FileStream(Config.SlikeFolder + filename, FileMode.Create));
+                    proizvod.slikaProizvoda = Config.SlikeURL + filename;
+                    _context.SaveChanges();
+                }
+
+                return Ok(proizvod);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message + ex.InnerException);
+            }
         }
     }
 }
