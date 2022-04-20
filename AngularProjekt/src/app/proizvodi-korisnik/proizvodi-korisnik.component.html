@@ -1,30 +1,67 @@
-<div  class="sadrzaj" >
 
-<h2 style="margin-top: 1%">Kategorija </h2>
 
-  <div  class="container px-4 px-lg-5 mt-5">
+<section class="py-5">
+  <h2 style="text-align: center">{{getKategoriju().nazivKategorije}}</h2>
+  <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <div class="col mb-5">
+      <div *ngFor="let p of getProizvod()"  class="col mb-5">
         <div class="card h-100">
-          <!-- Product image-->
-          <img class="card-img-top" style="height:62%" src="assets/img/pc1.jpg" alt="... " routerLink="/proizvod-detaljno" />
-          <!-- Product details-->
+
+          <img class="card-img-top" style="height:250px; width: 100%;"  [routerLink]="['/proizvod-detaljno', p.proizvodID]" src="{{p.lokacijaSlike}}" routerLink="/proizvod-detaljno/+{{p.id}}" alt="Nije moguće učitati sliku"   />
+
           <div class="card-body p-4">
-            <div class="text-center">
-              <!-- Product name-->
-              <h5 class="fw-bolder">Fancy Product</h5>
-              <!-- Product price-->
-              $40.00 - $80.00
+            <div class="text-center" style="margin-top: 2%">
+
+              <h5 class="fw-bolder" style="margin-top: 2%" >{{p.nazivProizvoda}}</h5>
+
+              {{p.cijena}} KM
             </div>
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+            <div *ngIf="loginInfo().isPermisijaKorisnik" class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="dodajUKorpu()" >Dodaj u korpu</button></div>
+            <div *ngIf="!loginInfo().isLogiran" class="text-center"><button class="btn btn-outline-dark mt-auto" routerLink="/registracija" >Dodaj u korpu</button></div>
           </div>
         </div>
       </div>
 
-
-</div>
+    </div>
   </div>
-</div>
+
+
+
+
+
+</section>
+<footer  class="py-2 bg-dark">
+  <div class="columns">
+    <div class="column">
+      <div class="info-card">
+        <img src="assets/img/Ikone/lokacija.png" width="62" />
+        <div>
+          <a href="/pocetna">NAŠE POSLOVNICE</a>
+          <p> Dođite u najbližu poslovnicu ili nas pozovite putem besplatnog broja:  <a href="tel:061550134"> 061/550-134 </a> </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="info-card">
+        <img src="assets/img/Ikone/katalog_icon.png" width="62" />
+        <div>
+          <a href="">KATALOG</a>
+          <p> Omogućili smo pregled narudžbi i raznih artikala bez potrebe dolaska u poslovnicu u samo par klikova! </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="info-card">
+        <img src="assets/img/Ikone/IT_Solutions.png" width="62" />
+        <div>
+          <a href="">SLOŽENA RJEŠENJA</a>
+          <p> Za složena IT rjesenja i bilo kakva pitanja pozovite naš broj ili pošaljite mail na <a href="mailto:prodaja@itoprema.ba">prodaja@itoprema.ba</a> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>

@@ -81,9 +81,9 @@ import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.compone
       {path:'administrator-postovi-edit',component:AdministratorPostoviEditComponent,canActivate:[AutorizacijaAdminProvjera]},
       {path:'postovi',component:PostoviComponent},
       {path:'proizvod-detaljno/:id',component:ProizvodDetaljnoComponent},
-      {path: 'proizvodi-korisnik',component:ProizvodiKorisnikComponent},
+      {path: 'proizvodi-korisnik/:id',component:ProizvodiKorisnikComponent},
       {path:'korisnik',component:KorisnikComponent},
-      {path:'proizvodi-korisnik',component:ProizvodiKorisnikComponent},
+
       {path:'postovi-admin',component:PostoviAdminComponent},
       {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent},
       {path:'oglasi-admin',component:OglasiAdminComponent},

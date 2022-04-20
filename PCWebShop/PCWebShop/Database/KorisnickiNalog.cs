@@ -19,7 +19,7 @@ namespace PCWebShop.Database
 
         [JsonIgnore]
         public Korisnik korisnik => this as Korisnik;
-        public string slika_korisnika { get; set; }
+       
         [JsonIgnore]
         public Administrator administrator => this as Administrator;
         public bool isKupac => korisnik != null;

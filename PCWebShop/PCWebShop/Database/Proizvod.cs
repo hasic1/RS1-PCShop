@@ -23,6 +23,6 @@ namespace PCWebShop.Database
         [ForeignKey(nameof(ProizvodjacID))]
         public Proizvodjac Proizvodjac { get; set; }
         public int ProizvodjacID { get; set; }
-        public string slikaProizvoda { get; set; }
+        
     }
 }

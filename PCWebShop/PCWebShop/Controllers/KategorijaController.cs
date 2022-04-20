@@ -61,5 +61,11 @@ namespace PCWebShop.Controllers
                 }).AsQueryable();
             return data.Take(100).ToList();
         }
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
+        {
+            return Ok(_context.Kategorija.FirstOrDefault(k => k.KategorijaID == id));
+        }
+
     }
 }

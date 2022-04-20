@@ -17,11 +17,13 @@ export class AppComponent {
   noviProizvodjac:any;
   novaKategorija:any;
   noviPost:any=null;
-
+  kategorijePodatci:any;
 
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
-
+  ngOnInit(): void {
+    this.testirajWebApi();
+  }
   logoutButton() {
     AutentifikacijaHelper.setLoginInfo(null);
 
@@ -50,5 +52,23 @@ export class AppComponent {
       prikazi:true,
       nazivKategorije:"",
     };
+
+  }
+  testirajWebApi() {
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Kategorija/GetAll").subscribe(x=>{
+      this.kategorijePodatci = x;
+    });
+  }
+  getKategorijePodaci() {
+    if (this.kategorijePodatci == null)
+      return [];
+    return this.kategorijePodatci;
+  }
+
+  Otvori(k: any) {
+    this.router.navigate(['/proizvodi-korisnik',k.kategorijaID])
+      .then(() => {
+        window.location.reload();
+      });
   }
 }

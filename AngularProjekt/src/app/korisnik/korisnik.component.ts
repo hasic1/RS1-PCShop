@@ -25,7 +25,7 @@ export class KorisnikComponent implements OnInit {
   getProizvodiPodaci() {
     if (this.korisnikPodaci==null)
       return[];
-    return this.korisnikPodaci.filter((x: any)=> x.ime.length==0 || (x.ime + " " + x.prezime).toLowerCase().startsWith(this.ime.toLowerCase()) || (x.prezime + " " + x.ime).toLowerCase().startsWith(this.ime.toLowerCase()));
+    return this.korisnikPodaci.filter((x: any)=> this.ime=="" || (x.ime + " " + x.prezime).toLowerCase().startsWith(this.ime.toLowerCase()) || (x.prezime + " " + x.ime).toLowerCase().startsWith(this.ime.toLowerCase()));
   }
   ngOnInit(): void {
     this.testirajWebApi();

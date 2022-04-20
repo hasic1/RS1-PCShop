@@ -12,13 +12,8 @@
         <li class="dropdown"><a class="nav-link">
           <a class="nav-item">Proizvodi </a>
           <div class="dropdown-content" id="tekst">
-            <a href="/proizvodi-korisnik">Svi proizvodi</a>
-            <a href="#3">Maticne ploce</a>
-            <a href="#">Procesori</a>
-            <a href="#">Graficke kartice</a>
-            <a href="#">RAM</a>
-            <a href="#">Monitori</a>
-            <a href="#">Ostalo</a>
+            <a *ngFor="let k of getKategorijePodaci()"  (click)="Otvori(k)">{{k.nazivKategorije}}</a>
+
 
           </div>
         </a>
@@ -31,7 +26,7 @@
 
       </ul>
         <!--<div style="margin-right: 110px; margin-left: 120px"> </div>-->
-      <button *ngIf="loginInfo().isPermisijaKorisnik" routerLink="/korpa"  class="btn btn-outline-light" type="submit">
+      <button *ngIf="loginInfo().isPermisijaKorisnik" ro routerLink="/korpa"  class="btn btn-outline-light" type="submit">
 
         Korpa
 

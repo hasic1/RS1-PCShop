@@ -120,7 +120,7 @@ namespace PCWebShop.Controllers
                     var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
                     x.slika_proizvoda.CopyTo(new FileStream(Config.SlikeFolder + filename, FileMode.Create));
-                    proizvod.slikaProizvoda = Config.SlikeURL + filename;
+                    proizvod.LokacijaSlike = Config.SlikeURL + filename;
                     _context.SaveChanges();
                 }
 

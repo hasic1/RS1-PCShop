@@ -1,31 +1,65 @@
-<br><h3 align="center">Aktuelni postovi </h3><br>
+<h2 style="text-align:  center;padding-top: 2%"> Aktuelni postovi </h2>
 
-<H1>Preurediti prikaz</H1>
+<div *ngFor=" let p of getPostoviPodaci()"  class="conteiner">
 
 
-<table class="table " >
-  <tr style="background: rgba(166,164,164,0.89)">
-    <th>Naslov</th>
-    <th>Sadrzaj</th>
-    <th>Broj pozicija</th>
-    <th>Lokacija</th>
-    <th>Datum objave</th>
-    <th>Datum isteka</th>
-    <th>Prijava na email</th>
-  </tr>
-  <tbody>
-  <tr *ngFor="let o of getPostoviPodaci()">
-    <td>{{o.naslov}}</td>
-    <td>{{o.sadrzaj}}</td>
-    <td>{{o.brojPozicja}}</td>
-    <td>{{o.lokacija}}</td>
-    <td>{{o.datumObjave}}</td>
-    <td>{{o.datumIsteka}}</td>
-    <td>{{o.cvEmail}}</td>
+  <div class="conteiner2">
+    <div class="picture">
+      <div>
+        <figure class="">
+          <img class="card-image"  src="{{p.lokacijaSlike}}" alt="Nije moguće učitati sliku" />
+        </figure>
+      </div>
+    </div>
+    <div class="table">
 
-  </tr>
-  </tbody>
-</table>
+      <table style="border: none;border-bottom-color: white">
+        <tr>
+          <td style="padding-bottom: 0%;padding-top: 2%"><b></b> <i> <b>{{p.naslov}}</b></i> </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 0%;"><i><b>Autor:  </b></i> <i>  {{p.autorPosta.ime}} {{p.autorPosta.prezime}}</i> </td>
+        </tr>
+        <tr>
+          <td> {{p.sadrzaj}} </td>
+        </tr>
 
+      </table>
+    </div>
+
+  </div>
+</div>
+<footer class="py-2 bg-dark">
+  <div class="columns py-2 bg-dark">
+    <div class="column">
+      <div class="info-card">
+        <img src="assets/img/Ikone/lokacija.png" width="62" />
+        <div>
+          <a href="/pocetna">NAŠE POSLOVNICE</a>
+          <p> Dođite u najbližu poslovnicu ili nas pozovite putem besplatnog broja: <a href="tel:061550134"> 061/550-134 </a> </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="info-card">
+        <img src="assets/img/Ikone/katalog_icon.png" width="62" />
+        <div>
+          <a href="">KATALOG</a>
+          <p> Omogućili smo pregled narudžbi i raznih artikala bez potrebe dolaska u poslovnicu u samo par klikova! </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="info-card">
+        <img src="assets/img/Ikone/IT_Solutions.png" width="62" />
+        <div>
+          <a href="">SLOŽENA RJEŠENJA</a>
+          <p> Za složena IT rjesenja i bilo kakva pitanja pozovite naš broj ili pošaljite mail na <a href="mailto:prodaja@itoprema.ba">prodaja@itoprema.ba</a> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
 
 

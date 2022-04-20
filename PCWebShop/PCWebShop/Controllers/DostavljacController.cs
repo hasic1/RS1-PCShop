@@ -52,7 +52,7 @@ namespace PCWebShop.Controllers
                 Adresa = x.Adresa,
                 KontaktTelefon = x.KontaktTelefon,
                 NazivDostave = x.NazivDostave,
-                Ime=x.Ime,
+             
             };
 
             _context.Add(newDostavljac);
