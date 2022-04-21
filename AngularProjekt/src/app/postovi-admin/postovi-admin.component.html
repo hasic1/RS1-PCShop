@@ -5,14 +5,16 @@
       <th>Naslov posta</th>
       <th>Sadrzaj</th>
       <th>Akcija </th>
+      <th>Autor posta</th>
     </tr>
     <tbody>
     <tr *ngFor="let p of getPostPodaci()">
       <td>{{p.naslov}}</td>
       <td>{{p.sadrzaj}}</td>
+      <td>{{p.autorPosta.korisnickoIme}}</td>
       <td>
-        <button class="btn btn-danger"(click)="obrisi(p)">Obrisi</button>
-        <button class="btn btn-primary"(click)="detalji(p)">Detalji</button>
+        <img src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
+        <img src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(p)">
       </td>
     </tr>
     </tbody>

@@ -8,32 +8,28 @@
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label">Naslov</label>
-          <input type="text" class="form-control" [(ngModel)]="urediOglas.naslov"  placeholder="Naziv">
+          <input type="text" class="form-control" [(ngModel)]="urediOglas.naslov"  placeholder="Naslov">
         </div>
         <div class="mb-3">
           <label class="form-label">Sadrzaj</label>
-          <input type="text" class="form-control" [(ngModel)]="urediOglas.sadrzaj" placeholder="Opis proizvoda">
+          <input type="text" class="form-control" [(ngModel)]="urediOglas.sadrzaj" placeholder="Sadrzaj">
         </div>
         <div class="mb-3">
           <label class="form-label">Broj pozicija</label>
-          <input  type="number" class="form-control" [(ngModel)]="urediOglas.brojPozicja"  placeholder="Cijena KM">
+          <input  type="number" class="form-control" [(ngModel)]="urediOglas.brojPozicja">
         </div>
         <div class="mb-3">
           <label class="form-label">Lokacija</label>
-          <input type="text" class="form-control" [(ngModel)]="urediOglas.lokacija"  placeholder="putanja do slike">
+          <input type="text" class="form-control" [(ngModel)]="urediOglas.lokacija"  placeholder="Lokacija">
         </div>
 
         <div class="mb-3">
           <label class="form-label">Datum objave</label>
-          <input  type="date" class="form-control" [(ngModel)]="urediOglas.datumObjave"  placeholder="Proizvodjac">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Trajanje oglasa</label>
-          <input  type="number" class="form-control" [(ngModel)]="urediOglas.trajanjeOglasa"  placeholder="id kategorije">
+          <input  type="date" class="form-control" [(ngModel)]="urediOglas.datumObjave">
         </div>
         <div class="mb-3">
           <label class="form-label">Datum isteka</label>
-          <input  type="date" class="form-control" [(ngModel)]="urediOglas.datumIsteka"  placeholder="id kategorije">
+          <input  type="date" class="form-control" [(ngModel)]="urediOglas.datumIsteka">
         </div>
         <div class="mb-3">
           <label class="form-label">Autor oglasa</label>

@@ -11,10 +11,14 @@ declare function porukaSuccess(x:string):any;
 })
 export class PostEditComponent implements OnInit {
   @Input()urediPost:any;
-  constructor(private httpKlijent:HttpClient) { }
-
-  ngOnInit(): void {
+  admini: any;
+  constructor(private httpKlijent:HttpClient) {
+    this.httpKlijent.get(mojConfig.adresa_servera+"/Administrator/GetAll").subscribe((x:any)=>{
+      this.admini=x;
+    });
   }
+
+  ngOnInit(): void {}
 
   snimi() {
     if(this.urediPost.id==null){

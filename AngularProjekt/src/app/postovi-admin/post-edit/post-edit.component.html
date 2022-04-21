@@ -14,6 +14,12 @@
           <label class="form-label">Sadrzaj posta</label>
           <input type="text" class="form-control" [(ngModel)]="urediPost.sadrzaj" placeholder="Sadrzaj">
         </div>
+        <div class="mb-3">
+          <label class="form-label">Autor posta</label>
+          <select class="form-control" [(ngModel)]="urediPost.autorPostaID" >
+            <option *ngFor="let x of admini" value="{{x.id}}">{{x.korisnickoIme}}</option>
+          </select>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="urediPost.prikazi = false" >Close</button>
         <button type="button" class="btn btn-primary" (click)="snimi()">Save changes</button>

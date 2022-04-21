@@ -18,7 +18,9 @@ display: flex;
 .conteiner2 {
   display: flex;
 
-}
+}.py-2{
+   position: relative;
+ }
 .card-image{
 
   width: 250px;

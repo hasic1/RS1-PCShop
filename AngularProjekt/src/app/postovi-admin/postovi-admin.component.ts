@@ -46,7 +46,7 @@ export class PostoviAdminComponent implements OnInit {
         prikazi:true,
         naslov:"",
         sadrzaj:"",
-        autorPostaID:2,
+        autorPostaID:1,
         lokacijaSlike:"negdje",
         datumObjave:new Date(),
       };

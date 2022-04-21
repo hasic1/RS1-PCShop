@@ -9,7 +9,6 @@
       <th>Broj pozicija</th>
       <th>Lokacija</th>
       <th>Datum objave
-      <th>Trajanje oglasa</th>
       <th>Datum isteka</th>
       <th>Autor oglasa</th>
       <th>Aktivan</th>
@@ -22,13 +21,12 @@
       <td>{{p.brojPozicja}}</td>
       <td>{{p.lokacija}}</td>
       <td>{{p.datumObjave}}</td>
-      <td>{{p.trajanjeOglasa}}</td>
       <td>{{p.datumIsteka}}</td>
       <td>{{p.administrator.ime}}</td>
       <td>{{p.aktivan}}</td>
       <td>
-        <button class="btn btn-danger"(click)="obrisi(p)">Obrisi</button>
-        <button class="btn btn-primary"(click)="detalji(p)">Detalji</button>
+        <img src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
+        <img src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(p)">
       </td>
     </tr>
     </tbody>

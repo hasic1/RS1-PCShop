@@ -31,7 +31,7 @@ namespace PCWebShop
         {
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("connectionpc")));
+                    Configuration.GetConnectionString("connection")));
 
 
             services.AddSignalR();

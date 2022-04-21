@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PCWebShop.Database;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +12,6 @@ namespace PCWebShop.ViewModels
         public int AutorPostaID { get; set; }
         public string LokacijaSlike { get; set; }
         public DateTime DatumObjave { get; set; }
-        
+        public Administrator AutorPosta { get; set; }
     }
 }
