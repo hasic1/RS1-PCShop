@@ -53,19 +53,9 @@ namespace PCWebShop.Controllers
         [HttpPost]
         public ActionResult Add([FromBody] KorisnikAddVM k)
         {
-
-
-
-
-            Korisnik korisnik = _context.Korisnik.Where(x => x.korisnickoIme == k.korisnickoIme).First();
-            if (korisnik == null)
-            {
-                return BadRequest("Korisnicko ime već postoji");
-            }
-
             var newKorisnik = new Korisnik
             {
-                DrzavaID = 1,
+                DrzavaID = k.DrzavaID,
                 Ime = k.Ime,
                 Prezime = k.Prezime,
                 korisnickoIme = k.korisnickoIme,
@@ -74,11 +64,10 @@ namespace PCWebShop.Controllers
                 lozinka = k.Lozinka,
                 Pretplacen = true
             };
+
             _context.Add(newKorisnik);
             _context.SaveChanges();
-            return Get(newKorisnik.id);
-            
-            
+            return Get(newKorisnik.id);     
         }
 
 

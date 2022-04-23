@@ -65,6 +65,7 @@ export class RegistracijaComponent implements OnInit {
       this.drzavePodatci = x;
     });
   }
+
 }
 
 

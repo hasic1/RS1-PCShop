@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using PCWebShop.Database;
+using System.Collections.Generic;
 
 namespace PCWebShop.Data
 {
@@ -22,6 +23,7 @@ namespace PCWebShop.Data
         public DbSet<Post> Post { get; set; }
         public DbSet<Narudzba> Narudzba { get; set; }
         public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
+        public List<Korisnik> korisnici { get; set; }
 
         public DbSet<Administrator> Administrator { get; set; }
         public DbSet<Korisnik> Korisnik { get; set; }

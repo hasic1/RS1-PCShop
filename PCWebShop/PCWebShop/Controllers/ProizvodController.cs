@@ -53,8 +53,7 @@ namespace PCWebShop.Controllers
         public ActionResult Add([FromBody] ProizvodAddVM x) {
 
             var newProizvod = new Proizvod
-            {
-                
+            {                
                 Cijena = x.Cijena,
                 KategorijaID = x.KategorijaID,
                 Kolicina = x.Kolicina,
@@ -62,8 +61,7 @@ namespace PCWebShop.Controllers
                 NazivProizvoda = x.NazivProizvoda,
                 Opis = x.Opis,
                 ProizvodjacID = x.ProizvodjacID,
-                Snizen = x.Snizen
-                
+                Snizen = x.Snizen                
             };
             _context.Add(newProizvod);
             _context.SaveChanges();
