@@ -43,6 +43,17 @@ namespace PCWebShop.Controllers
                 }).AsQueryable();
             return data.Take(100).ToList();
         }
+        [HttpGet]
+        public ActionResult<PagedList<Proizvod>> GetAllPaged(int items_per_page,int page_number)
+        {
+
+            var data = _context.Proizvod.Include(x => x.Proizvodjac.NazivProizvodjaca)
+                .AsQueryable();
+
+
+            return PagedList<Proizvod>.Create(data, page_number, items_per_page);
+        }
+
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {

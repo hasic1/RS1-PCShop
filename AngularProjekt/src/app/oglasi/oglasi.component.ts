@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {mojConfig} from "../moj-config";
 import {LoginInformacije} from "src/app/_helpers/login-informacije";
 import {AutentifikacijaHelper} from "src/app/_helpers/autentifikacija-helper";
+import {DatePipe} from "@angular/common";
 
 declare function porukaSuccess(a: string):any;
 declare function porukaError(a:string):any;
@@ -27,6 +28,7 @@ export class OglasiComponent implements OnInit {
   testirajWebApi() {
     this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAllKorisnik").subscribe(x=>{
       this.oglasiPodatci = x;
+
     });
   }
 
@@ -35,6 +37,7 @@ export class OglasiComponent implements OnInit {
   getOglasiPodaci() {
     if (this.oglasiPodatci == null)
       return [];
+
     return this.oglasiPodatci;
   }
   ngOnInit(): void {

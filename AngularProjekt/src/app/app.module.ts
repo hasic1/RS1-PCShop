@@ -32,7 +32,7 @@ import { OglasiAdminComponent } from './oglasi-admin/oglasi-admin.component';
 import { PostoviAdminComponent } from './postovi-admin/postovi-admin.component';
 import { PostEditComponent } from './postovi-admin/post-edit/post-edit.component';
 import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.component';
-
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -98,7 +98,7 @@ import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.compone
     AutorizacijaAdminProvjera,
     AutorizacijaLoginProvjera,
     AutorizacijaKorisnikProvjera,
-
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
