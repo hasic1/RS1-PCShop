@@ -11,6 +11,7 @@ namespace PCWebShop.ViewModels
         public string KorisnickoIme { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
+        public string Email { get; set; }
         public string Spol { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public int DrzavaID { get; set; }

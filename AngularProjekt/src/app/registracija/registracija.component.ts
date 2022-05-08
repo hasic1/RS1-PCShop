@@ -21,19 +21,29 @@ export class RegistracijaComponent implements OnInit {
   KorisnickaForma:any;
   message:string;
   data=false;
+  proba: string;
 
   constructor(private httpKlijent:HttpClient, private formbulider: FormBuilder,private autentifikacijaRegistracija:AutentifikacijaHelper,private router: Router,) { }
 
   ngOnInit() {
     this.KorisnickaForma=this.formbulider.group({
-      ime:new FormControl( '',[Validators.required]),
-      prezime: ['', [Validators.required]],
-      drzavaID: ['', [Validators.required]],
-      spol: ['', [Validators.required]],
-      korisnickoIme: ['', [Validators.required]],
-      lozinka: ['', [Validators.required, Validators.minLength(6)]],
+      ime:new FormControl( ''),
+      prezime: new FormControl(''),
+      drzavaID:  new FormControl('', [Validators.required]),
+      email: new FormControl('',[Validators.required, Validators.email]),
+      spol:  new FormControl(''),
+      datumRodjenja: new FormControl('', [Validators.required]),
+      korisnickoIme:new  FormControl( '',[Validators.required]),
+      lozinka: new FormControl('',[Validators.required, Validators.minLength(8)])
     })
     this.testirajWebApi();
+  }
+
+  public validateControl = (controlName: string) => {
+    return this.KorisnickaForma.controls[controlName].invalid && this.KorisnickaForma.controls[controlName].touched
+  }
+  public hasError = (controlName: string, errorName: string) => {
+    return this.KorisnickaForma.controls[controlName].hasError(errorName)
   }
 
   getDrzave(){
@@ -44,8 +54,21 @@ export class RegistracijaComponent implements OnInit {
 
   onFormSubmit()
   {
+
     const korisnik = this.KorisnickaForma.value;
-    this.KreirajKorisnika(korisnik);
+
+    const user: Korisnik = {
+      ime: korisnik.ime,
+      prezime: korisnik.prezime,
+      email: korisnik.email,
+      lozinka: korisnik.lozinka,
+      drzavaID:korisnik.drzavaID,
+      spol:korisnik.spol,
+      datumRodjenja:korisnik.datumRodjenja,
+      korisnickoIme: korisnik.korisnickoIme,
+
+    };
+    this.KreirajKorisnika(user);
   }
   KreirajKorisnika(register:Korisnik)
   {

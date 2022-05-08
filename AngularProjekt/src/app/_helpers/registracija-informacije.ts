@@ -3,7 +3,8 @@ export class Korisnik {
   ime: string;
   prezime: string;
   spol: string;
-  datumRodjenja:Date=new Date();
+  email:string;
+  datumRodjenja:Date;
   drzavaID:number;
   lozinka: string;
 

@@ -33,6 +33,7 @@ import { PostoviAdminComponent } from './postovi-admin/postovi-admin.component';
 import { PostEditComponent } from './postovi-admin/post-edit/post-edit.component';
 import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.component';
 import {DatePipe} from "@angular/common";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {DatePipe} from "@angular/common";
     PostoviAdminComponent,
     PostEditComponent,
     OglasEditComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,7 @@ import {DatePipe} from "@angular/common";
       {path:'korisnik',component:KorisnikComponent},
 
       {path:'postovi-admin',component:PostoviAdminComponent},
-      {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent},
+      {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent,canActivate:[AutorizacijaKorisnikProvjera]},
       {path:'oglasi-admin',component:OglasiAdminComponent},
     ]),
     FormsModule,

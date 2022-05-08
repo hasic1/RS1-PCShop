@@ -63,23 +63,7 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
-.column,
-.columns {
 
-  margin-left: 3%;
-  width: 100%;
-  display: flex;
-  float: left;
-  color: white;
-  box-sizing: border-box;
-  padding-top: 0.5%;
-
-}
-.columns{
-
-  width: 90%;
-
-}
 *,
 *::before,
 *::after {

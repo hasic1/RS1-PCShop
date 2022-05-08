@@ -75,25 +75,4 @@
   margin-top:12%;
 
 }
-.column,
-.columns {
-
-  margin-left: 0;
-  width: 100%;
-  display: flex;
-  float: left;
-  color: white;
-  box-sizing: border-box;
-  padding-top: 0.5%;
-
-}
-.column{
-  margin-left: 3%;
-}
-.columns{
-
-  width: 100%;
-
-
-}
 

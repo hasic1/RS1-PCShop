@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IdentityServer4.Models;
+using Microsoft.AspNetCore.Mvc;
 using PCWebShop.Data;
 using PCWebShop.Database;
 using PCWebShop.Helper.AutentifikacijaAutorizacija;
@@ -39,6 +40,7 @@ namespace PCWebShop.Controllers
                    DrzavaID = s.DrzavaID,
                    Pretplacen = s.Pretplacen,
                    Prezime = s.Prezime,
+                   Email=s.Email,
                    Spol = s.Spol
                }).AsQueryable();
             return data.Take(100).ToList();
@@ -53,21 +55,35 @@ namespace PCWebShop.Controllers
         [HttpPost]
         public ActionResult Add([FromBody] KorisnikAddVM k)
         {
-            var newKorisnik = new Korisnik
+            if (k == null || !ModelState.IsValid)
+                return BadRequest();
+            try
             {
-                DrzavaID = k.DrzavaID,
-                Ime = k.Ime,
-                Prezime = k.Prezime,
-                korisnickoIme = k.korisnickoIme,
-                DatumRodjenja = DateTime.Now,
-                Spol = k.Spol,
-                lozinka = k.Lozinka,
-                Pretplacen = true
-            };
+                var newKorisnik = new Korisnik
+                {
+                    DrzavaID = k.DrzavaID,
+                    Ime = k.Ime,
+                    Prezime = k.Prezime,
+                    korisnickoIme = k.korisnickoIme,
+                    DatumRodjenja = k.DatumRodjenja,
+                    Spol = k.Spol,
+                    lozinka = k.Lozinka,
+                    Pretplacen = true,
+                    Email=k.Email
+                    
+                };
 
-            _context.Add(newKorisnik);
-            _context.SaveChanges();
-            return Get(newKorisnik.id);     
+                _context.Add(newKorisnik);
+                _context.SaveChanges();
+                return Get(newKorisnik.id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+            
         }
 
 
@@ -87,6 +103,7 @@ namespace PCWebShop.Controllers
             korisnik.DatumRodjenja = x.DatumRodjenja;
             korisnik.DrzavaID = x.DrzavaID;
             korisnik.Spol = x.Spol;
+            korisnik.Email = x.Email;
 
 
             _context.SaveChanges();

@@ -32,6 +32,6 @@ export class AutentifikacijaHelper {
     }
   }
   public registerUser = (body: Korisnik) => {
-    return this._http.post<Korisnik> (mojConfig.adresa_servera+"/Korisnik/Add", body);
+    return this._http.post(mojConfig.adresa_servera+"/Korisnik/Add", body);
   }
 }
