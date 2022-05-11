@@ -2,10 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PCWebShop.Core.Interfaces;
 using PCWebShop.Data;
 using PCWebShop.Database;
+using PCWebShop.Helper;
+using PCWebShop.Helper.SearchObjects;
 using PCWebShop.ViewModels;
 
 namespace   PCWebShop.Controllers
@@ -14,13 +18,27 @@ namespace   PCWebShop.Controllers
     [Route("[controller]/[action]")] 
     public class OglasiController:ControllerBase
     {
+        private readonly IOglasService _oglasService;
+
         public readonly Context _context;
 
-        public OglasiController(Context context)
+        public OglasiController(Context context,IOglasService oglasService)
         {
             _context = context;
+            _oglasService = oglasService;
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery]    SearchObject searchObject, CancellationToken cancellationToken)
+        {
+            var result = await _oglasService.GetAlOglasiAsync(searchObject, cancellationToken);
+
+            if (!result.IsValid)
+                return BadRequest();
+
+            return Ok(result);
+        }
         [HttpGet]
         public List<OglasVM> GetAll()
         {          

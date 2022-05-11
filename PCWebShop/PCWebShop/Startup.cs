@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ using PCWebShop.Data;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using FluentValidation.AspNetCore;
+using PCWebShop.Extensions;
 
 namespace PCWebShop
 {
@@ -29,13 +33,45 @@ namespace PCWebShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", p =>
+                {
+                    p.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("connectionpc")));
 
 
-            services.AddSignalR();
-            
+
+            var origins = Configuration.GetSection("AllowedDomains").Value;
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AppPolicy",
+                builder =>
+                {
+                    builder.WithOrigins(origins)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+                });
+            });
+
+
+            //Dependecy injection
+            services.ConfigureServices(Configuration);
+
+            services.AddControllers()
+                .AddNewtonsoftJson()
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase)
+                .AddFluentValidation();
+
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
