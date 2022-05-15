@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from "@angular/forms";
-import { HttpClientModule} from "@angular/common/http";
+import  {FormsModule} from "@angular/forms";
+import { HttpClientModule,} from "@angular/common/http";
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProizvodiComponent } from './proizvodi/proizvodi.component';
@@ -34,6 +34,8 @@ import { PostEditComponent } from './postovi-admin/post-edit/post-edit.component
 import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.component';
 import {DatePipe} from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
+import {PaginationComponent} from "./pagination/pagination.component";
+
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { FooterComponent } from './footer/footer.component';
     PostEditComponent,
     OglasEditComponent,
     FooterComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,6 @@ import { FooterComponent } from './footer/footer.component';
       {path:'proizvod-detaljno/:id',component:ProizvodDetaljnoComponent},
       {path: 'proizvodi-korisnik/:id',component:ProizvodiKorisnikComponent},
       {path:'korisnik',component:KorisnikComponent},
-
       {path:'postovi-admin',component:PostoviAdminComponent},
       {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent,canActivate:[AutorizacijaKorisnikProvjera]},
       {path:'oglasi-admin',component:OglasiAdminComponent},

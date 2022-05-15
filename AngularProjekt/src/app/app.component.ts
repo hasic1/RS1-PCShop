@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {mojConfig} from "./moj-config";
 import {LoginInformacije} from "./_helpers/login-informacije";
+import {HttpParams} from "@angular/common/http";
 
 declare function porukaSuccess(x:string):any;
 declare function porukaError(a: string):any;

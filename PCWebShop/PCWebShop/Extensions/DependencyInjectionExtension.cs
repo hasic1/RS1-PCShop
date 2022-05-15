@@ -21,6 +21,10 @@ namespace PCWebShop.Extensions
           
 
 
+
+
+
+
             // Services DI.
             services.AddLogging();
             services.AddHttpContextAccessor();

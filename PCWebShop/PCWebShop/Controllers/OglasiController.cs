@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PCWebShop.Core.Interfaces;
 using PCWebShop.Data;
 using PCWebShop.Database;
@@ -87,6 +88,18 @@ namespace   PCWebShop.Controllers
                 }).AsQueryable();
 
             return data.Take(100).ToList();
+
+
+        }
+        [HttpGet]
+        public  ActionResult<PagedList<Oglas>> GetAllPaged(int items_per_page, int page_number)
+        {
+
+            var data = _context.Oglas
+                .Include(x => x.AutorOglasa)
+                .AsQueryable();
+
+            return PagedList<Oglas>.Create(data, page_number,items_per_page);
 
 
         }

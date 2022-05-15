@@ -168,4 +168,8 @@ div.content {
   display: inline-block;
 }
 .default {color: black;}
-
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 81vh;
+}

@@ -127,7 +127,7 @@ namespace PCWebShop.Core.Services
                                 .Include(x=>x.AutorOglasa)     
                                 .CountAsync(cancellationToken);
 
-            var articles = await _context.Oglas                    
+            var oglasi = await _context.Oglas                    
                  .Select(GetMapperFromOglasToOglasVM())
                  .ApplyPagination(searchObject.Skip(), searchObject.PageSize)
                  .ToListAsync(cancellationToken);
@@ -136,7 +136,7 @@ namespace PCWebShop.Core.Services
             {
                 IsValid = true,
                 Status = ExceptionCodeEnum.Success,
-                Data = articles,
+                Data = oglasi,
                 PagedResult = new PagedResult
                 {
                     TotalItems = totalItems,

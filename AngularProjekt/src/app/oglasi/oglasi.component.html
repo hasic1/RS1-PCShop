@@ -15,7 +15,9 @@
     <th>Prijava na email</th>
   </tr>
   <tbody>
-  <tr *ngFor="let o of getOglasiPodaci()" >
+
+
+ <tr *ngFor="let o of getOglasiPodaci()" >
     <td>{{o.naslov}}</td>
     <td>{{o.sadrzaj}}</td>
     <td>{{o.brojPozicja}}</td>
@@ -28,5 +30,14 @@
   </tbody>
 </table>
 
-<app-footer></app-footer>
-<app-oglasi-edit [urediOglas]="odabraniOglas"></app-oglasi-edit>
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total">
+</app-pagination>
+
+
+

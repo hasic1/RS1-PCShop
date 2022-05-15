@@ -1,12 +1,12 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {mojConfig} from "../moj-config";
-import {LoginInformacije} from "src/app/_helpers/login-informacije";
-import {AutentifikacijaHelper} from "src/app/_helpers/autentifikacija-helper";
-import {DatePipe} from "@angular/common";
+import {Oglas} from "../_helpers/Oglas";
+
+
 
 declare function porukaSuccess(a: string):any;
-declare function porukaError(a:string):any;
+
 
 @Component({
   selector: 'app-oglasi',
@@ -19,68 +19,59 @@ export class OglasiComponent implements OnInit {
 
   oglasiPodatci:any;
   odabraniOglas: any=null;
+  total:number = 101;
+  page:number = 1;
+  limit:number = 10;
+  loading:boolean = false;
 
-  constructor(private httpKlijent: HttpClient) {
+
+  constructor(private httpKlijent:HttpClient ) {
   }
 
 
-
   testirajWebApi() {
-    this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAllKorisnik").subscribe(x=>{
-      this.oglasiPodatci = x;
+
+   let parametri={
+     page_number: this.page,
+     items_per_page:this.limit
+   }
+   JSON.stringify(parametri)
+      this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAllPaged",
+      {params:parametri},).subscribe((x:any)=>{
+        this.oglasiPodatci=x['dataItems'];
+        this.total=x['totalCount'];
+        this.loading=false;
+  console.log(this.page)
 
     });
   }
 
-
-
   getOglasiPodaci() {
     if (this.oglasiPodatci == null)
       return [];
-
     return this.oglasiPodatci;
   }
+
   ngOnInit(): void {
     this.testirajWebApi();
   }
 
-  detalji(o:any) {
-    this.odabraniOglas=o;
-    this.odabraniOglas.prikazi=true;
-  }
-  snimi() {
-    //this.odabranaNarudzba
-    this.httpKlijent.post(mojConfig.adresa_servera+ "/Oglasi/Update/" + this.odabraniOglas.id,this.odabraniOglas)
-      .subscribe((x:any)=>{
-        alert("Uredu"+x.potvrdjena)
-      });
-  }
-  btnNovi() {
-    this.odabraniOglas={
-      prikazi:true,
-      naslov:"",
-      sadrzaj:"",
-      brojPozicija:0,
-      lokacija:"",
-      datumObjave:0,
-      datumIsteka:0,
-      trajanjeOglasa:0,
-      aktivan:0
-
-    }
-
+  goToPrevious(): void {
+    // console.log('Previous Button Clicked!');
+    this.page--;
+    this.testirajWebApi();
   }
 
-  obrisi(o:any) {
-    this.httpKlijent.post(mojConfig.adresa_servera+"/Oglasi/Delete/"+o.id,null)
-      .subscribe((x:any)=>{
-        const index=this.oglasiPodatci.indexOf(o);
-        if(index>-1){
-          this.oglasiPodatci.splice(index,1);
-        }
-        porukaSuccess("Oglas uspjesno obrisan");
-      })
+  goToNext(): void {
+    // console.log('Next Button Clicked!');
+    this.page++;
+    this.testirajWebApi();
   }
 
+  goToPage(n: number): void {
+    this.page = n;
+    console.log(this.page)
+    this.testirajWebApi();
+  }
 
 }

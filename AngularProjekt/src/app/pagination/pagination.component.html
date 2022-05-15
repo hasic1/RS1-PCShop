@@ -1,5 +1,22 @@
-<div>
-<button class="btn btn-small btn-info" (click)="onPrev()">Predhodna</button>
-  <button class="btn btn-small btn-info" (click)="onNext()">Sljedeća</button>
+<div class="pages">
 
+  <div class="pagination" *ngIf="count > 0">
+
+    <button class="btn btn-small "
+            (click)="onPrev()"
+            [disabled]="page === 1 || loading"
+            [ngClass]="{ 'disabled': page === 1 || loading }">Previous Page</button>
+
+    <button class="btn btn-small btn-pageNumber"
+            *ngFor="let pageNum of getPages()"
+            (click)="onPage(pageNum)"
+            [ngClass]="{'active': pageNum === page, 'disabled': loading }">
+      {{ pageNum }}
+    </button>
+
+    <button class="btn btn-small "
+            (click)="onNext()"
+            [disabled]="isLastPage() || loading"
+            [ngClass]="{ 'disabled': isLastPage() || loading }">Next Page</button>
+  </div>
 </div>

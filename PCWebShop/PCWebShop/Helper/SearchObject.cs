@@ -10,12 +10,12 @@ namespace PCWebShop.Helper
         public SearchObject() : base()
         { }
 
-        public string SortBy { get; set; }
+        //public string SortBy { get; set; }
 
-        public bool IsSortAscending { get; set; }
+        //public bool IsSortAscending { get; set; }
 
-        public bool RetrieveAll { get; set; }
+        //public bool RetrieveAll { get; set; }
 
-        public string QuickSearch { get; set; }
+        //public string QuickSearch { get; set; }
     }
 }

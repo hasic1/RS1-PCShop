@@ -16,7 +16,6 @@ using PCWebShop.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
-using FluentValidation.AspNetCore;
 using PCWebShop.Extensions;
 
 namespace PCWebShop
@@ -67,10 +66,7 @@ namespace PCWebShop
             //Dependecy injection
             services.ConfigureServices(Configuration);
 
-            services.AddControllers()
-                .AddNewtonsoftJson()
-                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase)
-                .AddFluentValidation();
+            
 
             services.AddControllers();
 
