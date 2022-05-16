@@ -10,8 +10,10 @@ import {mojConfig} from "../moj-config";
 export class PostoviComponent implements OnInit {
 
   postoviPodatci:any;
-  odabraniPost: any=null;
-
+  total:number = 1;
+  page:number = 1;
+  limit:number = 3;
+  loading:boolean = false;
   constructor(private httpKlijent: HttpClient) {
   }
 
@@ -20,8 +22,19 @@ export class PostoviComponent implements OnInit {
     this.testirajWebApi();
   }
   testirajWebApi() {
-    this.httpKlijent.get(mojConfig.adresa_servera+ "/Post/GetAll").subscribe(x=>{
-      this.postoviPodatci = x;
+
+    let parametri={
+      page_number: this.page,
+      items_per_page:this.limit
+    }
+    JSON.stringify(parametri)
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Post/GetAllPaged",
+      {params:parametri},).subscribe((x:any)=>{
+      this.postoviPodatci=x['dataItems'];
+      this.total=x['totalCount'];
+      this.loading=false;
+      console.log(this.page)
+
     });
   }
   getPostoviPodaci() {
@@ -29,4 +42,23 @@ export class PostoviComponent implements OnInit {
       return [];
     return this.postoviPodatci;
   }
+
+  goToPrevious(): void {
+
+    this.page--;
+    this.testirajWebApi();
+  }
+
+  goToNext(): void {
+
+    this.page++;
+    this.testirajWebApi();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    console.log(this.page)
+    this.testirajWebApi();
+  }
+
 }

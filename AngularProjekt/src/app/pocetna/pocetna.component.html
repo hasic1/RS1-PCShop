@@ -31,6 +31,12 @@
 
 
 </section>
-
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total"></app-pagination>
 </body>
 

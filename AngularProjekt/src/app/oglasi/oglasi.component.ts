@@ -18,8 +18,7 @@ export class OglasiComponent implements OnInit {
 
 
   oglasiPodatci:any;
-  odabraniOglas: any=null;
-  total:number = 101;
+  total:number = 1;
   page:number = 1;
   limit:number = 10;
   loading:boolean = false;
@@ -32,14 +31,17 @@ export class OglasiComponent implements OnInit {
   testirajWebApi() {
 
    let parametri={
-     page_number: this.page,
-     items_per_page:this.limit
+     Page: this.page,
+     PageSize:this.limit
    }
    JSON.stringify(parametri)
-      this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAllPaged",
+      this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAall",
       {params:parametri},).subscribe((x:any)=>{
-        this.oglasiPodatci=x['dataItems'];
-        this.total=x['totalCount'];
+        //this.oglasiPodatci=x;
+        this.oglasiPodatci=x['data'];
+        console.log(this.oglasiPodatci)
+        this.total=x['pagedResult']['totalItems'];
+        console.log(this.oglasiPodatci)
         this.loading=false;
   console.log(this.page)
 
@@ -57,13 +59,11 @@ export class OglasiComponent implements OnInit {
   }
 
   goToPrevious(): void {
-    // console.log('Previous Button Clicked!');
     this.page--;
     this.testirajWebApi();
   }
 
   goToNext(): void {
-    // console.log('Next Button Clicked!');
     this.page++;
     this.testirajWebApi();
   }

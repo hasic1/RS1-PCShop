@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PCWebShop.Data;
 using PCWebShop.Database;
+using PCWebShop.Helper;
 using PCWebShop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -41,6 +43,20 @@ namespace PCWebShop.Controllers
         {
             return Ok(_context.Post.FirstOrDefault(p => p.ID == id));
         }
+
+        [HttpGet]
+        public ActionResult<PagedList<Post>> GetAllPaged(int items_per_page, int page_number)
+        {
+
+            var data = _context.Post
+                .Include(x => x.AutorPosta)
+                .AsQueryable();
+
+            return PagedList<Post>.Create(data, page_number, items_per_page);
+
+
+        }
+
         [HttpPost]
         public ActionResult Add([FromBody] PostAddVM x)
         {
@@ -58,6 +74,8 @@ namespace PCWebShop.Controllers
 
             return Ok(newPost.ID);
         }
+     
+       
         [HttpPost("{id}")]
         public ActionResult Update(int id, [FromBody] PostUpdateVM x)
         {

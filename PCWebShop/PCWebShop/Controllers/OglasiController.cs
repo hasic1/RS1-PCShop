@@ -31,7 +31,7 @@ namespace   PCWebShop.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]    SearchObject searchObject, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAall([FromQuery]    SearchObject searchObject, CancellationToken cancellationToken)
         {
             var result = await _oglasService.GetAlOglasiAsync(searchObject, cancellationToken);
 

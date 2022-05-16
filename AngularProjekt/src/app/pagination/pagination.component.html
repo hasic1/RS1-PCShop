@@ -5,7 +5,7 @@
     <button class="btn btn-small "
             (click)="onPrev()"
             [disabled]="page === 1 || loading"
-            [ngClass]="{ 'disabled': page === 1 || loading }">Previous Page</button>
+            [ngClass]="{ 'disabled': page === 1 || loading }">Predhodna</button>
 
     <button class="btn btn-small btn-pageNumber"
             *ngFor="let pageNum of getPages()"
@@ -17,6 +17,6 @@
     <button class="btn btn-small "
             (click)="onNext()"
             [disabled]="isLastPage() || loading"
-            [ngClass]="{ 'disabled': isLastPage() || loading }">Next Page</button>
+            [ngClass]="{ 'disabled': isLastPage() || loading }">Slljedeća</button>
   </div>
 </div>

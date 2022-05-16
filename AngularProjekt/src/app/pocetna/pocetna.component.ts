@@ -13,7 +13,10 @@ import {AutentifikacijaHelper} from "../_helpers/autentifikacija-helper";
 export class PocetnaComponent implements OnInit {
 proizvodi:any;
 odabraniProizvod:any=null;
-
+  total:number = 1;
+  page:number = 1;
+  limit:number = 3;
+  loading:boolean = false;
 
   constructor(private httpKlijent: HttpClient,private router:Router) {
   }
@@ -23,8 +26,17 @@ odabraniProizvod:any=null;
   }
   testirajWebApi() :void
   {
-    this.httpKlijent.get(mojConfig.adresa_servera+ "/Proizvod/GetAll",mojConfig.http_opcije()).subscribe(x=>{
-      this.proizvodi = x;
+    let parametri={
+      page_number: this.page,
+      items_per_page:this.limit
+    }
+    JSON.stringify(parametri)
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Proizvod/GetAllPaged",
+      {params:parametri}).subscribe((x:any)=>{
+      this.proizvodi = x['dataItems'];
+      this.total=x['totalCount'];
+      this.loading=false;
+      console.log(this.page)
     });
   }
   getProizvodPodatci() {
@@ -43,5 +55,23 @@ odabraniProizvod:any=null;
   }
   loginInfo(): LoginInformacije {
     return AutentifikacijaHelper.getLoginInfo();
+  }
+
+  goToPrevious(): void {
+
+    this.page--;
+    this.testirajWebApi();
+  }
+
+  goToNext(): void {
+
+    this.page++;
+    this.testirajWebApi();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    console.log(this.page)
+    this.testirajWebApi();
   }
 }

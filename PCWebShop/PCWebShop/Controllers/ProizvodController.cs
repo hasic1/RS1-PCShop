@@ -47,7 +47,8 @@ namespace PCWebShop.Controllers
         public ActionResult<PagedList<Proizvod>> GetAllPaged(int items_per_page,int page_number)
         {
 
-            var data = _context.Proizvod.Include(x => x.Proizvodjac.NazivProizvodjaca)
+            var data = _context.Proizvod
+                .Include(x => x.Proizvodjac)
                 .AsQueryable();
 
 
