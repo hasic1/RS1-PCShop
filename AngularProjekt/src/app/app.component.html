@@ -26,11 +26,11 @@
         </li>
 
       </ul>
+
+       <a routerLink="/obavjesti"><img  *ngIf="loginInfo().isPermisijaKorisnik"  id="obavjest" src="assets/img/Ikone/notification.png"></a>
         <!--<div style="margin-right: 110px; margin-left: 120px"> </div>-->
-      <button *ngIf="loginInfo().isPermisijaKorisnik" ro routerLink="/korpa"  class="btn btn-outline-light" type="submit">
-
+      <button id="btn-korpa" *ngIf="loginInfo().isPermisijaKorisnik" ro routerLink="/korpa"  class="btn btn-outline-light" type="submit">
         Korpa
-
       </button>
 
 

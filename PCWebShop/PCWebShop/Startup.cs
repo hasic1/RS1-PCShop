@@ -17,6 +17,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using PCWebShop.Extensions;
+using Hangfire;
+using Hangfire.MemoryStorage;
+using PCWebShop.Core.Interfaces;
 
 namespace PCWebShop
 {
@@ -72,11 +75,28 @@ namespace PCWebShop
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
+
+
+            //HANGFIRE CONFIG
+            services.AddHangfire(config =>
+                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseDefaultTypeSerializer()
+                .UseMemoryStorage());
+
+            services.AddHangfireServer();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            IBackgroundJobClient backgroundJobClient, //Hangfire
+            IRecurringJobManager recurringJobManager, //Hangfire recurring jobs
+            IServiceProvider serviceProvider)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -122,6 +142,16 @@ namespace PCWebShop
 
                
             });
+
+            app.UseHangfireDashboard();
+
+            //Client hangfire
+            recurringJobManager.AddOrUpdate(
+          "Run at 00:10 every day//CreateBirthdayNotification",
+          () => serviceProvider.GetService<IObavjestService>().CreateBirthdayNotifications(),
+          "10 0 * * *"
+          );
+
         }
     }
 }

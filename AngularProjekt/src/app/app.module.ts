@@ -35,6 +35,7 @@ import { OglasEditComponent } from './oglasi-admin/oglas-edit/oglas-edit.compone
 import {DatePipe} from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
 import {PaginationComponent} from "./pagination/pagination.component";
+import { ObavjestiComponent } from './obavjesti/obavjesti.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import {PaginationComponent} from "./pagination/pagination.component";
     PostEditComponent,
     OglasEditComponent,
     FooterComponent,
-    PaginationComponent
+    PaginationComponent,
+    ObavjestiComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +93,7 @@ import {PaginationComponent} from "./pagination/pagination.component";
       {path:'postovi-admin',component:PostoviAdminComponent},
       {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent,canActivate:[AutorizacijaKorisnikProvjera]},
       {path:'oglasi-admin',component:OglasiAdminComponent},
+
     ]),
     FormsModule,
     HttpClientModule,

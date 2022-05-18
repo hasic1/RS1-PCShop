@@ -31,8 +31,8 @@ namespace PCWebShop.Data
         public DbSet<AutentifikacijaToken> AutentifikacijaToken{ get; set; }
        
         public DbSet<KorisnickiNalog> KorisnickiNalog{ get; set; }
-       
 
+        public DbSet<Obavjest> Obavjest { get; set; }
         public Context(
             DbContextOptions options) : base(options)
         {

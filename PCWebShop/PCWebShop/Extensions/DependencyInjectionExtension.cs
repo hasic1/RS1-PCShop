@@ -30,6 +30,7 @@ namespace PCWebShop.Extensions
             services.AddHttpContextAccessor();
 
             services.AddScoped<IOglasService, OglasService>();
+            services.AddScoped<IObavjestService, ObavjestService>();
             
         }
     }

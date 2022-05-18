@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PCWebShop.Data;
 
 namespace PCWebShop.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220518001751_AddeTable_Obavjest")]
+    partial class AddeTable_Obavjest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -251,6 +253,9 @@ namespace PCWebShop.Migrations
 
                     b.Property<int>("TipObavjesti")
                         .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("ID");
 
