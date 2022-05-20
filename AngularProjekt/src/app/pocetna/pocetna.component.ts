@@ -15,7 +15,7 @@ proizvodi:any;
 odabraniProizvod:any=null;
   total:number = 1;
   page:number = 1;
-  limit:number = 3;
+  limit:number = 8;
   loading:boolean = false;
 
   constructor(private httpKlijent: HttpClient,private router:Router) {

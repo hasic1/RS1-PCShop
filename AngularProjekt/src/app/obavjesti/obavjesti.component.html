@@ -30,9 +30,12 @@
         <button (click)="dismissModal()" type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div *ngFor="let o of getObavjesti()">
+        <div  *ngFor="let o of getObavjesti()">
           <div class="poruka">
-            <p class="sadrzaj">{{o.content}}</p></div>
+            <p class="sadrzaj">{{o.content}}</p>
+            <button  type="button" class="btn-close small obrisi"  aria-label="Close"></button>
+          </div>
+            <div class="linija"></div>
         </div>
         <div *ngIf="brojObavjesti==0" style="color: #1a1e21" >Nemate novih obavjesti</div>
       </div>

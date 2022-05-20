@@ -12,7 +12,7 @@ export class PostoviComponent implements OnInit {
   postoviPodatci:any;
   total:number = 1;
   page:number = 1;
-  limit:number = 3;
+  limit:number = 4;
   loading:boolean = false;
   constructor(private httpKlijent: HttpClient) {
   }
