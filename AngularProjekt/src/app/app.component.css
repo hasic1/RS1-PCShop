@@ -182,3 +182,7 @@ div.content {
   margin-right: 5px;
   background-color: #212529;
 }
+#btn-obavjesti{
+  background-color: #212529;
+  border: none;
+}

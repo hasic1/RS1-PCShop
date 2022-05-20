@@ -5,20 +5,38 @@
 </button>
 
  Modal -->
-<div  class="modal right fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
+<!--
+<div *ngIf="prikazObavjesti" class="modal right fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-modal="true" role="dialog" style="display: block;">
   <div class="modal-dialog modal-side modal-top-right ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Obavjesti</h5>
+        <button (click)="dismissModal()" type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">...</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="modal-body">
+        Obavjesti za korisnika
       </div>
+    </div>
+  </div>
+</div>
+-->
+
+
+<div *ngIf="prikazObavjesti"  class="modal right fade show"  id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-hidden="true" role="dialog" data-mdb-backdrop="true" data-mdb-keyboard="true" style="display: inline-block">
+  <div class="modal-dialog modal-side modal-top-right ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Obavjesti</h5>
+        <button (click)="dismissModal()" type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let o of getObavjesti()">
+          <div class="poruka">
+            <p class="sadrzaj">{{o.content}}</p></div>
+        </div>
+        <div *ngIf="brojObavjesti==0" style="color: #1a1e21" >Nemate novih obavjesti</div>
+      </div>
+
     </div>
   </div>
 </div>

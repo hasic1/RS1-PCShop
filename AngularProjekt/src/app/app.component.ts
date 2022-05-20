@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AutentifikacijaHelper} from "./_helpers/autentifikacija-helper";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -19,11 +19,15 @@ export class AppComponent {
   novaKategorija:any;
   noviPost:any=null;
   kategorijePodatci:any;
+  prikaziObavjest:boolean;
+
+  @Output() goPrči = new EventEmitter<boolean>();
 
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
   ngOnInit(): void {
     this.testirajWebApi();
+    this.nePrikazi();
   }
   logoutButton() {
     AutentifikacijaHelper.setLoginInfo(null);
@@ -71,5 +75,14 @@ export class AppComponent {
       .then(() => {
         window.location.reload();
       });
+  }
+  prikaziObavjestiModal(){
+    this.prikaziObavjest=true;
+    console.log(this.prikaziObavjest)
+
+
+  }
+  nePrikazi(){
+    this.prikaziObavjest=false;
   }
 }

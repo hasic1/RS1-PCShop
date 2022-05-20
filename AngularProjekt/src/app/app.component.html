@@ -27,8 +27,9 @@
 
       </ul>
 
-       <a routerLink="/obavjesti"><img  *ngIf="loginInfo().isPermisijaKorisnik"  id="obavjest" src="assets/img/Ikone/notification.png"></a>
-        <!--<div style="margin-right: 110px; margin-left: 120px"> </div>-->
+      <button id="btn-obavjesti" (click)="prikaziObavjestiModal() "><img  *ngIf="loginInfo().isPermisijaKorisnik"  id="obavjest" src="assets/img/Ikone/notification.png"></button>
+
+      <!--<div style="margin-right: 110px; margin-left: 120px"> </div>-->
       <button id="btn-korpa" *ngIf="loginInfo().isPermisijaKorisnik" ro routerLink="/korpa"  class="btn btn-outline-light" type="submit">
         Korpa
       </button>
@@ -72,7 +73,9 @@
 <app-administrator-postovi [urediPost]="noviPost"></app-administrator-postovi>
 
 </div>
-
+  <app-obavjesti
+    [prikazObavjesti]="prikaziObavjest"
+  ></app-obavjesti>
 <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>

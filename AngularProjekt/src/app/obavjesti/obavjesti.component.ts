@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {mojConfig} from "../moj-config";
+import {HttpClient} from "@angular/common/http";
+import {LoginInformacije} from "../_helpers/login-informacije";
+import {AutentifikacijaHelper} from "../_helpers/autentifikacija-helper";
+
+
 
 @Component({
   selector: 'app-obavjesti',
@@ -7,11 +13,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ObavjestiComponent implements OnInit {
 
-  obavjesti :any;
+@Input()
+  prikazObavjesti:any;
+  obavjestiPodatci:any;
+  private korisnikId: any;
+  brojObavjesti:number;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private httpKlijent:HttpClient) {
   }
 
+  ngOnInit(): void {
+    this.ucitajObavjesti()
+
+  }
+
+
+  ucitajObavjesti(): void {
+    this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+    let korinsnik={
+      id:this.korisnikId
+    }
+    this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GetUserNotifications",
+      {params:korinsnik}).subscribe((x:any) => {
+      this.obavjestiPodatci = x['data'];
+      console.log(this.obavjestiPodatci)
+      this.brojObavjesti= this.obavjestiPodatci.length;
+      console.log("Broj obavjesti " +this.brojObavjesti);
+    });
+  }
+  getObavjesti(){
+    if(this.obavjestiPodatci==null)
+      return [];
+    return this.obavjestiPodatci;
+    console.log(this.obavjestiPodatci);
+  }
+
+
+
+  dismissModal() {
+      this.prikazObavjesti=false;
+      console.log(this.prikazObavjesti);
+
+  }
 }

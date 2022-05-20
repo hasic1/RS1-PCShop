@@ -1,0 +1,47 @@
+#exampleModalLive{
+  right: 0% !important;
+
+}
+#exampleModalLive{
+  position: absolute;
+  height: 350px;
+  width: 350px;
+  top: 2%;
+  left: 65%;
+}
+.poruka{
+  background-color: rgb(71, 177, 213);
+  border-radius: 20px;
+  margin-right: 4%;
+  margin-bottom: 4%;
+
+  padding: 1%;
+}
+.modal-body{
+  height: 180px;
+  overflow:hidden;
+  overflow-y:scroll;
+  padding-right:0 !important;
+}
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #324148;
+  outline: 1px solid slategrey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #083270;
+}
+.sadrzaj{
+ font-size: 15px;
+  margin-top: 3%;
+  margin-left: 3%;
+}
