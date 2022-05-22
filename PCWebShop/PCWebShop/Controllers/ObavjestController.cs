@@ -15,13 +15,13 @@ namespace PCWebShop.Controllers
     [Route("[controller]/[action]")]
     public class ObavjestController : ControllerBase
     {
-        private readonly IObavjestService _oglasService;
+        private readonly IObavjestService _obavjestService;
 
         public readonly Context _context;
 
         public ObavjestController(IObavjestService oglasService, Context context)
         {
-            _oglasService = oglasService;
+            _obavjestService = oglasService;
             _context = context;
         }
 
@@ -54,12 +54,41 @@ namespace PCWebShop.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserNotifications(int id, CancellationToken cancellationToken)
         {
-            var result = await _oglasService.GetObavjestByUserIdAsMessageAsync(id, cancellationToken);
+            var result = await _obavjestService.GetObavjestByUserIdAsMessageAsync(id, cancellationToken);
 
             if (!result.IsValid)
                 return BadRequest();
 
             return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GeUnReadUserNotifications(int id, CancellationToken cancellationToken)
+        {
+            var result = await _obavjestService.GetUnReadObavjestByUserIdAsMessageAsync(id, cancellationToken);
+
+            if (!result.IsValid)
+                return BadRequest();
+
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> SetObavjestiAsDeletedAsync(int id, CancellationToken cancellationToken)
+        {
+            var message = await _obavjestService.SetObavjestAsDeletedAsync(id, cancellationToken);
+            if (message.IsValid == false)
+                return BadRequest(message);
+
+            return Ok(message);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> SetObavjestAsReadAsync(int id, CancellationToken cancellationToken)
+        {
+            var message = await _obavjestService.SetObavjestAsReadAsMessageAsync(id, cancellationToken);
+            if (message.IsValid == false)
+                return BadRequest(message);
+
+            return Ok(message);
         }
     }
 }

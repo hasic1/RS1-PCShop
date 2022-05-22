@@ -46,7 +46,7 @@ namespace PCWebShop.Core.Services
                 Seen = x.Seen
             };
         }
-
+        #region Hangfire
         public async Task CreateBirthdayNotifications()
         {
             //var clientsRoles = await _context.KorisnickiNalog.Where(x => x.isKupac == true).ToListAsync();
@@ -89,6 +89,9 @@ namespace PCWebShop.Core.Services
             }
 
         }
+
+        #endregion
+
         public async Task<Message> GetObavjestByUserIdAsMessageAsync(int id, CancellationToken cancellationToken)
         {
             var user = _context.Korisnik.Where(x => x.id == id).FirstOrDefault();
@@ -101,8 +104,26 @@ namespace PCWebShop.Core.Services
                 .ToListAsync(cancellationToken);
 
            
+            return new Message
+            {
+                Data = notifications,
+                Info = "Notifications returned successfully!",
+                IsValid = true,
+                Status = ExceptionCodeEnum.Success
+            };
+        }
+        public async Task<Message> GetUnReadObavjestByUserIdAsMessageAsync(int id, CancellationToken cancellationToken)
+        {
+            var user = _context.Korisnik.Where(x => x.id == id).FirstOrDefault();
 
-           
+
+
+            var notifications = await _context.Obavjest.Where(x => x.KorisnikId == user.id && !x.Deleted && x.TipObavjesti == TipObavjesti.App && x.SendOnDate < DateTime.Now && x.Read==false)
+                .Select(GetMapperFromObavjestToObavjestiVM())
+                .OrderByDescending(x => x.ID)
+                .ToListAsync(cancellationToken);
+
+
             return new Message
             {
                 Data = notifications,
@@ -112,5 +133,59 @@ namespace PCWebShop.Core.Services
             };
         }
 
+        public async Task<Message> SetObavjestAsDeletedAsync(int obavjestId, CancellationToken cancellationToken)
+        {
+            var obavjest =  _context.Obavjest.Where(x=>x.ID==obavjestId).FirstOrDefault();
+
+            obavjest.Deleted = true;
+            
+            _context.SaveChanges();
+
+            return new Message
+            {
+                Info = "Obavjesti obrisane!",
+                IsValid = true,
+                Status = ExceptionCodeEnum.Success
+            };
+        }
+        public async Task<Message> SetObavjestAsReadAsMessageAsync(int id, CancellationToken cancellationToken)
+        {
+            var notifications = await _context.Obavjest.Where(x => x.KorisnikId == id && !x.Read).ToListAsync(cancellationToken);
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            {
+                try
+                {
+                    for (int i = 0; i < notifications.Count; i++)
+                    {
+                        notifications[i].Read = true;
+                        notifications[i].DateRead = DateTime.Now;
+                    }
+
+                    await _context.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                }
+                return new Message
+                {
+                    Info = "Obavjesti pročitane!",
+                    IsValid = true,
+                    Status = ExceptionCodeEnum.Success
+                };
+            }
+
+
+            
+
+
+
+
+           
+
+        }
     }
 }

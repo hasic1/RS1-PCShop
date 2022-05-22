@@ -177,12 +177,34 @@ div.content {
   min-height: 81vh;
 }
 #obavjest{
+  text-align: center;
   width: 25px ;
   height: 30px;
-  margin-right: 5px;
+  padding-right: 0%;
+  padding: 0%;
   background-color: #212529;
 }
 #btn-obavjesti{
   background-color: #212529;
   border: none;
+  margin-right: 1%;
+  padding: 0%;
+
 }
+span{
+  margin-right: 0%;
+  padding: 0%;
+}
+.badge {
+  position: relative;
+  top: -10px;
+  left: -10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  font-size: 15px;
+  color: red;
+  border: none;
+  margin-right: 0%;
+  padding: 0%;
+}
+

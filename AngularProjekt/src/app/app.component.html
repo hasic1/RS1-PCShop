@@ -27,7 +27,11 @@
 
       </ul>
 
-      <button id="btn-obavjesti" (click)="prikaziObavjestiModal() "><img  *ngIf="loginInfo().isPermisijaKorisnik"  id="obavjest" src="assets/img/Ikone/notification.png"></button>
+      <button id="btn-obavjesti" >
+        <img  *ngIf="loginInfo().isPermisijaKorisnik" (click)="prikaziObavjestiModal() "  id="obavjest" src="assets/img/Ikone/notification.png">
+        <span *ngIf="brojNovihObavjesti>0 && loginInfo().isLogiran"  class="badge badge-light">{{brojNovihObavjesti}}</span>
+      </button>
+
 
       <!--<div style="margin-right: 110px; margin-left: 120px"> </div>-->
       <button id="btn-korpa" *ngIf="loginInfo().isPermisijaKorisnik" ro routerLink="/korpa"  class="btn btn-outline-light" type="submit">

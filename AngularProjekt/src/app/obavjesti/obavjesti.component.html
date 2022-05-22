@@ -33,7 +33,7 @@
         <div  *ngFor="let o of getObavjesti()">
           <div class="poruka">
             <p class="sadrzaj">{{o.content}}</p>
-            <button  type="button" class="btn-close small obrisi"  aria-label="Close"></button>
+            <button (click)="setDeleted(o)"   class="btn-close small obrisi"  aria-label="Close"></button>
           </div>
             <div class="linija"></div>
         </div>

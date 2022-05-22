@@ -1,13 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component } from '@angular/core';
 import {AutentifikacijaHelper} from "./_helpers/autentifikacija-helper";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {mojConfig} from "./moj-config";
 import {LoginInformacije} from "./_helpers/login-informacije";
-import {HttpParams} from "@angular/common/http";
 
-declare function porukaSuccess(x:string):any;
-declare function porukaError(a: string):any;
+
 
 @Component({
   selector: 'app-root',
@@ -19,15 +17,17 @@ export class AppComponent {
   novaKategorija:any;
   noviPost:any=null;
   kategorijePodatci:any;
-  prikaziObavjest:boolean;
-
-  @Output() goPrči = new EventEmitter<boolean>();
+  prikaziObavjest:any;
+  brojNovihObavjesti:number=0;
+  private korisnikId: number;
+  obavjestiPodatci:any;
 
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
   ngOnInit(): void {
     this.testirajWebApi();
-    this.nePrikazi();
+    this.ucitajObavjesti();
+
   }
   logoutButton() {
     AutentifikacijaHelper.setLoginInfo(null);
@@ -35,6 +35,7 @@ export class AppComponent {
     this.httpKlijent.post(mojConfig.adresa_servera + "/Autentifikacija/Logout", null, mojConfig.http_opcije())
       .subscribe((x: any) => {
         this.router.navigateByUrl("/pocetna");
+        this.obavjestiPodatci=null;
       });
   }
 
@@ -77,12 +78,34 @@ export class AppComponent {
       });
   }
   prikaziObavjestiModal(){
-    this.prikaziObavjest=true;
-    console.log(this.prikaziObavjest)
+    this.prikaziObavjest={
+      prikazi:true,
+    };
+    console.log(this.prikaziObavjest);
+    this.setObavjestAsRead();
+  }
 
+  ucitajObavjesti(): void {
+    this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+    let korinsnik={
+      id:this.korisnikId
+    }
+    this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GeUnReadUserNotifications",
+      {params:korinsnik}).subscribe((x:any) => {
+      this.obavjestiPodatci = x['data'];
+      this.brojNovihObavjesti= this.obavjestiPodatci.length;
+      console.log("Broj obavjesti " +this.brojNovihObavjesti);
+
+    });
 
   }
-  nePrikazi(){
-    this.prikaziObavjest=false;
+  setObavjestAsRead(){
+    this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+    this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestAsRead/"+this.korisnikId,this.korisnikId)
+      .subscribe(data=>
+        console.log(data));
+   this.brojNovihObavjesti=0;
+
   }
+
 }

@@ -18,6 +18,8 @@ export class ObavjestiComponent implements OnInit {
   obavjestiPodatci:any;
   private korisnikId: any;
   brojObavjesti:number;
+   id:any;
+
 
   constructor(private httpKlijent:HttpClient) {
   }
@@ -29,17 +31,19 @@ export class ObavjestiComponent implements OnInit {
 
 
   ucitajObavjesti(): void {
-    this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
-    let korinsnik={
-      id:this.korisnikId
+    if (AutentifikacijaHelper.getLoginInfo().isLogiran){
+      this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+    let korinsnik = {
+      id: this.korisnikId
     }
     this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GetUserNotifications",
-      {params:korinsnik}).subscribe((x:any) => {
+      {params: korinsnik}).subscribe((x: any) => {
       this.obavjestiPodatci = x['data'];
       console.log(this.obavjestiPodatci)
-      this.brojObavjesti= this.obavjestiPodatci.length;
-      console.log("Broj obavjesti " +this.brojObavjesti);
+      this.brojObavjesti = this.obavjestiPodatci.length;
+      console.log("Broj obavjesti " + this.brojObavjesti);
     });
+  }
   }
   getObavjesti(){
     if(this.obavjestiPodatci==null)
@@ -48,11 +52,19 @@ export class ObavjestiComponent implements OnInit {
     console.log(this.obavjestiPodatci);
   }
 
-
-
   dismissModal() {
       this.prikazObavjesti=false;
       console.log(this.prikazObavjesti);
 
+  }
+
+  setDeleted(o: any) {
+        this.id = o.id;
+        console.log("id"+this.id);
+        this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestiAsDeleted/"+this.id,this.id)
+          .subscribe(data=>
+          console.log(data));
+
+    this.ucitajObavjesti();
   }
 }
