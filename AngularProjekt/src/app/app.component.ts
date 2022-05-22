@@ -86,18 +86,19 @@ export class AppComponent {
   }
 
   ucitajObavjesti(): void {
-    this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
-    let korinsnik={
-      id:this.korisnikId
+    if(AutentifikacijaHelper.getLoginInfo().autentifikacijaToken!=null) {
+      this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+      let korinsnik = {
+        id: this.korisnikId
+      }
+      this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GeUnReadUserNotifications",
+        {params: korinsnik}).subscribe((x: any) => {
+        this.obavjestiPodatci = x['data'];
+        this.brojNovihObavjesti = this.obavjestiPodatci.length;
+        console.log("Broj obavjesti " + this.brojNovihObavjesti);
+
+      });
     }
-    this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GeUnReadUserNotifications",
-      {params:korinsnik}).subscribe((x:any) => {
-      this.obavjestiPodatci = x['data'];
-      this.brojNovihObavjesti= this.obavjestiPodatci.length;
-      console.log("Broj obavjesti " +this.brojNovihObavjesti);
-
-    });
-
   }
   setObavjestAsRead(){
     this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;

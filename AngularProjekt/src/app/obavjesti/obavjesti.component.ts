@@ -25,26 +25,28 @@ export class ObavjestiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ucitajObavjesti()
+      this.ucitajObavjesti()
+
 
   }
 
 
   ucitajObavjesti(): void {
-    if (AutentifikacijaHelper.getLoginInfo().isLogiran){
+    if(AutentifikacijaHelper.getLoginInfo().autentifikacijaToken!=null) {
       this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
-    let korinsnik = {
-      id: this.korisnikId
+      let korinsnik = {
+        id: this.korisnikId
+      }
+      this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GetUserNotifications",
+        {params: korinsnik}).subscribe((x: any) => {
+        this.obavjestiPodatci = x['data'];
+        console.log(this.obavjestiPodatci)
+        this.brojObavjesti = this.obavjestiPodatci.length;
+        console.log("Broj obavjesti " + this.brojObavjesti);
+      });
     }
-    this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GetUserNotifications",
-      {params: korinsnik}).subscribe((x: any) => {
-      this.obavjestiPodatci = x['data'];
-      console.log(this.obavjestiPodatci)
-      this.brojObavjesti = this.obavjestiPodatci.length;
-      console.log("Broj obavjesti " + this.brojObavjesti);
-    });
   }
-  }
+
   getObavjesti(){
     if(this.obavjestiPodatci==null)
       return [];
@@ -66,5 +68,8 @@ export class ObavjestiComponent implements OnInit {
           console.log(data));
 
     this.ucitajObavjesti();
+  }
+  loginInfo(): LoginInformacije {
+    return AutentifikacijaHelper.getLoginInfo();
   }
 }

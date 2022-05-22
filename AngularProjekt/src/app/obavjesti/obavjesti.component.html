@@ -29,8 +29,8 @@
         <h5 class="modal-title" id="exampleModalLabel">Obavjesti</h5>
         <button (click)="dismissModal()" type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <div  *ngFor="let o of getObavjesti()">
+      <div class="modal-body" *ngIf="loginInfo().isLogiran && loginInfo().autentifikacijaToken.korisnickiNalog!=null">
+        <div   *ngFor="let o of getObavjesti()">
           <div class="poruka">
             <p class="sadrzaj">{{o.content}}</p>
             <button (click)="setDeleted(o)"   class="btn-close small obrisi"  aria-label="Close"></button>

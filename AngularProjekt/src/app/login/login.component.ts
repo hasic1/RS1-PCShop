@@ -35,13 +35,19 @@ export class LoginComponent implements OnInit {
       .subscribe((x:LoginInformacije) =>{
         if (x.isLogiran) {
           AutentifikacijaHelper.setLoginInfo(x);
-         this.router.navigateByUrl("/pocetna");
+         this.Otvori()
         }
         else
         {
           AutentifikacijaHelper.setLoginInfo(null)
           porukaError("neispravan login");
         }
+      });
+  }
+  Otvori() {
+    this.router.navigateByUrl("/pocetna")
+      .then(() => {
+        window.location.reload();
       });
   }
 }
