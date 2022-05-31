@@ -32,7 +32,7 @@ export class ObavjestiComponent implements OnInit {
 
 
   ucitajObavjesti(): void {
-    if(AutentifikacijaHelper.getLoginInfo().autentifikacijaToken!=null) {
+    if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
       this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
       let korinsnik = {
         id: this.korisnikId
@@ -61,12 +61,12 @@ export class ObavjestiComponent implements OnInit {
   }
 
   setDeleted(o: any) {
-    if (AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik==true)
-    {
-        this.id = o.id;
-        console.log("id"+this.id);
-        this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestiAsDeleted/"+this.id,this.id)
-          .subscribe(data=>
+    if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
+      this.id = o.id;
+      console.log("id" + this.id);
+      this.httpKlijent.put(mojConfig.adresa_servera + "/Obavjest/SetObavjestiAsDeleted/" + this.id, this.id)
+        .subscribe(data =>
+
           console.log(data));
 
       this.ucitajObavjesti();

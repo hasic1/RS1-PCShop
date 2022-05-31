@@ -34,7 +34,10 @@ export class AppComponent {
 
     this.httpKlijent.post(mojConfig.adresa_servera + "/Autentifikacija/Logout", null, mojConfig.http_opcije())
       .subscribe((x: any) => {
-        this.router.navigateByUrl("/pocetna");
+        this.router.navigateByUrl("/pocetna").
+          then(() => {
+            window.location.reload();
+          });
         this.obavjestiPodatci=null;
       });
   }
@@ -86,6 +89,7 @@ export class AppComponent {
   }
 
   ucitajObavjesti(): void {
+    if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
     if(AutentifikacijaHelper.getLoginInfo().autentifikacijaToken!=null) {
       this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
       let korinsnik = {
@@ -99,10 +103,11 @@ export class AppComponent {
 
       });
     }
+    }
   }
   setObavjestAsRead(){
-    if (AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik==true)
-    {
+    if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
+
       this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
     this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestAsRead/"+this.korisnikId,this.korisnikId)
       .subscribe(data=>
