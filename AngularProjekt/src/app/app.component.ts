@@ -101,12 +101,13 @@ export class AppComponent {
     }
   }
   setObavjestAsRead(){
-    this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+    if (AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik==true)
+    {
+      this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
     this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestAsRead/"+this.korisnikId,this.korisnikId)
       .subscribe(data=>
         console.log(data));
    this.brojNovihObavjesti=0;
-
+    }
   }
-
 }

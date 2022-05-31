@@ -9,12 +9,13 @@ declare function porukaSuccess(s:string):any;
   templateUrl: './proizvod-edit.component.html',
   styleUrls: ['./proizvod-edit.component.css']
 })
-export class ProizvodEditComponent implements OnInit {
+export class ProizvodEditComponent implements OnInit  {
   @Input()
   urediProizvod: any;
   kategorije: any;
   proizvodjac: any;
-
+  selectedFile:null;
+  lokacijaSlike:string;
 
   constructor(private httpKlijent:HttpClient) {
     this.httpKlijent.get(mojConfig.adresa_servera+"/Kategorija/GetAll").subscribe((x:any)=>{
@@ -24,9 +25,7 @@ export class ProizvodEditComponent implements OnInit {
       this.proizvodjac=p;
     });
   }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   snimi() {
     if(this.urediProizvod.proizvodID==null){
@@ -43,6 +42,15 @@ export class ProizvodEditComponent implements OnInit {
         this.urediProizvod.prikazi = false;
 
       });
+    }
   }
-}
+  onfileSelected(event:any) {
+    let slika=event.target.files[0].name;
+    this.lokacijaSlike="assets/img/"+slika;
+    this.urediProizvod.lokacijaSlike=this.lokacijaSlike;
+  }
+
+  onUpload() {
+
+  }
 }

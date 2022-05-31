@@ -19,11 +19,10 @@
           <input  type="number" class="form-control" [(ngModel)]="urediProizvod.cijena"  placeholder="Cijena KM">
         </div>
         <div class="mb-3">
-          <label class="form-label">Lokacija slike</label>
-          <input type="text" class="form-control" [(ngModel)]="urediProizvod.lokacijaSlike"  placeholder="putanja do slike">
+          <label class="form-label">Slika proizvoda</label><br>
+          <input type="file" (change)="onfileSelected($event)">
         </div>
-
-        <div class="mb-3">
+          <div class="mb-3">
           <label class="form-label">Proizvodjac</label>
           <select class="form-control" [(ngModel)]="urediProizvod.proizvodjacID" >
             <option *ngFor="let x of proizvodjac" value="{{x.id}}">{{x.nazivProizvodjaca}}</option>

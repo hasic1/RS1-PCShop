@@ -69,6 +69,4 @@ export class ProizvodiComponent implements OnInit {
         porukaSuccess("Proizvod uspjesno obrisan");
       })
   }
-
-
 }

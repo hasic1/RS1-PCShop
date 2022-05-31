@@ -61,13 +61,16 @@ export class ObavjestiComponent implements OnInit {
   }
 
   setDeleted(o: any) {
+    if (AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik==true)
+    {
         this.id = o.id;
         console.log("id"+this.id);
         this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestiAsDeleted/"+this.id,this.id)
           .subscribe(data=>
           console.log(data));
 
-    this.ucitajObavjesti();
+      this.ucitajObavjesti();
+    }
   }
   loginInfo(): LoginInformacije {
     return AutentifikacijaHelper.getLoginInfo();
