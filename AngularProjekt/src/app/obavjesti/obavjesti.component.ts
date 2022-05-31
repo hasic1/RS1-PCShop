@@ -18,7 +18,8 @@ export class ObavjestiComponent implements OnInit {
   obavjestiPodatci:any;
   private korisnikId: any;
   brojObavjesti:number;
-   id:any;
+  id:any;
+  deletedData:any=null;
 
 
   constructor(private httpKlijent:HttpClient) {
@@ -40,9 +41,8 @@ export class ObavjestiComponent implements OnInit {
       this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GetUserNotifications",
         {params: korinsnik}).subscribe((x: any) => {
         this.obavjestiPodatci = x['data'];
-        console.log(this.obavjestiPodatci)
         this.brojObavjesti = this.obavjestiPodatci.length;
-        console.log("Broj obavjesti " + this.brojObavjesti);
+
       });
     }
   }
@@ -51,23 +51,21 @@ export class ObavjestiComponent implements OnInit {
     if(this.obavjestiPodatci==null)
       return [];
     return this.obavjestiPodatci;
-    console.log(this.obavjestiPodatci);
   }
 
   dismissModal() {
       this.prikazObavjesti=false;
-      console.log(this.prikazObavjesti);
 
   }
 
   setDeleted(o: any) {
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
       this.id = o.id;
-      console.log("id" + this.id);
       this.httpKlijent.put(mojConfig.adresa_servera + "/Obavjest/SetObavjestiAsDeleted/" + this.id, this.id)
         .subscribe(data =>
+            this.deletedData=data
+    );
 
-          console.log(data));
 
       this.ucitajObavjesti();
     }

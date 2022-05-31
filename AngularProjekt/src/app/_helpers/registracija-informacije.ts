@@ -7,6 +7,7 @@ export class Korisnik {
   datumRodjenja:Date;
   drzavaID:number;
   lozinka: string;
-
+  adresa1:string;
+  adresa2:string;
 }
 

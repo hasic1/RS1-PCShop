@@ -14,7 +14,9 @@ namespace PCWebShop.ViewModels
         public int DrzavaID { get; set; }
         public bool Pretplacen { get; set; }
         public string korisnickoIme { get; set; }
-        public string Lozinka { get; set; }
+        public string LokacijaSlike { get; set; }
+        public string Adresa1 { get; set; }
+        public string Adresa2 { get; set; }
 
     }
 }

@@ -16,6 +16,9 @@ namespace PCWebShop.Database
         public DateTime DatumRodjenja { get; set; }
         [ForeignKey(nameof(DrzavaID))]
         public Drzava Drzava { get; set; }
+        public string LokacijaSlike { get; set; }
+        public string Adresa1 { get; set; }
+        public string Adresa2 { get; set; }
         public int DrzavaID { get; set; }
         public bool Pretplacen { get; set; }
     }

@@ -66,6 +66,8 @@ export class RegistracijaComponent implements OnInit {
       spol:korisnik.spol,
       datumRodjenja:korisnik.datumRodjenja,
       korisnickoIme: korisnik.korisnickoIme,
+      adresa1:"",
+      adresa2:""
 
     };
     this.KreirajKorisnika(user);

@@ -1,5 +1,6 @@
 ﻿using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PCWebShop.Data;
 using PCWebShop.Database;
 using PCWebShop.Helper.AutentifikacijaAutorizacija;
@@ -41,7 +42,11 @@ namespace PCWebShop.Controllers
                    Pretplacen = s.Pretplacen,
                    Prezime = s.Prezime,
                    Email=s.Email,
-                   Spol = s.Spol
+                   Spol = s.Spol,
+                   Lozinka=s.lozinka,
+                   Adresa1=s.Adresa1,
+                   Adresa2=s.Adresa2
+                   
                }).AsQueryable();
             return data.Take(100).ToList();
         }
@@ -94,17 +99,17 @@ namespace PCWebShop.Controllers
 
             if (korisnik == null)
                 return BadRequest("pogresan ID");
-
+            korisnik.LokacijaSlike = x.LokacijaSlike;
             korisnik.Ime = x.Ime;
             korisnik.Prezime = x.Prezime;
             korisnik.korisnickoIme = x.korisnickoIme;
-            korisnik.lozinka = x.Lozinka;
             korisnik.Pretplacen = x.Pretplacen;          
             korisnik.DatumRodjenja = x.DatumRodjenja;
             korisnik.DrzavaID = x.DrzavaID;
             korisnik.Spol = x.Spol;
             korisnik.Email = x.Email;
-
+            korisnik.Adresa1 = x.Adresa1;
+            korisnik.Adresa2 = x.Adresa2;
 
             _context.SaveChanges();
             return Get(id);

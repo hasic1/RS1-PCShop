@@ -51,7 +51,7 @@
              {{loginInfo().autentifikacijaToken.korisnickiNalog.korisnickoIme}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/pocetna">Postavke profila</a></li>
+            <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/korisnicki-profil">Postavke profila</a></li>
             <li><a class="dropdown-item" *ngIf="loginInfo().isPermisijaKorisnik"  routerLink="/naruzdbe-korisnik">Moje narudzbe</a></li>
             <li><a class="dropdown-item" (click)="logoutButton()">Odjava</a></li>
           </ul>

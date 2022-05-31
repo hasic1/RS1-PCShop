@@ -17,5 +17,9 @@ namespace PCWebShop.ViewModels
         public int DrzavaID { get; set; }
         public Drzava drzava{ get; set; }
         public bool Pretplacen { get; set; }
+        public string Adresa1 { get; set; }
+       
+        public string Adresa2 { get; set; }
+        public string Lozinka { get; set; }
     }
 }

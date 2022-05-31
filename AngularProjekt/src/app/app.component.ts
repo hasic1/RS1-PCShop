@@ -21,7 +21,7 @@ export class AppComponent {
   brojNovihObavjesti:number=0;
   private korisnikId: number;
   obavjestiPodatci:any;
-
+  readData:any=null;
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
   ngOnInit(): void {
@@ -84,7 +84,7 @@ export class AppComponent {
     this.prikaziObavjest={
       prikazi:true,
     };
-    console.log(this.prikaziObavjest);
+
     this.setObavjestAsRead();
   }
 
@@ -99,7 +99,7 @@ export class AppComponent {
         {params: korinsnik}).subscribe((x: any) => {
         this.obavjestiPodatci = x['data'];
         this.brojNovihObavjesti = this.obavjestiPodatci.length;
-        console.log("Broj obavjesti " + this.brojNovihObavjesti);
+
 
       });
     }
@@ -111,7 +111,8 @@ export class AppComponent {
       this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
     this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestAsRead/"+this.korisnikId,this.korisnikId)
       .subscribe(data=>
-        console.log(data));
+       this.readData=data
+        );
    this.brojNovihObavjesti=0;
     }
   }
