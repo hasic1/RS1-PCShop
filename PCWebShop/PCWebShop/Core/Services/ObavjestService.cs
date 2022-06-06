@@ -112,6 +112,7 @@ namespace PCWebShop.Core.Services
                 Status = ExceptionCodeEnum.Success
             };
         }
+
         public async Task<Message> GetUnReadObavjestByUserIdAsMessageAsync(int id, CancellationToken cancellationToken)
         {
             var user = _context.Korisnik.Where(x => x.id == id).FirstOrDefault();

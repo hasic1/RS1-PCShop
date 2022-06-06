@@ -16,6 +16,7 @@ namespace PCWebShop.ViewModels
         public Kategorija Kategorija { get; set; }
         public int KategorijaID { get; set; }
         public string LokacijaSlike { get; set; }
+        public int NaStanju { get; set; }
         public bool Snizen { get; set; } = false;
         public Proizvodjac Proizvodjac { get; set; }
         public int ProizvodjacID { get; set; }

@@ -34,9 +34,10 @@ namespace PCWebShop.Controllers
                     ProizvodjacID = p.ProizvodjacID,
                     Cijena = p.Cijena,
                     KategorijaID = p.KategorijaID,
-                    Kolicina = p.Kolicina,
+                    NaStanju=p.NaStanju,
                     LokacijaSlike = p.LokacijaSlike,
                     Opis = p.Opis,
+                    Kolicina=1,
                     Snizen = p.Snizen,
                     Kategorija=p.Kategorija,
                     Proizvodjac=p.Proizvodjac
@@ -65,10 +66,11 @@ namespace PCWebShop.Controllers
         public ActionResult Add([FromBody] ProizvodAddVM x) {
 
             var newProizvod = new Proizvod
-            {                
+            {   
+                NaStanju=x.NaStanju,
                 Cijena = x.Cijena,
                 KategorijaID = x.KategorijaID,
-                Kolicina = x.Kolicina,
+                Kolicina = 1,
                 LokacijaSlike = x.LokacijaSlike,
                 NazivProizvoda = x.NazivProizvoda,
                 Opis = x.Opis,
@@ -90,11 +92,12 @@ namespace PCWebShop.Controllers
                 return BadRequest("pogresan ID");
 
             proizvod.ProizvodjacID = x.ProizvodjacID;
+            proizvod.NaStanju = x.NaStanju;
             proizvod.Snizen = x.Snizen;
             proizvod.Opis = x.Opis;
             proizvod.NazivProizvoda = x.NazivProizvoda;
             proizvod.LokacijaSlike = x.LokacijaSlike;
-            proizvod.Kolicina = x.Kolicina;
+            proizvod.Kolicina = 1;
             proizvod.KategorijaID = x.KategorijaID;
             proizvod.Cijena = x.Cijena;
 

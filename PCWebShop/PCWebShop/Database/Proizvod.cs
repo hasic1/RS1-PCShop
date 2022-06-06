@@ -14,6 +14,7 @@ namespace PCWebShop.Database
         public string NazivProizvoda { get; set; }
         public double Cijena { get; set; }
         public int Kolicina { get; set; }
+        public int NaStanju { get; set; }
         public string Opis { get; set; }
         [ForeignKey(nameof(KategorijaID))]
         public Kategorija Kategorija { get; set; }

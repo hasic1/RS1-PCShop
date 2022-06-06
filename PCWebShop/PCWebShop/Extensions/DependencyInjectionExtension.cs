@@ -31,7 +31,7 @@ namespace PCWebShop.Extensions
 
             services.AddScoped<IOglasService, OglasService>();
             services.AddScoped<IObavjestService, ObavjestService>();
-            
+            services.AddScoped<INarudzbaService, NarudzbaService>();
         }
     }
 }

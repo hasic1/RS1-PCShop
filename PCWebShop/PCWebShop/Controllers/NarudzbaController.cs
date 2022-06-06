@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using PCWebShop.Core.Interfaces;
 using PCWebShop.Data;
 using PCWebShop.Database;
 using PCWebShop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PCWebShop.Controllers
@@ -16,11 +19,14 @@ namespace PCWebShop.Controllers
     public class NarudzbaController:ControllerBase
     {
         private readonly Context _context;
+        private readonly INarudzbaService _narudzbaService;
 
-        public NarudzbaController(Context context)
+        public NarudzbaController(Context context, INarudzbaService narudzbaService)
         {
             _context = context;
+            _narudzbaService = narudzbaService;
         }
+
         [HttpGet]
         public List<NarudzbaVM> GetAll()
         {
@@ -45,27 +51,43 @@ namespace PCWebShop.Controllers
                
             return data.Take(100).ToList();
         }
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] KorpaVM request , CancellationToken cancellationToken)
+        {
+            var result = await _narudzbaService.AddNarudzba(request, cancellationToken);
+
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return Ok(result);
+
+        }
+
 
         [HttpPost]
-        public ActionResult Add([FromBody] NarudzbaAddVM x)
+        public ActionResult Add(int  nesto)
         {
+
             //KorisnickiNalog korisnik = ControllerContext.HttpContext.GetKorisnikOfAuthToken();
 
             //if (korisnik == null || korisnik is Korisnik)
             //    return null;
-            var newNarudzba = new Narudzba
-            {
-                Aktivna = x.Aktivna,
-                Potvrdjena = x.Potvrdjena,
-                DatumKreiranja = DateTime.Now,
-                NaruciocID = x.NaruciocID,
-                Dostavljac=x.dostavljac,
-                Narucioc=x.narucioc                
-            };
+            var items = nesto;
 
-            _context.Add(newNarudzba);
-            _context.SaveChanges();
-            return Get(newNarudzba.ID);
+            //var newNarudzba = new Narudzba
+            //{
+            //    Aktivna = x.Aktivna,
+            //    Potvrdjena = x.Potvrdjena,
+            //    DatumKreiranja = DateTime.Now,
+            //    NaruciocID = x.NaruciocID,
+            //    Dostavljac=x.dostavljac,
+            //    Narucioc=x.narucioc                
+            //};
+
+            //_context.Add(newNarudzba);
+            //_context.SaveChanges();
+            //return Get(newNarudzba.ID);
+            return Ok();
         }
 
 
