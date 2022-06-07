@@ -33,6 +33,8 @@ namespace PCWebShop.Data
         public DbSet<KorisnickiNalog> KorisnickiNalog{ get; set; }
 
         public DbSet<Obavjest> Obavjest { get; set; }
+        public DbSet<AdministratorObavjesti> aAdministratorObavjest { get; set; }
+
         public Context(
             DbContextOptions options) : base(options)
         {

@@ -18,16 +18,20 @@ export class AppComponent {
   noviPost:any=null;
   kategorijePodatci:any;
   prikaziObavjest:any;
+  prikaziObavjestAdmin:any;
   brojNovihObavjesti:number=0;
+  brojNovihObavjestiAdmin:number=0;
   private korisnikId: number;
+  private administratorID: number;
   obavjestiPodatci:any;
+  obavjestiAdminPodatci:any;
   readData:any=null;
   constructor(private httpKlijent: HttpClient, private router: Router) {
   }
   ngOnInit(): void {
     this.testirajWebApi();
     this.ucitajObavjesti();
-
+    this.ucitajAdministratorObavjesti();
   }
   logoutButton() {
     AutentifikacijaHelper.setLoginInfo(null);
@@ -88,6 +92,13 @@ export class AppComponent {
     this.setObavjestAsRead();
   }
 
+  prikaziAdminObavjestiModal(){
+    this.prikaziObavjestAdmin={
+      prikazi:true,
+    };
+
+    this.setAdministratorObavjestAsRead();
+  }
   ucitajObavjesti(): void {
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
     if(AutentifikacijaHelper.getLoginInfo().autentifikacijaToken!=null) {
@@ -105,6 +116,23 @@ export class AppComponent {
     }
     }
   }
+  ucitajAdministratorObavjesti(): void {
+    if(AutentifikacijaHelper.getLoginInfo().isPermisijaAdmin && AutentifikacijaHelper.getLoginInfo().isLogiran) {
+      if(AutentifikacijaHelper.getLoginInfo().autentifikacijaToken!=null) {
+        this.administratorID = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+        let admin = {
+          id: this.administratorID
+        }
+        this.httpKlijent.get(mojConfig.adresa_servera + "/Obavjest/GeUnReadUnAdministratorNotifications",
+          {params: admin}).subscribe((x: any) => {
+          this.obavjestiAdminPodatci = x['data'];
+          this.brojNovihObavjestiAdmin = this.obavjestiAdminPodatci.length;
+          console.log(this.brojNovihObavjestiAdmin);
+
+        });
+      }
+    }
+  }
   setObavjestAsRead(){
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
 
@@ -114,6 +142,17 @@ export class AppComponent {
        this.readData=data
         );
    this.brojNovihObavjesti=0;
+    }
+  }
+  setAdministratorObavjestAsRead(){
+    if(AutentifikacijaHelper.getLoginInfo().isPermisijaAdmin && AutentifikacijaHelper.getLoginInfo().isLogiran) {
+
+      this.administratorID = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
+      this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetAdministratorObavjestAsRead/"+this.administratorID,this.administratorID)
+        .subscribe(data=>
+          this.readData=data
+        );
+      this.brojNovihObavjestiAdmin=0;
     }
   }
 }

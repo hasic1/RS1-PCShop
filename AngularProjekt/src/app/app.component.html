@@ -27,9 +27,13 @@
 
       </ul>
 
-      <button id="btn-obavjesti" >
+      <button *ngIf="loginInfo().isPermisijaKorisnik" id="btn-obavjesti" >
         <img  *ngIf="loginInfo().isPermisijaKorisnik" (click)="prikaziObavjestiModal() "  id="obavjest" src="assets/img/Ikone/notification.png">
         <span *ngIf="brojNovihObavjesti>0 && loginInfo().isLogiran"  class="badge badge-light">{{brojNovihObavjesti}}</span>
+      </button>
+      <button *ngIf="loginInfo().isPermisijaAdmin" id="btn-obavjestiAdmin" >
+        <img  *ngIf="loginInfo().isPermisijaAdmin" (click)="prikaziAdminObavjestiModal() "  id="obavjestAdmin" src="assets/img/Ikone/notification.png">
+        <span *ngIf="brojNovihObavjestiAdmin>0 && loginInfo().isLogiran"  class="badge badge-light">{{brojNovihObavjestiAdmin}}</span>
       </button>
 
 
@@ -79,6 +83,7 @@
   <app-obavjesti
     [prikazObavjesti]="prikaziObavjest"
   ></app-obavjesti>
+  <app-admin-obavjesti [prikazObavjesti]="prikaziObavjestAdmin"></app-admin-obavjesti>
 <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>

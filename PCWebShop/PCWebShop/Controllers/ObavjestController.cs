@@ -62,6 +62,16 @@ namespace PCWebShop.Controllers
             return Ok(result);
         }
         [HttpGet]
+        public async Task<IActionResult> GetAdministratorNotifications(int id, CancellationToken cancellationToken)
+        {
+            var result = await _obavjestService.GetObavjestByAdministratorIdAsMessageAsync(id, cancellationToken);
+
+            if (!result.IsValid)
+                return BadRequest();
+
+            return Ok(result);
+        }
+        [HttpGet]
         public async Task<IActionResult> GeUnReadUserNotifications(int id, CancellationToken cancellationToken)
         {
             var result = await _obavjestService.GetUnReadObavjestByUserIdAsMessageAsync(id, cancellationToken);
@@ -71,7 +81,16 @@ namespace PCWebShop.Controllers
 
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GeUnReadUnAdministratorNotifications(int id, CancellationToken cancellationToken)
+        {
+            var result = await _obavjestService.GetUnReadAdministratorObavjestByUserIdAsMessageAsync(id, cancellationToken);
 
+            if (!result.IsValid)
+                return BadRequest();
+
+            return Ok(result);
+        }
         [HttpPut("{id}")]
         public async Task<IActionResult> SetObavjestiAsDeletedAsync(int id, CancellationToken cancellationToken)
         {
@@ -82,9 +101,27 @@ namespace PCWebShop.Controllers
             return Ok(message);
         }
         [HttpPut("{id}")]
+        public async Task<IActionResult> SetAministratorObavjestiAsDeletedAsync(int id, CancellationToken cancellationToken)
+        {
+            var message = await _obavjestService.SetAdministratorObavjestAsDeletedAsync(id, cancellationToken);
+            if (message.IsValid == false)
+                return BadRequest(message);
+
+            return Ok(message);
+        }
+        [HttpPut("{id}")]
         public async Task<IActionResult> SetObavjestAsReadAsync(int id, CancellationToken cancellationToken)
         {
             var message = await _obavjestService.SetObavjestAsReadAsMessageAsync(id, cancellationToken);
+            if (message.IsValid == false)
+                return BadRequest(message);
+
+            return Ok(message);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> SetAdministratorObavjestAsReadAsync(int id, CancellationToken cancellationToken)
+        {
+            var message = await _obavjestService.SetAdministratorObavjestAsReadAsMessageAsync(id, cancellationToken);
             if (message.IsValid == false)
                 return BadRequest(message);
 

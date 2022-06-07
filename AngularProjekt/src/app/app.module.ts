@@ -38,6 +38,7 @@ import {PaginationComponent} from "./pagination/pagination.component";
 import { ObavjestiComponent } from './obavjesti/obavjesti.component';
 import { KorisnickiProfilComponent } from './korisnicki-profil/korisnicki-profil.component';
 import { AdministratorEditComponent } from './korisnik/administrator-edit/administrator-edit.component';
+import { AdminObavjestiComponent } from './admin-obavjesti/admin-obavjesti.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { AdministratorEditComponent } from './korisnik/administrator-edit/admini
     PaginationComponent,
     ObavjestiComponent,
     KorisnickiProfilComponent,
-    AdministratorEditComponent
+    AdministratorEditComponent,
+    AdminObavjestiComponent
   ],
   imports: [
     BrowserModule,

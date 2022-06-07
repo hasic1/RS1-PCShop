@@ -188,7 +188,22 @@ div.content {
   padding: 0%;
   background-color: #212529;
 }
+#obavjestAdmin{
+  text-align: center;
+  width: 25px ;
+  height: 30px;
+  padding-right: 0%;
+  padding: 0%;
+  background-color: #212529;
+}
 #btn-obavjesti{
+  background-color: #212529;
+  border: none;
+  margin-right: 1%;
+  padding: 0%;
+
+}
+#btn-obavjestiAdmin{
   background-color: #212529;
   border: none;
   margin-right: 1%;

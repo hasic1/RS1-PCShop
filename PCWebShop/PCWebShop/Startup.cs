@@ -151,7 +151,11 @@ namespace PCWebShop
           () => serviceProvider.GetService<IObavjestService>().CreateBirthdayNotifications(),
           "10 0 * * *"
           );
-
+            recurringJobManager.AddOrUpdate(
+         "Run at 00:15 every day//CreateContractExpirationNotification",
+         () => serviceProvider.GetService<IObavjestService>().CreateContractExpirationNotification(),
+         "15 0 * * *"
+         );
         }
     }
 }
