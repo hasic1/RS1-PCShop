@@ -8,7 +8,7 @@
       <div *ngFor="let p of getProizvodPodatci()"  class="col mb-5">
         <div class="card h-100">
 
-          <img class="card-img-top" style="height:250px; width: 100%;"  [routerLink]="['/proizvod-detaljno', p.proizvodID]" src="{{p.lokacijaSlike}}" routerLink="/proizvod-detaljno/+{{p.id}}" alt="Nije moguće učitati sliku"   />
+          <img class="card-img-top" style="height:250px; width: 100%;"  [routerLink]="['/proizvod-detaljno', p.proizvodID]" src="{{p.lokacijaSlike}}"  routerLink="/proizvod-detaljno/+{{p.id}}" alt="Nije moguće učitati sliku"   />
 
           <div class="card-body p-4">
             <div class="text-center" style="margin-top: 2%">

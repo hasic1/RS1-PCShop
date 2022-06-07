@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {LoginInformacije} from "../_helpers/login-informacije";
 import {AutentifikacijaHelper} from "../_helpers/autentifikacija-helper";
+import {NarudzbaService} from "../_helpers/narudzba.service";
 
 @Component({
   selector: 'app-proizvodi-korisnik',
@@ -18,7 +19,7 @@ export class ProizvodiKorisnikComponent implements OnInit {
   kategorijaGet:any=null;
 
 
-  constructor(private httpKlijent: HttpClient, private route: ActivatedRoute) {}
+  constructor(private httpKlijent: HttpClient, private route: ActivatedRoute,private narudzbaService:NarudzbaService) {}
 
 
   ngOnInit(): void {
@@ -58,8 +59,8 @@ export class ProizvodiKorisnikComponent implements OnInit {
     return AutentifikacijaHelper.getLoginInfo();
   }
 
-  dodajUKorpu() {
-
+  dodajUKorpu(p:any) {
+    this.narudzbaService.addtoCart(p);
   }
 }
 
