@@ -51,12 +51,13 @@ export class ProizvodiComponent implements OnInit {
         prikazi:true,
         nazivProizvoda:"",
         cijena:0,
-        kolicina:0,
+        kolicina:1,
         opis:"",
         kategorijaID:0,
         lokacijaSlike:"",
         snizen:0,
-        proizvodjacID:0
+        proizvodjacID:0,
+        naStanju:0,
       }
   }
   obrisi(p:any) {

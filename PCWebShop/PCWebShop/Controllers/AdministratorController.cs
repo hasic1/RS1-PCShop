@@ -37,7 +37,8 @@ namespace PCWebShop.Controllers
                    KorisnickoIme = s.korisnickoIme,
                    DrzavaID = s.DrzavaID,
                    Prezime=s.Prezime,
-                   Spol=s.Spol
+                   Spol=s.Spol,
+                   trajanjeUgovora=s.trajanjeUgovora
                }).AsQueryable();
 
             return data.Take(100).ToList();
@@ -60,8 +61,7 @@ namespace PCWebShop.Controllers
                 Spol = k.Spol,
                 DrzavaID = k.DrzavaID,
                 lozinka=k.Lozinka,
-                
-                
+                trajanjeUgovora=k.trajanjeUgovora
             };
             _context.Add(newAdministrator);
             _context.SaveChanges();
@@ -83,7 +83,6 @@ namespace PCWebShop.Controllers
             administrator.DatumRodjenja = x.DatumRodjenja;
             administrator.DrzavaID = x.DrzavaID;
             administrator.Spol = x.Spol;
-
 
             _context.SaveChanges();
             return Get(id);

@@ -19,5 +19,6 @@ namespace PCWebShop.Database
         [ForeignKey(nameof(DrzavaID))]
         public Drzava Drzava { get; set; }
         public int DrzavaID { get; set; }
+        public DateTime trajanjeUgovora { get; set; }
     }
 }

@@ -62,8 +62,7 @@
 </nav>
 
 <div class="sidebar" *ngIf="loginInfo().isPermisijaAdmin">
-  <a class="active" href="#home">Pocetna</a>
-  <button  class="btn1 default">Statistika</button>
+  <button  class="btn1 default" routerLink="/pocetna">Pocetna</button>
   <button  class="btn1 default" routerLink="/proizvodi">Proizvod</button>
   <button  class="btn1 default" (click)="btnDodajProizvodjaca()" >Proizvodjac</button>
   <button  class="btn1 default" (click)="btnDodajKategoriju()" >Kategorija</button>

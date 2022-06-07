@@ -14,5 +14,6 @@ namespace PCWebShop.ViewModels
         public DateTime DatumRodjenja { get; set; }
         public int DrzavaID { get; set; }
         public string Lozinka { get; set; }
+        public DateTime trajanjeUgovora { get; set; }
     }
 }

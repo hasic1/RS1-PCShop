@@ -13,6 +13,7 @@ export class KorisnikComponent implements OnInit {
   korisnikPodaci:any;
   odabraniKorisnik:any=null;
   ime:string='';
+  noviAdmin:any=null;
 
   constructor(private httpKlijent:HttpClient) { }
 
@@ -54,4 +55,17 @@ export class KorisnikComponent implements OnInit {
   }
 
 
+  btnNovi() {
+    this.noviAdmin={
+      prikazi:true,
+      korisnickoIme:"" ,
+      ime: "",
+      prezime: "",
+      spol: "muski",
+      datumRodjenja: "",
+      drzavaID: 1,
+      lozinka: "",
+      trajanjeUgovora:""
+    }
+  }
 }

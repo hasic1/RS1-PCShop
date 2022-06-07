@@ -37,6 +37,7 @@ import { FooterComponent } from './footer/footer.component';
 import {PaginationComponent} from "./pagination/pagination.component";
 import { ObavjestiComponent } from './obavjesti/obavjesti.component';
 import { KorisnickiProfilComponent } from './korisnicki-profil/korisnicki-profil.component';
+import { AdministratorEditComponent } from './korisnik/administrator-edit/administrator-edit.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { KorisnickiProfilComponent } from './korisnicki-profil/korisnicki-profil
     FooterComponent,
     PaginationComponent,
     ObavjestiComponent,
-    KorisnickiProfilComponent
+    KorisnickiProfilComponent,
+    AdministratorEditComponent
   ],
   imports: [
     BrowserModule,
