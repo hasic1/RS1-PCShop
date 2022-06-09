@@ -71,6 +71,7 @@ export class RegistracijaComponent implements OnInit {
 
     };
     this.KreirajKorisnika(user);
+    porukaSuccess("Uspjesno ste kreirali korisniči račun");
   }
   KreirajKorisnika(register:Korisnik)
   {

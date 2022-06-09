@@ -57,7 +57,7 @@ export class KorpaComponent implements OnInit {
 
 
 
-    this.httpKlijent.post(mojConfig.adresa_servera+"/Narudzba/Post",kopaStavke).subscribe((x:any) => {
+    this.httpKlijent.post(mojConfig.adresa_servera+"/Narudzba/AddNarudzba",kopaStavke).subscribe((x:any) => {
       porukaSuccess("Vaša narudžba je uspjesno kreirana");
       this.nesto =x;
 

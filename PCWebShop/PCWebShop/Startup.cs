@@ -43,12 +43,14 @@ namespace PCWebShop
                     p.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod();
+                   
+                    
                 });
             });
 
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("connectionpc")));
+                    Configuration.GetConnectionString("connection")));
 
 
 
@@ -60,8 +62,8 @@ namespace PCWebShop
                 {
                     builder.WithOrigins(origins)
                     .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
+                    .AllowAnyMethod();
+                   
                 });
             });
 
@@ -100,7 +102,7 @@ namespace PCWebShop
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+               
             }
             else
             {
@@ -123,6 +125,8 @@ namespace PCWebShop
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseCors("AppPolicy");
+
             app.UseCors(
                options => options
                .SetIsOriginAllowed(x => _ = true)
@@ -131,8 +135,16 @@ namespace PCWebShop
                .AllowCredentials()
            ); //This needs to set everything allowed
 
+            
+
+           
+
+           
 
             app.UseRouting();
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -142,6 +154,11 @@ namespace PCWebShop
 
                
             });
+
+
+
+
+
 
             app.UseHangfireDashboard();
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using PCWebShop.Core.Infrastructure;
+using PCWebShop.Core.Infrastructure.Enums;
 using PCWebShop.Core.Interfaces;
 using PCWebShop.Data;
 using PCWebShop.Database;
@@ -65,29 +67,48 @@ namespace PCWebShop.Controllers
 
 
         [HttpPost]
-        public ActionResult Add(int  nesto)
+        public ActionResult<Message> AddNarudzba([FromBody] KorpaVM request, CancellationToken cancellationToken)
         {
 
-            //KorisnickiNalog korisnik = ControllerContext.HttpContext.GetKorisnikOfAuthToken();
+            var status = ExceptionCodeEnum.Success;
 
-            //if (korisnik == null || korisnik is Korisnik)
-            //    return null;
-            var items = nesto;
 
-            //var newNarudzba = new Narudzba
-            //{
-            //    Aktivna = x.Aktivna,
-            //    Potvrdjena = x.Potvrdjena,
-            //    DatumKreiranja = DateTime.Now,
-            //    NaruciocID = x.NaruciocID,
-            //    Dostavljac=x.dostavljac,
-            //    Narucioc=x.narucioc                
-            //};
 
-            //_context.Add(newNarudzba);
-            //_context.SaveChanges();
-            //return Get(newNarudzba.ID);
-            return Ok();
+            var user = _context.Korisnik.Where(x => x.id == request.KorisnikID).FirstOrDefault();
+            var order = new Narudzba()
+            {
+                Aktivna = true,
+                DatumKreiranja = DateTime.Now,
+                NaruciocID = request.KorisnikID,
+                Potvrdjena = false,
+                DostavljacID = 1
+            };
+            var orderResult =  _context.Narudzba.Add(order);
+             _context.SaveChanges();
+
+            for (int i = 0; i < request.ID.Length; i++)
+            {
+                for (int j = 0; j < request.Kolicina[i]; j++)
+                {
+                    var stavka = new NarudzbaStavka()
+                    {
+                        NarudzbaID = orderResult.Entity.ID,
+                        PropizvodID = request.ID[i]
+                    };
+                     _context.NarudzbaStavka.Add(stavka);
+                }
+                 _context.SaveChanges();
+            }
+
+
+            
+
+            return new Message
+            {
+                IsValid = true,
+                Status = ExceptionCodeEnum.Success,
+                Info = "USPJEH!!!"
+            };
         }
 
 
