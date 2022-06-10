@@ -12,8 +12,8 @@ import {NarudzbaService} from "../_helpers/narudzba.service";
   styleUrls: ['./pocetna.component.css']
 })
 export class PocetnaComponent implements OnInit {
-  proizvodi:any;
   odabraniProizvod:any=null;
+  proizvodi:any;
   total:number = 1;
   page:number = 1;
   limit:number = 8;

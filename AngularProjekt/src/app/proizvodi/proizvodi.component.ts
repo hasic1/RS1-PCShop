@@ -15,14 +15,28 @@ export class ProizvodiComponent implements OnInit {
   proizvodiPodatci:any;
   odabraniProizvod:any=null;
   naziv:string='';
-
+  total:number = 1;
+  page:number = 1;
+  limit:number = 8;
+  loading:boolean = false;
   constructor(private httpKlijent: HttpClient) {
   }
 
 
-  testirajWebApi() {
-    this.httpKlijent.get(mojConfig.adresa_servera+ "/Proizvod/GetAll").subscribe(x=>{
-      this.proizvodiPodatci = x;
+  testirajWebApi():void {
+    let parametri={
+      page_number: this.page,
+      items_per_page:this.limit
+    }
+    JSON.stringify(parametri)
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Proizvod/GetAllPaged",
+      {params:parametri}).subscribe((x:any)=>{
+      this.proizvodiPodatci = x['dataItems'];
+      this.total=x['totalCount'];
+      this.loading=false;
+      this.proizvodiPodatci.forEach((a:any) => {
+      });
+
     });
   }
 
@@ -69,5 +83,21 @@ export class ProizvodiComponent implements OnInit {
         }
         porukaSuccess("Proizvod uspjesno obrisan");
       })
+  }
+  goToPrevious(): void {
+
+    this.page--;
+    this.testirajWebApi();
+  }
+
+  goToNext(): void {
+
+    this.page++;
+    this.testirajWebApi();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    this.testirajWebApi();
   }
 }

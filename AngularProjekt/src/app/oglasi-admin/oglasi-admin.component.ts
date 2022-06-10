@@ -12,16 +12,32 @@ declare function porukaSuccess(x:string):any;
 export class OglasiAdminComponent implements OnInit {
   odabraniOglas: any=null;
   oglasiPodaci:any;
-
+  total:number = 1;
+  page:number = 1;
+  limit:number = 8;
+  loading:boolean = false;
   constructor(private httpKlijent:HttpClient) { }
 
-  testirajWebApi() {
-    this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAll").subscribe(x=>{
-      this.oglasiPodaci = x;
+  testirajWebApi():void {
+    let parametri={
+      Page: this.page,
+      PageSize:this.limit
+    }
+    JSON.stringify(parametri)
+    this.httpKlijent.get(mojConfig.adresa_servera+ "/Oglasi/GetAall",
+      {params:parametri},).subscribe((x:any)=>{
+      //this.oglasiPodatci=x;
+      this.oglasiPodaci=x['data'];
+      console.log(this.oglasiPodaci)
+      this.total=x['pagedResult']['totalItems'];
+      console.log(this.oglasiPodaci)
+      this.loading=false;
+      console.log(this.page)
+
     });
   }
 
-  getProizvodiPodaci() {
+  getOglasiPodaci() {
     if (this.oglasiPodaci==null)
       return[];
     return this.oglasiPodaci;
@@ -55,14 +71,28 @@ export class OglasiAdminComponent implements OnInit {
       }
   }
   obrisi(p:any) {
-    this.httpKlijent.post(mojConfig.adresa_servera+"/Oglasi/Delete/"+p.proizvodID,null)
+    this.httpKlijent.post(mojConfig.adresa_servera+"/Oglasi/Delete/"+p.id,null)
       .subscribe((x:any)=>{
         const index=this.oglasiPodaci.indexOf(p);
         if(index>-1){
           this.oglasiPodaci.splice(index,1);
         }
-        porukaSuccess("Proizvod uspjesno obrisan");
+        porukaSuccess("Oglas uspjesno obrisan");
       })
   }
+  goToPrevious(): void {
+    this.page--;
+    this.testirajWebApi();
+  }
 
+  goToNext(): void {
+    this.page++;
+    this.testirajWebApi();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    console.log(this.page)
+    this.testirajWebApi();
+  }
 }

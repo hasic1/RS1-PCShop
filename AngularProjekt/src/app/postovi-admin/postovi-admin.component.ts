@@ -11,7 +11,6 @@ declare function porukaSuccess(x:string):any;
 })
 export class PostoviAdminComponent implements OnInit {
   odabraniPost: any=null;
-  postPodaci:any;
   postoviPodatci:any;
   total:number = 1;
   page:number = 1;
@@ -19,18 +18,11 @@ export class PostoviAdminComponent implements OnInit {
   loading:boolean = false;
   constructor(private httpKlijent:HttpClient) { }
 
-  getPostPodaci() {
-    if (this.postPodaci==null)
-      return[];
-    return this.postPodaci;
-  }
-
-
 
   ngOnInit(): void {
     this.testirajWebApi();
   }
-  testirajWebApi() {
+  testirajWebApi() :void{
 
     let parametri={
       page_number: this.page,
@@ -86,16 +78,16 @@ export class PostoviAdminComponent implements OnInit {
         naslov:"",
         sadrzaj:"",
         autorPostaID:1,
-        lokacijaSlike:"negdje",
+        lokacijaSlike:"",
         datumObjave:new Date(),
       };
   }
   obrisi(p:any) {
     this.httpKlijent.post(mojConfig.adresa_servera+"/Post/Delete/"+p.id,null)
       .subscribe((x:any)=>{
-        const index=this.postPodaci.indexOf(p);
+        const index=this.postoviPodatci.indexOf(p);
         if(index>-1){
-          this.postPodaci.splice(index,1);
+          this.postoviPodatci.splice(index,1);
         }
         porukaSuccess("Post uspjesno obrisan");
       })

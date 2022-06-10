@@ -18,7 +18,9 @@
           <td style="padding-bottom: 0%;padding-top: 2%"><b></b> <i> <b>{{p.naslov}}</b></i> </td>
         </tr>
         <tr>
-          <td style="padding-bottom: 0%;"><i><b>Autor:  </b></i> <i>  {{p.autorPosta.ime}} {{p.autorPosta.prezime}}</i><img src="assets/img/Ikone/edit.png"  (click)="detalji(p)">
+          <td style="padding-bottom: 0%;"><i><b>Autor:  </b></i> <i>  {{p.autorPosta.ime}} {{p.autorPosta.prezime}}</i>
+            <img src="assets/img/Ikone/edit.png"  (click)="detalji(p)">
+            <img class="detalji"  src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
           </td>
         </tr>
         <tr>

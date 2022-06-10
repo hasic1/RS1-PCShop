@@ -34,6 +34,13 @@
 </table>
 <button class="btn btn-primary" (click)="btnNovi()">Dodaj novi proizvod</button>
 </div>
-
+<app-pagination
+  (goPage)="goToPage($event)"
+  (goPrev)="goToPrevious()"
+  (goNext)="goToNext()"
+  [page]="page"
+  [perPage]="limit"
+  [count]="total">
+</app-pagination>
 <app-proizvod-edit [urediProizvod]="odabraniProizvod"></app-proizvod-edit>
 
