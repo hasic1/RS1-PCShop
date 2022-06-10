@@ -67,7 +67,7 @@ namespace PCWebShop.Controllers
 
 
         [HttpPost]
-        public ActionResult<Message> AddNarudzba([FromBody] KorpaVM request, CancellationToken cancellationToken)
+        public ActionResult AddNarudzba([FromBody] KorpaVM request, CancellationToken cancellationToken)
         {
 
             var status = ExceptionCodeEnum.Success;
@@ -101,14 +101,10 @@ namespace PCWebShop.Controllers
             }
 
 
-            
 
-            return new Message
-            {
-                IsValid = true,
-                Status = ExceptionCodeEnum.Success,
-                Info = "USPJEH!!!"
-            };
+
+            return Get(order.ID);
+           
         }
 
 

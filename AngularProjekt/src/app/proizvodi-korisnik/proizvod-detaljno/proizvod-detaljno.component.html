@@ -17,16 +17,16 @@
 
       <table>
         <tr>
-          <td><b>Naziv proizvoda:</b> <br/> {{proizvodGet.nazivProizvoda}} </td>
+          <td><b>Naziv proizvoda: </b> <br/> {{proizvodGet.nazivProizvoda}} </td>
         </tr>
         <tr>
-          <td><b>Kategorija:</b> {{proizvodGet.kategorija.nazivKategorije}} </td>
+          <td><b>Kategorija: </b> {{proizvodGet.kategorija.nazivKategorije}} </td>
         </tr>
         <tr>
-          <td><b>Proizvođač:</b>{{proizvodGet.proizvodjac.nazivProizvodjaca}} </td>
+          <td><b>Proizvođač: </b>{{proizvodGet.proizvodjac.nazivProizvodjaca}} </td>
         </tr>
         <tr>
-          <td><b>Cijena:</b> {{proizvodGet.cijena}} </td>
+          <td><b>Cijena: </b> {{proizvodGet.cijena}}KM</td>
         </tr>
 
 
@@ -37,7 +37,7 @@
 
   <div class="opis">
     <tr>
-      <td><b>Opis proizvoda:</b> <br />{{proizvodGet.opis}}</td>
+      <td><b>Opis proizvoda: </b> <br />{{proizvodGet.opis}}</td>
     </tr>
     <div style="text-align: right; width: 120%; margin-top: 1%;margin-bottom: 2%">
     <button *ngIf="loginInfo().isPermisijaKorisnik" style="margin-right: 1%"   class="btn btn-primary" (click)="dodajUKorpu(proizvodGet)" > Naruči </button>

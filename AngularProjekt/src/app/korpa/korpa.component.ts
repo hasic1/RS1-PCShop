@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {mojConfig} from "../moj-config";
 import {AutentifikacijaHelper} from "../_helpers/autentifikacija-helper";
 
+
 declare function porukaSuccess(s:string):any;
 
 @Component({
@@ -49,15 +50,15 @@ export class KorpaComponent implements OnInit {
 
     }
     this.id = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
-    var kopaStavke ={
+    var korpaStavke ={
       id:proizvodiIDs,
       kolicina:kolicine,
       korisnikID:this.id
+
     }
 
 
-
-    this.httpKlijent.post(mojConfig.adresa_servera+"/Narudzba/AddNarudzba",kopaStavke).subscribe((x:any) => {
+    this.httpKlijent.post(mojConfig.adresa_servera+"/Narudzba/Post",korpaStavke).subscribe((x:any) => {
       porukaSuccess("Vaša narudžba je uspjesno kreirana");
       this.nesto =x;
 

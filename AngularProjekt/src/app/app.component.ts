@@ -21,7 +21,7 @@ export class AppComponent {
   prikaziObavjestAdmin:any;
   brojNovihObavjesti:number=0;
   brojNovihObavjestiAdmin:number=0;
-  private korisnikId: number;
+  korisnikId: number;
   private administratorID: number;
   obavjestiPodatci:any;
   obavjestiAdminPodatci:any;
@@ -137,7 +137,7 @@ export class AppComponent {
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
 
       this.korisnikId = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
-    this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetObavjestAsRead/"+this.korisnikId,this.korisnikId)
+    this.httpKlijent.post(mojConfig.adresa_servera+ "/Obavjest/SetObavjestAsRead/"+this.korisnikId,this.korisnikId)
       .subscribe(data=>
        this.readData=data
         );
@@ -148,7 +148,7 @@ export class AppComponent {
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaAdmin && AutentifikacijaHelper.getLoginInfo().isLogiran) {
 
       this.administratorID = AutentifikacijaHelper.getLoginInfo().autentifikacijaToken.korisnickiNalog.id;
-      this.httpKlijent.put(mojConfig.adresa_servera+ "/Obavjest/SetAdministratorObavjestAsRead/"+this.administratorID,this.administratorID)
+      this.httpKlijent.post(mojConfig.adresa_servera+ "/Obavjest/SetAdministratorObavjestAsRead/"+this.administratorID,this.administratorID)
         .subscribe(data=>
           this.readData=data
         );

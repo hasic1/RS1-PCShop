@@ -16,7 +16,7 @@ export class ObavjestiComponent implements OnInit {
 @Input()
   prikazObavjesti:any;
   obavjestiPodatci:any;
-  private korisnikId: any;
+  korisnikId: any;
   brojObavjesti:number;
   id:any;
   deletedData:any=null;
@@ -61,7 +61,7 @@ export class ObavjestiComponent implements OnInit {
   setDeleted(o: any) {
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaKorisnik && AutentifikacijaHelper.getLoginInfo().isLogiran) {
       this.id = o.id;
-      this.httpKlijent.put(mojConfig.adresa_servera + "/Obavjest/SetObavjestiAsDeleted/" + this.id, this.id)
+      this.httpKlijent.post(mojConfig.adresa_servera + "/Obavjest/SetObavjestiAsDeleted/" + this.id, this.id)
         .subscribe(data =>
             this.deletedData=data
     );

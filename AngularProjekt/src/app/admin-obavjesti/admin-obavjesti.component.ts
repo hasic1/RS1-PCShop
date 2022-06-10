@@ -59,7 +59,7 @@ export class AdminObavjestiComponent implements OnInit {
   setDeleted(o: any) {
     if(AutentifikacijaHelper.getLoginInfo().isPermisijaAdmin && AutentifikacijaHelper.getLoginInfo().isLogiran) {
       this.id = o.id;
-      this.httpKlijent.put(mojConfig.adresa_servera + "/Obavjest/SetAministratorObavjestiAsDeleted/" + this.id, this.id)
+      this.httpKlijent.post(mojConfig.adresa_servera + "/Obavjest/SetAministratorObavjestiAsDeleted/" + this.id, this.id)
         .subscribe(data =>
           this.deletedData=data
         );

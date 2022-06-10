@@ -20,7 +20,7 @@ export class OglasiComponent implements OnInit {
   oglasiPodatci:any;
   total:number = 1;
   page:number = 1;
-  limit:number = 10;
+  limit:number = 8;
   loading:boolean = false;
 
 

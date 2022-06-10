@@ -55,6 +55,7 @@ namespace PCWebShop
 
 
             var origins = Configuration.GetSection("AllowedDomains").Value;
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("AppPolicy",
@@ -115,8 +116,10 @@ namespace PCWebShop
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
+           
             app.UseSwagger();
+
+            
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
@@ -135,11 +138,12 @@ namespace PCWebShop
                .AllowCredentials()
            ); //This needs to set everything allowed
 
-            
+          
 
-           
+            app.UseHttpsRedirection();
 
-           
+
+               
 
             app.UseRouting();
             app.UseAuthentication();

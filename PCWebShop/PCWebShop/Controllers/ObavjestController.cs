@@ -91,7 +91,7 @@ namespace PCWebShop.Controllers
 
             return Ok(result);
         }
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> SetObavjestiAsDeletedAsync(int id, CancellationToken cancellationToken)
         {
             var message = await _obavjestService.SetObavjestAsDeletedAsync(id, cancellationToken);
@@ -100,7 +100,7 @@ namespace PCWebShop.Controllers
 
             return Ok(message);
         }
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> SetAministratorObavjestiAsDeletedAsync(int id, CancellationToken cancellationToken)
         {
             var message = await _obavjestService.SetAdministratorObavjestAsDeletedAsync(id, cancellationToken);
@@ -109,7 +109,7 @@ namespace PCWebShop.Controllers
 
             return Ok(message);
         }
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> SetObavjestAsReadAsync(int id, CancellationToken cancellationToken)
         {
             var message = await _obavjestService.SetObavjestAsReadAsMessageAsync(id, cancellationToken);
@@ -118,7 +118,7 @@ namespace PCWebShop.Controllers
 
             return Ok(message);
         }
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> SetAdministratorObavjestAsReadAsync(int id, CancellationToken cancellationToken)
         {
             var message = await _obavjestService.SetAdministratorObavjestAsReadAsMessageAsync(id, cancellationToken);
