@@ -15,6 +15,7 @@ export class KorisnikComponent implements OnInit {
   ime:string='';
   noviAdmin:any=null;
 
+
   constructor(private httpKlijent:HttpClient) { }
 
   testirajWebApi() {
@@ -36,7 +37,6 @@ export class KorisnikComponent implements OnInit {
     this.odabraniKorisnik.prikazi=true;
   }
   snimi() {
-    //this.odabranaNarudzba
     this.httpKlijent.post(mojConfig.adresa_servera+ "/Korisnik/Update/" + this.odabraniKorisnik.id,this.odabraniKorisnik)
       .subscribe((x:any)=>{
         alert("Uredu"+x.potvrdjena)

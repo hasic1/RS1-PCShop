@@ -20,13 +20,14 @@
       <td>{{p.sadrzaj}}</td>
       <td>{{p.brojPozicja}}</td>
       <td>{{p.lokacija}}</td>
-      <td>{{p.datumObjave}}</td>
-      <td>{{p.datumIsteka}}</td>
+      <td>{{p.datumObjave | date:'MM.dd.yyyy'}}</td>
+      <td>{{p.datumIsteka | date:'MM.dd.yyyy'}}</td>
       <td>{{p.administrator.ime}}</td>
-      <td>{{p.aktivan}}</td>
+      <td *ngIf="p.aktivan">DA</td>
+      <td *ngIf="!p.aktivan">NE</td>
       <td>
-        <img src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
-        <img src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(p)">
+        <img class="detalji"  src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
+        <img class="detalji" src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(p)">
       </td>
     </tr>
     </tbody>

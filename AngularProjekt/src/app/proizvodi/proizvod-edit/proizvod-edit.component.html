@@ -20,7 +20,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Na stanju</label>
-          <input type="text" class="form-control" [(ngModel)]="urediProizvod.naStanju" placeholder="Na stanju">
+          <input type="number" class="form-control" [(ngModel)]="urediProizvod.naStanju" placeholder="Na stanju">
         </div>
         <div class="mb-3">
           <label class="form-label">Slika proizvoda</label><br>
@@ -33,7 +33,7 @@
           </select>
         </div>
         <div class="mb-3">
-        <label class="form-label">KategorijaID</label>
+        <label class="form-label">Kategorija</label>
           <select class="form-control" [(ngModel)]="urediProizvod.kategorijaID" >
             <option *ngFor="let x of kategorije" value="{{x.kategorijaID}}">{{x.nazivKategorije}}</option>
           </select>

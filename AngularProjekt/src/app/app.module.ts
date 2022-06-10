@@ -73,7 +73,7 @@ import { AdminObavjestiComponent } from './admin-obavjesti/admin-obavjesti.compo
     ObavjestiComponent,
     KorisnickiProfilComponent,
     AdministratorEditComponent,
-    AdminObavjestiComponent
+    AdminObavjestiComponent,
   ],
   imports: [
     BrowserModule,

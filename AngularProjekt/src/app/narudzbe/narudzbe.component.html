@@ -13,14 +13,16 @@
   <tbody>
 
   <tr *ngFor="let n of getNarudzbaPodaci()">
-    <td>{{n.datumKreiranja}}</td>
+    <td>{{n.datumKreiranja | date:'MM.dd.yyyy'}}</td>
     <td>{{n.narucioc.ime}}</td>
     <td>{{n.dostavljac.nazivDostave}}</td>
-    <td>{{n.aktivna}}</td>
-    <td>{{n.potvrdjena}}</td>
+    <td *ngIf="n.aktivna">DA</td>
+    <td *ngIf="!n.aktivna">NE</td>
+    <td *ngIf="n.potvrdjena">DA</td>
+    <td *ngIf="!n.potvrdjena">NE</td>
     <td>
-      <img src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(n)">
-      <img src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(n)">
+      <img class="uredi" src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(n)">
+      <img class="uredi" src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(n)">
     </td>
   </tr>
   </tbody>

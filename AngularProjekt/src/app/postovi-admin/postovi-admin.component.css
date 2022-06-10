@@ -26,6 +26,7 @@
   width: 250px;
   height: 150px;
   margin: 15px;
+  border-radius: 10%;
 }
 .card-image:hover{
   cursor: pointer;

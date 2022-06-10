@@ -17,7 +17,7 @@
         <div class="mb-3">
           <label class="form-label">Dostavljac</label>
           <select class="form-control" [(ngModel)]="urediNarudzbu.dostavljacID" >
-            <option *ngFor="let x of dostavljac" value="{{x.id}}">{{x.ime}}</option>
+            <option *ngFor="let x of dostavljac" value="{{x.id}}">{{x.nazivDostave}}</option>
           </select>
         </div>
         <div class="mb-3">

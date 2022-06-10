@@ -18,11 +18,10 @@
       <td>{{p.ime}}</td>
       <td>{{p.prezime}}</td>
       <td>{{p.korisnickoIme}}</td>
-      <td>{{p.datumRodjenja}}</td>
+      <td>{{p.datumRodjenja | date:'MM.dd.yyyy'}}</td>
       <td>{{p.drzava.naziv}}</td>
       <td>
-        <img src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
-        <img src="assets/img/Ikone/edit.png" width="10%" (click)="detalji(p)">
+        <img class="obrisi" src="assets/img/Ikone/trash.png" width="10%" (click)="obrisi(p)">
       </td>
     </tr>
     </tbody>
