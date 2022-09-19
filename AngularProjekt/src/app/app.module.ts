@@ -39,6 +39,7 @@ import { ObavjestiComponent } from './obavjesti/obavjesti.component';
 import { KorisnickiProfilComponent } from './korisnicki-profil/korisnicki-profil.component';
 import { AdministratorEditComponent } from './korisnik/administrator-edit/administrator-edit.component';
 import { AdminObavjestiComponent } from './admin-obavjesti/admin-obavjesti.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { AdminObavjestiComponent } from './admin-obavjesti/admin-obavjesti.compo
     KorisnickiProfilComponent,
     AdministratorEditComponent,
     AdminObavjestiComponent,
+    ConfirmEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +102,8 @@ import { AdminObavjestiComponent } from './admin-obavjesti/admin-obavjesti.compo
       {path:'naruzdbe-korisnik',component:NarudzbeKorisnikComponent,canActivate:[AutorizacijaKorisnikProvjera]},
       {path:'oglasi-admin',component:OglasiAdminComponent},
       {path:'korisnicki-profil',component:KorisnickiProfilComponent,canActivate:[AutorizacijaKorisnikProvjera]},
+      {path:'confirm-email',component:ConfirmEmailComponent}
+
     ]),
     FormsModule,
     HttpClientModule,

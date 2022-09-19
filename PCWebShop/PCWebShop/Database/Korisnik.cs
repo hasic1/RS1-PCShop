@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace PCWebShop.Database
 {
     [Table("Korisnik")]
-    public class Korisnik:KorisnickiNalog
+    public class Korisnik:KorisnickiNalog 
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
@@ -21,5 +22,6 @@ namespace PCWebShop.Database
         public string Adresa2 { get; set; }
         public int DrzavaID { get; set; }
         public bool Pretplacen { get; set; }
+        public bool ConfirmedEmail { get; set; }
     }
 }

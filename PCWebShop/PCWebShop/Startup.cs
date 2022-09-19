@@ -20,6 +20,9 @@ using PCWebShop.Extensions;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using PCWebShop.Core.Interfaces;
+using PCWebShop.Core.Services;
+using PCWebShop.Database;
+using Microsoft.AspNetCore.Identity;
 
 namespace PCWebShop
 {
@@ -47,12 +50,14 @@ namespace PCWebShop
                     
                 });
             });
+            
 
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("connection")));
 
 
+            
 
             var origins = Configuration.GetSection("AllowedDomains").Value;
             
@@ -68,11 +73,16 @@ namespace PCWebShop
                 });
             });
 
-
+            services.AddSingleton<IEmailSender, EmailSender>();
             //Dependecy injection
             services.ConfigureServices(Configuration);
 
-            
+            services.AddIdentity<IdentityUser, IdentityRole>(opt =>
+            {
+                
+            }
+           ).AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+
 
             services.AddControllers();
 

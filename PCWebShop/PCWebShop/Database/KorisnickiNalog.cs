@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -9,7 +10,7 @@ namespace PCWebShop.Database
 
 {
     [Table("KorisnickiNalog")]
-    public class KorisnickiNalog
+    public class KorisnickiNalog 
     {
         [Key]
         public int id { get; set; }
@@ -24,7 +25,7 @@ namespace PCWebShop.Database
         public Administrator administrator => this as Administrator;
         public bool isKupac => korisnik != null;
         public bool isAdmin => administrator != null;
-
+        
 
     }
 }

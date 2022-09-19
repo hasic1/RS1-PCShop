@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using PCWebShop.Database;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PCWebShop.Data
 {
-    public class Context : DbContext
+    public partial class Context : DbContext 
     {
         public Context() { }
         public DbSet<Proizvod> Proizvod { get; set; }

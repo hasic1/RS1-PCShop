@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PCWebShop.Data;
 
 namespace PCWebShop.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220917171856_addFieldConfirmedEmail")]
+    partial class addFieldConfirmedEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,9 +165,6 @@ namespace PCWebShop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("ConfirmedEmail")
-                        .HasColumnType("bit");
 
                     b.Property<string>("korisnickoIme")
                         .HasColumnType("nvarchar(max)");
@@ -521,6 +520,9 @@ namespace PCWebShop.Migrations
 
                     b.Property<string>("Adresa2")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ConfirmedEmail")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DatumRodjenja")
                         .HasColumnType("datetime2");

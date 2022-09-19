@@ -10,6 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static PCWebShop.Helper.AutentifikacijaAutorizacija.MyAuthTokenExtension;
 using PCWebShop.Database;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using IdentityServer4.Models;
+using System.Threading;
+using PCWebShop.Core.Infrastructure.Enums;
 
 namespace PCWebShop.Modul0_Autentifikacija.Controllers
 {
@@ -19,11 +24,14 @@ namespace PCWebShop.Modul0_Autentifikacija.Controllers
     public class AutentifikacijaController : ControllerBase
     {
         private readonly Context _dbContext;
-
+      
         public AutentifikacijaController(Context dbContext)
         {
             this._dbContext = dbContext;
         }
+
+        
+      
 
 
         [HttpPost]
@@ -34,11 +42,21 @@ namespace PCWebShop.Modul0_Autentifikacija.Controllers
                 .FirstOrDefault(k =>
                 k.korisnickoIme != null && k.korisnickoIme == x.korisnickoIme && k.lozinka == x.lozinka);
 
+            var korisnik = _dbContext.Korisnik.FirstOrDefault(a => a.korisnickoIme == x.korisnickoIme);
+
+            if (korisnik.ConfirmedEmail == false)
+                logiraniKorisnik = null;
+          
+
+
+
             if (logiraniKorisnik == null)
             {
                 //pogresan username i password
                 return new LoginInformacije(null);
             }
+            
+
 
             //2- generisati random string
             string randomString = TokenGenerator.Generate(10);

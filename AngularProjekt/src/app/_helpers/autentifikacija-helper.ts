@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {Korisnik} from "./registracija-informacije";
 import {mojConfig} from "../moj-config";
 import {Injectable} from "@angular/core";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn:'root'
 })
 export class AutentifikacijaHelper {
-
+  baseUrl: string = "https://localhost:44304/";
   constructor(private _http: HttpClient) { }
 
   static setLoginInfo(x: LoginInformacije): void {
@@ -33,5 +34,8 @@ export class AutentifikacijaHelper {
   }
   public registerUser = (body: Korisnik) => {
     return this._http.post(mojConfig.adresa_servera+"/Korisnik/Add", body);
+  }
+  confirmEmail(model: any) {
+    return this._http.post(mojConfig.adresa_servera + '/Korisnik/ConfirmEmail', model);
   }
 }

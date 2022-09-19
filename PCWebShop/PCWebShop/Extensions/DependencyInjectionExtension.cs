@@ -18,10 +18,10 @@ namespace PCWebShop.Extensions
             var jwtConfig = configuration.GetSection("Jwt").Get<JwtConfiguration>();
             services.AddSingleton(jwtConfig);
 
-          
 
 
 
+           
 
 
 
@@ -32,6 +32,7 @@ namespace PCWebShop.Extensions
             services.AddScoped<IOglasService, OglasService>();
             services.AddScoped<IObavjestService, ObavjestService>();
             services.AddScoped<INarudzbaService, NarudzbaService>();
+           
         }
     }
 }

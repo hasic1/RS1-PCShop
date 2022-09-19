@@ -1,14 +1,22 @@
 ﻿using IdentityServer4.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using PCWebShop.Core.Interfaces;
 using PCWebShop.Data;
 using PCWebShop.Database;
+using PCWebShop.Helper;
 using PCWebShop.Helper.AutentifikacijaAutorizacija;
 using PCWebShop.ViewModels;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PCWebShop.Controllers
 {
@@ -17,10 +25,15 @@ namespace PCWebShop.Controllers
     public class KorisnikController : ControllerBase
     {
         private readonly Context _context;
-
-        public KorisnikController(Context context)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IConfiguration _config;
+        private readonly IEmailSender _emailSender;
+        public KorisnikController(Context context, UserManager<IdentityUser> userManager, IConfiguration config, IEmailSender emailSender)
         {
             this._context = context;
+            _emailSender = emailSender;
+            _userManager = userManager;
+            _config = config;
         }
 
         [HttpGet]
@@ -52,13 +65,13 @@ namespace PCWebShop.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public  ActionResult Get(int id)
         {
             return Ok(_context.Korisnik.FirstOrDefault(k => k.id == id));
         }
 
         [HttpPost]
-        public ActionResult Add([FromBody] KorisnikAddVM k)
+        public  ActionResult Add([FromBody] KorisnikAddVM k)
         {
             if (k == null || !ModelState.IsValid)
                 return BadRequest();
@@ -77,9 +90,41 @@ namespace PCWebShop.Controllers
                     Email=k.Email
                     
                 };
+                //var userToCreate = new IdentityUser
+                //{
+                //    Email = newKorisnik.Email,
+                //    UserName = newKorisnik.korisnickoIme
+                //};
 
                 _context.Add(newKorisnik);
                 _context.SaveChanges();
+
+               //var userFromDb = _context.Korisnik.Where(x => x.id == newKorisnik.id); 
+
+                //var token =  _userManager.GenerateEmailConfirmationTokenAsync(userFromDb);
+
+               
+                string token = TokenGenerator.Generate(10);
+
+
+                var uriBuilder = new UriBuilder(_config["ReturnPaths:ConfirmEmail"]);
+                var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+                query["token"] = token.ToString();
+                query["userid"] = newKorisnik.id.ToString();
+                uriBuilder.Query = query.ToString();
+
+                var urlString = "<html><body><p>Molimo vas da potvrdite vašu email adresu.</p><a href='"+ uriBuilder.ToString() + "'> Verifikuj račun </ a > <br> <p>Vaš PCShop.</p></ body ></ html > ";
+
+
+                var senderEmail = _config["ReturnPaths:SenderEmail"];
+
+                  _emailSender.SendEmailAsync(senderEmail, newKorisnik.Email, "Confirm your email address", urlString);
+
+                //MailHelper.CreateSingleEmail
+
+
+
+
                 return Get(newKorisnik.id);
             }
             catch (Exception)
@@ -114,6 +159,28 @@ namespace PCWebShop.Controllers
             _context.SaveChanges();
             return Get(id);
         }
+
+        [HttpPost]
+        public  ActionResult ConfirmEmail(ConfirmEmailVM model)
+        {
+            int id = int.Parse(model.UserId);
+            var user = _context.Korisnik.FirstOrDefault(x => x.id == id);
+
+            
+            if(model.UserId != null)
+            {
+                Korisnik korisnik = _context.Korisnik.Where(k => k.id == id ).FirstOrDefault(s => s.id == id);
+
+                korisnik.ConfirmedEmail = true;
+                //user.ConfirmedEmail == true
+                _context.SaveChanges();
+                return Ok();
+            }
+            return BadRequest();
+            
+        }
+
+
         [HttpPost("{id}")]
         public ActionResult Delete(int id)
         {

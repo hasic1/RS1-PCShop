@@ -22,5 +22,6 @@ namespace PCWebShop
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         else
         {
           AutentifikacijaHelper.setLoginInfo(null)
-          porukaError("neispravan login");
+          porukaError("Došlo je do greške, pokušajte ponovno");
         }
       });
   }
