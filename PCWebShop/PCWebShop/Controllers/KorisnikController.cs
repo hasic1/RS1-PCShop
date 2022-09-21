@@ -90,21 +90,16 @@ namespace PCWebShop.Controllers
                     Email=k.Email
                     
                 };
-                //var userToCreate = new IdentityUser
-                //{
-                //    Email = newKorisnik.Email,
-                //    UserName = newKorisnik.korisnickoIme
-                //};
+               
+               
+                string token = TokenGenerator.Generate(100);
+
+                newKorisnik.UserToken = token;
 
                 _context.Add(newKorisnik);
                 _context.SaveChanges();
 
-               //var userFromDb = _context.Korisnik.Where(x => x.id == newKorisnik.id); 
 
-                //var token =  _userManager.GenerateEmailConfirmationTokenAsync(userFromDb);
-
-               
-                string token = TokenGenerator.Generate(10);
 
 
                 var uriBuilder = new UriBuilder(_config["ReturnPaths:ConfirmEmail"]);
@@ -113,14 +108,14 @@ namespace PCWebShop.Controllers
                 query["userid"] = newKorisnik.id.ToString();
                 uriBuilder.Query = query.ToString();
 
-                var urlString = "<html><body><p>Molimo vas da potvrdite vašu email adresu.</p><a href='"+ uriBuilder.ToString() + "'> Verifikuj račun </ a > <br> <p>Vaš PCShop.</p></ body ></ html > ";
+                var urlString = "<html><body><p>Molimo vas da potvrdite vašu email adresu.</p><a href='"+ uriBuilder.ToString() + "'>" + token + "  </ a > <br> <p>Vaš PCShop.</p></ body ></ html > ";
 
 
                 var senderEmail = _config["ReturnPaths:SenderEmail"];
 
                   _emailSender.SendEmailAsync(senderEmail, newKorisnik.Email, "Confirm your email address", urlString);
 
-                //MailHelper.CreateSingleEmail
+                
 
 
 
@@ -164,20 +159,20 @@ namespace PCWebShop.Controllers
         public  ActionResult ConfirmEmail(ConfirmEmailVM model)
         {
             int id = int.Parse(model.UserId);
-            var user = _context.Korisnik.FirstOrDefault(x => x.id == id);
+            var user = _context.Korisnik.FirstOrDefault(x => x.id == id   &&  x.UserToken == model.Token);
 
             
-            if(model.UserId != null)
+            if(user == null)
             {
-                Korisnik korisnik = _context.Korisnik.Where(k => k.id == id ).FirstOrDefault(s => s.id == id);
-
-                korisnik.ConfirmedEmail = true;
-                //user.ConfirmedEmail == true
-                _context.SaveChanges();
-                return Ok();
+                return BadRequest();
             }
-            return BadRequest();
             
+           
+
+            user.ConfirmedEmail = true;
+            
+            _context.SaveChanges();
+            return Ok();
         }
 
 

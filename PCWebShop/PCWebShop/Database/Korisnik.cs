@@ -23,5 +23,6 @@ namespace PCWebShop.Database
         public int DrzavaID { get; set; }
         public bool Pretplacen { get; set; }
         public bool ConfirmedEmail { get; set; }
+        public string UserToken { get; set; }
     }
 }
